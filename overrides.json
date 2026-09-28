@@ -1,0 +1,836 @@
+{
+  "119-san-diego-mission-bay-park": {
+    "osm_ids": [
+      "R3162362"
+    ],
+    "skip": false,
+    "_park": "Mission Bay Park, San Diego",
+    "_priority": "high",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreet map.org/search?query=Mission%20Bay%20Park%2C%20San%20Diego"
+  },
+  "178-detroit-rouge-park": {
+    "osm_ids": [
+      "R12188067"
+    ],
+    "skip": false,
+    "_park": "Rouge Park, Detroit",
+    "_priority": "high",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Rouge%20Park%2C%20Detroit"
+  },
+  "186-bedford-bedford-reservation": {
+    "osm_ids": [
+      "R3956286"
+    ],
+    "skip": false,
+    "_park": "Bedford Reservation, Bedford",
+    "_priority": "high",
+    "_issue": "matched a larger area (city, district or a bigger reserve)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Bedford%20Reservation%2C%20Bedford"
+  },
+  "167-jersey-city-liberty-state-park": {
+    "osm_ids": [
+      "R8262630"
+    ],
+    "skip": false,
+    "_park": "Liberty State Park, Jersey City",
+    "_priority": "high",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Liberty%20State%20Park%2C%20Jersey%20City"
+  },
+  "164-washington-d-c-anacostia-park": {
+    "osm_ids": [
+      "W41965166",
+      "W41965329",
+      "W41965333"
+    ],
+    "skip": false,
+    "_park": "Anacostia Park, Washington, D.C.",
+    "_priority": "high",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Anacostia%20Park%2C%20Washington%2C%20D.C."
+  },
+  "059-philadelphia-fairmount-park": {
+    "osm_ids": [
+      "R16277006",
+      "R9798160"
+    ],
+    "skip": false,
+    "_park": "Fairmount Park, Philadelphia",
+    "_priority": "high",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Fairmount%20Park%2C%20Philadelphia"
+  },
+  "044-brescia-brescia-hills-park": {
+    "osm_ids": [
+      "R4466444"
+    ],
+    "skip": false,
+    "_park": "Brescia Hills Park, Brescia",
+    "_priority": "high",
+    "_issue": "matched a larger area (city, district or a bigger reserve)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Brescia%20Hills%20Park%2C%20Brescia"
+  },
+  "162-oakland-middle-harbor-shoreline-park": {
+    "osm_ids": [
+      "W25003798"
+    ],
+    "skip": false,
+    "_park": "Middle Harbor Shoreline Park, Oakland",
+    "_priority": "high",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Middle%20Harbor%20Shoreline%20Park%2C%20Oakland"
+  },
+  "026-houston-cullen-park": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Cullen Park, Houston",
+    "_priority": "high",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Cullen%20Park%2C%20Houston"
+  },
+  "097-bristol-steele-creek-park": {
+    "osm_ids": [
+      "R21179363",
+      "R21179055"
+    ],
+    "skip": false,
+    "_park": "Steele Creek Park, Bristol",
+    "_priority": "high",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Steele%20Creek%20Park%2C%20Bristol"
+  },
+  "070-meridian-bonita-lakes-park": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Bonita Lakes Park, Meridian",
+    "_priority": "high",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Bonita%20Lakes%20Park%2C%20Meridian"
+  },
+  "130-madrid-manzanares-park": {
+    "osm_ids": [
+      "R20060070"
+    ],
+    "skip": false,
+    "_park": "Manzanares Park, Madrid",
+    "_priority": "high",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Manzanares%20Park%2C%20Madrid"
+  },
+  "172-mesa-red-mountain-park": {
+    "osm_ids": [
+      "W132487782"
+    ],
+    "skip": false,
+    "_park": "Red Mountain Park, Mesa",
+    "_priority": "high",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Red%20Mountain%20Park%2C%20Mesa"
+  },
+  "107-belgrade-ada-ciganlija": {
+    "osm_ids": [
+      "R14675466"
+    ],
+    "skip": false,
+    "_park": "Ada Ciganlija, Belgrade",
+    "_priority": "high",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Ada%20Ciganlija%2C%20Belgrade"
+  },
+  "060-lethbridge-oldman-river-valley-parks-system": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Oldman River valley parks system, Lethbridge",
+    "_priority": "high",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Oldman%20River%20valley%20parks%20system%2C%20Lethbridge"
+  },
+  "088-kislovodsk-kislovodsk-national-park": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Kislovodsk National Park, Kislovodsk",
+    "_priority": "high",
+    "_issue": "matched a larger area (city, district or a bigger reserve)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Kislovodsk%20National%20Park%2C%20Kislovodsk"
+  },
+  "096-lee-s-summit-fleming-park": {
+    "osm_ids": [
+      "W293620633"
+    ],
+    "skip": false,
+    "_park": "Fleming Park, Lee's Summit",
+    "_priority": "high",
+    "_issue": "matched a larger area (city, district or a bigger reserve)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Fleming%20Park%2C%20Lee%27s%20Summit"
+  },
+  "031-jacksonville-timucuan-preserve": {
+    "osm_ids": [
+      "R6769286"
+    ],
+    "skip": false,
+    "_park": "Timucuan Preserve, Jacksonville",
+    "_priority": "high",
+    "_issue": "matched a larger area (city, district or a bigger reserve)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Timucuan%20Preserve%2C%20Jacksonville"
+  },
+  "165-phoenix-cave-buttes-recreation-area": {
+    "osm_ids": [
+      "R19733128"
+    ],
+    "skip": false,
+    "_park": "Cave Buttes Recreation Area, Phoenix",
+    "_priority": "high",
+    "_issue": "matched a larger area (city, district or a bigger reserve)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Cave%20Buttes%20Recreation%20Area%2C%20Phoenix"
+  },
+  "161-colorado-springs-north-cheyenne-canon-park": {
+    "osm_ids": [
+      "W219716600"
+    ],
+    "skip": false,
+    "_park": "North Cheyenne Cañon Park, Colorado Springs",
+    "_priority": "high",
+    "_issue": "no park polygon found around its coordinates",
+    "_find_it": "https://www.openstreetmap.org/search?query=North%20Cheyenne%20Ca%C3%B1on%20Park%2C%20Colorado%20Springs"
+  },
+  "054-santiago-santiago-metropolitan-park": {
+    "osm_ids": [
+      "W168227059"
+    ],
+    "skip": false,
+    "_park": "Santiago Metropolitan Park, Santiago",
+    "_priority": "medium",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Santiago%20Metropolitan%20Park%2C%20Santiago"
+  },
+  "019-sydney-western-sydney-parklands": {
+    "osm_ids": [
+      "W316624946"
+    ],
+    "skip": false,
+    "_park": "Western Sydney Parklands, Sydney",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Western%20Sydney%20Parklands%2C%20Sydney"
+  },
+  "022-london-lee-valley-park": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Lee Valley Park, London",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Lee%20Valley%20Park%2C%20London"
+  },
+  "190-san-antonio-olmos-basin-park": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Olmos Basin Park, San Antonio",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Olmos%20Basin%20Park%2C%20San%20Antonio"
+  },
+  "034-newport-news-newport-news-park": {
+    "osm_ids": [
+      "W246029102"
+    ],
+    "skip": false,
+    "_park": "Newport News Park, Newport News",
+    "_priority": "medium",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Newport%20News%20Park%2C%20Newport%20News"
+  },
+  "139-nashville-beaman-park": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Beaman Park, Nashville",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Beaman%20Park%2C%20Nashville",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (Nashville, Tennessee)"
+  },
+  "047-honolulu-ahupua-a-o-kahana-state-park": {
+    "osm_ids": [
+      "W129219894"
+    ],
+    "skip": false,
+    "_park": "Ahupua'a O Kahana State Park, Honolulu",
+    "_priority": "medium",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Ahupua%27a%20O%20Kahana%20State%20Park%2C%20Honolulu",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Ahupua%27a_O_Kahana_State_Park"
+  },
+  "111-birmingham-sandwell-valley-park": {
+    "osm_ids": [
+      "R7610695",
+      "R5716006"
+    ],
+    "skip": false,
+    "_park": "Sandwell Valley Park, Birmingham",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Sandwell%20Valley%20Park%2C%20Birmingham",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Sandwell_Valley"
+  },
+  "142-lincoln-wilderness-park": {
+    "osm_ids": [
+      "R15831382"
+    ],
+    "skip": false,
+    "_park": "Wilderness Park, Lincoln",
+    "_priority": "medium",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Wilderness%20Park%2C%20Lincoln",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Wilderness_Park"
+  },
+  "141-chennai-arignar-anna-zoological-park": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Arignar Anna Zoological Park, Chennai",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Arignar%20Anna%20Zoological%20Park%2C%20Chennai",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Arignar_Anna_Zoological_Park"
+  },
+  "035-phoenix-north-mountain-and-shaw-butte-preserves": {
+    "osm_ids": [
+      "R19435514"
+    ],
+    "skip": false,
+    "_park": "North Mountain and Shaw Butte Preserves, Phoenix",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=North%20Mountain%20and%20Shaw%20Butte%20Preserves%2C%20Phoenix",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/North_Mountain_and_Shaw_Butte_Preserves"
+  },
+  "039-stockholm-royal-national-city-park": {
+    "osm_ids": [
+      "R19338836"
+    ],
+    "skip": false,
+    "_park": "Royal National City Park, Stockholm",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Royal%20National%20City%20Park%2C%20Stockholm",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Royal_National_City_Park"
+  },
+  "045-mexico-city-el-tepeyac-national-park": {
+    "osm_ids": [
+      "R17509182"
+    ],
+    "skip": false,
+    "_park": "El Tepeyac National Park, Mexico City",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=El%20Tepeyac%20National%20Park%2C%20Mexico%20City",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/El_Tepeyac_National_Park"
+  },
+  "115-new-york-city-staten-island-greenbelt": {
+    "osm_ids": [
+      "W33870127"
+    ],
+    "skip": false,
+    "_park": "Staten Island Greenbelt, New York City",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Staten%20Island%20Greenbelt%2C%20New%20York%20City",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Staten_Island_Greenbelt"
+  },
+  "091-sao-paulo-anhanguera-park": {
+    "osm_ids": [
+      "W199276067"
+    ],
+    "skip": false,
+    "_park": "Anhanguera Park, São Paulo",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Anhanguera%20Park%2C%20S%C3%A3o%20Paulo",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (Interior of São Paulo)"
+  },
+  "003-paris-forest-of-fontainebleau": {
+    "osm_ids": [
+      "R3236785"
+    ],
+    "skip": false,
+    "_park": "Forest of Fontainebleau, Paris",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Forest%20of%20Fontainebleau%2C%20Paris",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Forest_of_Fontainebleau"
+  },
+  "040-louisville-jefferson-memorial-forest": {
+    "osm_ids": [
+      "W1351864323",
+      "W1351874046"
+    ],
+    "skip": false,
+    "_park": "Jefferson Memorial Forest, Louisville",
+    "_priority": "medium",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Jefferson%20Memorial%20Forest%2C%20Louisville",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Jefferson_Memorial_Forest"
+  },
+  "027-ulsan-ulsan-grand-park": {
+    "osm_ids": [
+      "W520314210"
+    ],
+    "skip": false,
+    "_park": "Ulsan Grand Park, Ulsan",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Ulsan%20Grand%20Park%2C%20Ulsan",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Ulsan_Grand_Park"
+  },
+  "089-kansas-city-longview-lake-park": {
+    "osm_ids": [
+      "W546201242"
+    ],
+    "skip": false,
+    "_park": "Longview Lake Park, Kansas City",
+    "_priority": "medium",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Longview%20Lake%20Park%2C%20Kansas%20City",
+    "_wikipedia_page": "not linked from the list, but a page was found by search",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Longview_Lake"
+  },
+  "145-omaha-glenn-cunningham-lake-park": {
+    "osm_ids": [
+      "R13104484"
+    ],
+    "skip": false,
+    "_park": "Glenn Cunningham Lake Park, Omaha",
+    "_priority": "medium",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Glenn%20Cunningham%20Lake%20Park%2C%20Omaha",
+    "_wikipedia_page": "not linked from the list, but a page was found by search",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Glenn_Cunningham_Lake"
+  },
+  "067-paris-forest-of-armainvilliers": {
+    "osm_ids": [
+      "W1038045486"
+    ],
+    "skip": false,
+    "_park": "Forest of Armainvilliers, Paris",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Forest%20of%20Armainvilliers%2C%20Paris",
+    "_wikipedia_page": "not linked from the list, but a page was found by search",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Ch%C3%A2teau_d%27Armainvilliers"
+  },
+  "068-kingsport-bays-mountain-park": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Bays Mountain Park, Kingsport",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Bays%20Mountain%20Park%2C%20Kingsport",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Bays_Mountain_Park"
+  },
+  "072-st-john-s-pippy-park": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Pippy Park, St. John's",
+    "_priority": "medium",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Pippy%20Park%2C%20St.%20John%27s",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Pippy_Park"
+  },
+  "081-fortaleza-coco-park": {
+    "osm_ids": [
+      "R6992908"
+    ],
+    "skip": false,
+    "_park": "Cocó Park, Fortaleza",
+    "_priority": "medium",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Coc%C3%B3%20Park%2C%20Fortaleza",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Coc%C3%B3_Park"
+  },
+  "125-mexico-city-chapultepec-park": {
+    "osm_ids": [
+      "W190273979",
+      "W289654012",
+      "W370527075",
+      "W396114591",
+      "W552326738",
+      "W552326739",
+      "W1199222050",
+      "W1232237105",
+      "W1251489261",
+      "W1279199452",
+      "W1279199453",
+      "W1279199454",
+      "W1279201494",
+      "W1296721836",
+      "R69490",
+      "R2070280",
+      "R2070356",
+      "R14453733",
+      "R16031520",
+      "R16837058",
+      "R17314604",
+      "W25018121",
+      "W25018125",
+      "W25018166",
+      "W25018179",
+      "W153487235",
+      "W153487266",
+      "W153499260",
+      "W153499261",
+      "W153499262",
+      "W153499264",
+      "W153499265",
+      "W153499266",
+      "W153527882",
+      "W154596805",
+      "W154596807",
+      "W154596810",
+      "W154596813",
+      "W433749991",
+      "W462619615",
+      "W509100507",
+      "W509101117",
+      "W712915096",
+      "W712915097",
+      "W712915098",
+      "W1019746712",
+      "W1114991127",
+      "W1172262174",
+      "W1176520193",
+      "W1176520195",
+      "W1176520196",
+      "W1176520197",
+      "W1176520198",
+      "W1180132987",
+      "W1180132989",
+      "W1182630734",
+      "W1182630735",
+      "W1182630736",
+      "W1182630737",
+      "W1182630740",
+      "W1185430193",
+      "W1199222047",
+      "W1199222048",
+      "W1199222049",
+      "W1209953925",
+      "W1209953926",
+      "W1211178202",
+      "W1211624122",
+      "W1211624123",
+      "W1216359340",
+      "W1218429718",
+      "W1236717163",
+      "W1264978528",
+      "W1264978535",
+      "W1265413987",
+      "W1265731934",
+      "W1266656546",
+      "W1279185561",
+      "W1297448138",
+      "W1318299590",
+      "W1318462579",
+      "W1323092613",
+      "W1323092614",
+      "W1323092615",
+      "W1323092616",
+      "W1323225238",
+      "W1323225239",
+      "W1323225240",
+      "W1323225241",
+      "W1323225242",
+      "W1323225243",
+      "W1323225244",
+      "W1323225245",
+      "W1323225246",
+      "W1323225247",
+      "W1323225248",
+      "W1323225249",
+      "W1323225250",
+      "W1323225251",
+      "W1323225252",
+      "W1323225253",
+      "W1324679871",
+      "W1324679872",
+      "W1324679873",
+      "W1324679874",
+      "W1324679875",
+      "W1326153633",
+      "W1326153635",
+      "W1326153902",
+      "W1327601606",
+      "W1327607409",
+      "W1327612376",
+      "W1327612377",
+      "W1327612378",
+      "W1327612379",
+      "W1327612380",
+      "W1327612381",
+      "W1327612382",
+      "W1327612383",
+      "W1327612384",
+      "W1327612385",
+      "W1327612386",
+      "W1327658986",
+      "W1339122943",
+      "W1340632483",
+      "W1354960114",
+      "W1354960115",
+      "W1354960116",
+      "W1354960117",
+      "W1354960118",
+      "W1354960119",
+      "W1354960120",
+      "W1354960121",
+      "W1354960122",
+      "W1354960123",
+      "W1354960124",
+      "W1354960125",
+      "W1354960126",
+      "W1354960127",
+      "W1354960128",
+      "W1354960129",
+      "W1354960130",
+      "W1354960131",
+      "W1356049203",
+      "W1356049204",
+      "W1356049205",
+      "W1356049206",
+      "W1356049207",
+      "W1356049208",
+      "W1356049209",
+      "W1356049210",
+      "W1356049211",
+      "W1356049212",
+      "W1356049213",
+      "W1356049214",
+      "W1356049215",
+      "W1356049216",
+      "W1356340882",
+      "W1356340884",
+      "W1356340885",
+      "W1356341280",
+      "W1356341281",
+      "W1356341282",
+      "W1356341283",
+      "W1356341284",
+      "W1356341285",
+      "W1356341286",
+      "W1356341287",
+      "W1356341288",
+      "W1356502964",
+      "W1356510019",
+      "W1356510020",
+      "W1356510021",
+      "W1356510022",
+      "W1356595425",
+      "W1357639894",
+      "W1476941012",
+      "W1476941015",
+      "W1476941016",
+      "W189976015"
+    ],
+    "close_gaps_m": 25,
+    "skip": false,
+    "_park": "Chapultepec Park, Mexico City",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Chapultepec%20Park%2C%20Mexico%20City",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Chapultepec"
+  },
+  "146-los-angeles-hansen-dam-recreation-center": {
+    "osm_ids": [
+      "R17588214"
+    ],
+    "skip": false,
+    "_park": "Hansen Dam Recreation Center, Los Angeles",
+    "_priority": "medium",
+    "_issue": "the OSM polygon covers only part of the park, or Wikipedia's area includes water",
+    "_find_it": "https://www.openstreetmap.org/search?query=Hansen%20Dam%20Recreation%20Center%2C%20Los%20Angeles",
+    "_wikipedia_page": "not linked from the list, but a page was found by search",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Hansen_Dam"
+  },
+  "168-madrid-parque-de-valdebebas": {
+    "osm_ids": [
+      "R2297480"
+    ],
+    "skip": false,
+    "_park": "Parque de Valdebebas, Madrid",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=Parque%20de%20Valdebebas%2C%20Madrid",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (List of Madrid parks)"
+  },
+  "180-charlotte-mcdowell-nature-center-and-preserve": {
+    "osm_ids": [
+      "W38619537"
+    ],
+    "skip": false,
+    "_park": "McDowell Nature Center and Preserve, Charlotte",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=McDowell%20Nature%20Center%20and%20Preserve%2C%20Charlotte",
+    "_wikipedia_page": "not linked from the list, but a page was found by search",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/McDowell_Nature_Preserve"
+  },
+  "188-arlington-river-legacy-park": {
+    "osm_ids": [
+      "W28541196"
+    ],
+    "skip": false,
+    "_park": "River Legacy Park, Arlington",
+    "_priority": "medium",
+    "_issue": "coordinates or name search matched part of the park, or a nearby feature",
+    "_find_it": "https://www.openstreetmap.org/search?query=River%20Legacy%20Park%2C%20Arlington",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (Arlington House, The Robert E. Lee Memorial)"
+  },
+  "024-dallas-trinity-river-project": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Trinity River Project, Dallas",
+    "_priority": "medium",
+    "_issue": "no boundary found (no OSM ID, coordinates or name match)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Trinity%20River%20Project%2C%20Dallas",
+    "_wikipedia_page": "yes, linked from the list",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Trinity_River_Project"
+  },
+  "043-paris-forest-of-montmorency": {
+    "osm_ids": [
+      "R7432353"
+    ],
+    "skip": false,
+    "_park": "Forest of Montmorency, Paris",
+    "_priority": "medium",
+    "_issue": "no boundary found (no OSM ID, coordinates or name match)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Forest%20of%20Montmorency%2C%20Paris",
+    "_wikipedia_page": "not linked from the list, but a page was found by search",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Montmorency_cherry"
+  },
+  "075-tulsa-mohawk-park-and-golf-course": {
+    "osm_ids": [
+      "W249726444"
+    ],
+    "skip": false,
+    "_park": "Mohawk Park and Golf Course, Tulsa",
+    "_priority": "medium",
+    "_issue": "no boundary found (no OSM ID, coordinates or name match)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Mohawk%20Park%20and%20Golf%20Course%2C%20Tulsa",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (List of urban parks by size)"
+  },
+  "080-jacksonville-cecil-greens-fieldway": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Cecil Greens Fieldway, Jacksonville",
+    "_priority": "medium",
+    "_issue": "no boundary found (no OSM ID, coordinates or name match)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Cecil%20Greens%20Fieldway%2C%20Jacksonville",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (List of urban parks by size)"
+  },
+  "092-kansas-city-blue-river-parkway": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Blue River Parkway, Kansas City",
+    "_priority": "medium",
+    "_issue": "no boundary found (no OSM ID, coordinates or name match)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Blue%20River%20Parkway%2C%20Kansas%20City",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (Neighborhoods of Kansas City, Missouri)"
+  },
+  "121-san-diego-tijuana-river-valley-regional-park": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Tijuana River Valley Regional Park, San Diego",
+    "_priority": "medium",
+    "_issue": "no boundary found (no OSM ID, coordinates or name match)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Tijuana%20River%20Valley%20Regional%20Park%2C%20San%20Diego",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (San Diego–Tijuana)"
+  },
+  "135-riverside-hidden-valley-wildlife-area": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Hidden Valley Wildlife Area, Riverside",
+    "_priority": "medium",
+    "_issue": "no boundary found (no OSM ID, coordinates or name match)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Hidden%20Valley%20Wildlife%20Area%2C%20Riverside",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (Central Valley (California))"
+  },
+  "147-virginia-beach-stumpy-lake-park": {
+    "osm_ids": [
+      "R11681334"
+    ],
+    "skip": false,
+    "_park": "Stumpy Lake Park, Virginia Beach",
+    "_priority": "medium",
+    "_issue": "no boundary found (no OSM ID, coordinates or name match)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Stumpy%20Lake%20Park%2C%20Virginia%20Beach",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (List of urban parks by size)"
+  },
+  "153-stuttgart-grunes-u": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "Grünes U, Stuttgart",
+    "_priority": "medium",
+    "_issue": "no boundary found (no OSM ID, coordinates or name match)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Gr%C3%BCnes%20U%2C%20Stuttgart",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (Stuttgart)"
+  },
+  "156-huntersville-latta-plantation-nature-center-and-preserve": {
+    "osm_ids": [
+      "R8067539"
+    ],
+    "skip": false,
+    "_park": "Latta Plantation Nature Center and Preserve, Huntersville",
+    "_priority": "medium",
+    "_issue": "no boundary found (no OSM ID, coordinates or name match)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Latta%20Plantation%20Nature%20Center%20and%20Preserve%2C%20Huntersville",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (List of urban parks by size)"
+  },
+  "171-columbus-three-creeks-parks": {
+    "osm_ids": [
+      "W465775393"
+    ],
+    "skip": false,
+    "_park": "Three Creeks Parks, Columbus",
+    "_priority": "medium",
+    "_issue": "no boundary found (no OSM ID, coordinates or name match)",
+    "_find_it": "https://www.openstreetmap.org/search?query=Three%20Creeks%20Parks%2C%20Columbus",
+    "_wikipedia_page": "no, not linked from the list",
+    "_wikipedia_note": "search only found an unrelated page (Columbus and Franklin County Metro Parks)"
+  },
+  "187-dallas-william-blair-jr-park": {
+    "osm_ids": [],
+    "skip": true,
+    "_park": "William Blair Jr. Park, Dallas",
+    "_priority": "medium",
+    "_issue": "no boundary found (no OSM ID, coordinates or name match)",
+    "_find_it": "https://www.openstreetmap.org/search?query=William%20Blair%20Jr.%20Park%2C%20Dallas",
+    "_wikipedia_page": "not linked from the list, but a page was found by search",
+    "_wikipedia_url": "https://en.wikipedia.org/wiki/Francis_Preston_Blair_Jr."
+  }
+}

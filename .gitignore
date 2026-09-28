@@ -1,0 +1,21 @@
+# Large downloads and caches (rebuilt by the scripts)
+pbf/
+osmnx_http_cache/
+run/work/
+run/boundaries/
+run/geojson/
+
+# Local previews and environments
+preview/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Personal working files
+*.qgz
+*.qgs~
+
+# Local working files
+run/*.zip
+run/review_boundaries.geojson
