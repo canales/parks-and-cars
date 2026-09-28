@@ -255,6 +255,7 @@ def park_record(r):
         "road_cross": int(n(r["road_crossings"]) or 0),
         "hw_per_walk": n(r["highway_km_per_walking_crossing"]),
         "speed_cov": n(r["speed_limit_coverage_pct"]), "above30_km": n(r["road_km_above_30"]),
+        "osm_date": r.get("osm_data_date") or None,
     }
 
 
@@ -272,25 +273,33 @@ def main():
     print(f"Parks: {len(parks)} (skipped in overrides.json: {len(skipped)})")
 
     MAPS_OUT.mkdir(parents=True, exist_ok=True)
+    included = {p["id"] for p in parks}
     for old in MAPS_OUT.glob("*.json"):          # drop maps of parks no longer included
-        old.unlink()
-    maps, total = {}, 0
+        if old.stem not in included:
+            old.unlink()
+    maps, total, kept = {}, 0, 0
     for p in parks:
-        src = GEO_IN / f"{p['id']}.geojson"
-        if not src.exists():
-            p["has_map"] = False
-            continue
-        m = compact_map(src)
-        p["has_map"] = m is not None
-        if m is None:
-            continue
-        text = json.dumps(m, separators=(",", ":"), ensure_ascii=False)
-        (MAPS_OUT / f"{p['id']}.json").write_text(text, encoding="utf-8")
-        maps[p["id"]] = m
-        total += len(text)
+        src, dst = GEO_IN / f"{p['id']}.geojson", MAPS_OUT / f"{p['id']}.json"
+        if src.exists():
+            m = compact_map(src)
+            if m is not None:
+                text = json.dumps(m, separators=(",", ":"), ensure_ascii=False)
+                dst.write_text(text, encoding="utf-8")
+        elif dst.exists():
+            kept += 1                           # layers not on this machine: keep the published map
+        p["has_map"] = dst.exists()
+        if dst.exists():
+            text = dst.read_text(encoding="utf-8")
+            maps[p["id"]] = json.loads(text)
+            total += len(text)
+    if kept:
+        print(f"Kept {kept} existing map files (their layers aren't in run/geojson here)")
     print(f"Maps: {len(maps)} files, {total/1e6:.1f} MB in {MAPS_OUT.relative_to(BASE)}")
 
-    site = {"home": HOME_SLUG, "parks": parks, "skipped": len(skipped)}
+    dates = sorted(p["osm_date"] for p in parks if p.get("osm_date"))
+    site = {"home": HOME_SLUG, "parks": parks, "skipped": len(skipped),
+            "dates": [dates[0], dates[-1]] if dates else None}
+    print(f"OpenStreetMap data dates: {dates[0]} to {dates[-1]}" if dates else "No data dates recorded yet")
     template = TEMPLATE.read_text(encoding="utf-8")
     site_json = json.dumps(site, separators=(",", ":"), ensure_ascii=False)
     page = template.replace("__SITE__", site_json).replace("__MAPS__", "{}").replace("__MAPS_URL__", "data/maps/")

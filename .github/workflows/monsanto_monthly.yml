@@ -1,0 +1,65 @@
+name: Monthly Monsanto refresh
+
+# Re-measures Monsanto with the latest OpenStreetMap data once a month.
+# Opens a pull request only if a number changed, so nothing is published
+# until you have checked it and merged.
+on:
+  schedule:
+    - cron: "0 6 3 * *"        # 06:00 UTC on the 3rd of every month
+  workflow_dispatch:            # also runs by hand, from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PARK: 084-lisbon-monsanto-forest-park
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install osmium and Python packages
+        run: |
+          sudo apt-get update && sudo apt-get install -y osmium-tool
+          pip install -r requirements.txt
+
+      - name: Download the Portugal extract
+        run: |
+          mkdir -p pbf
+          curl -L --retry 3 -f -o pbf/portugal-latest.osm.pbf \
+            https://download.geofabrik.de/europe/portugal-latest.osm.pbf
+
+      - name: Re-measure Monsanto
+        run: |
+          cp "run/summaries/$PARK.json" /tmp/before.json
+          python run_all_parks.py --only "$PARK" --refresh --offline
+
+      - name: Compare with the published numbers
+        id: compare
+        run: python check_changes.py /tmp/before.json "run/summaries/$PARK.json" /tmp/changes.md
+
+      - name: Rebuild the site
+        if: steps.compare.outputs.changed == 'true'
+        run: python build_site.py
+
+      - name: Open a pull request
+        if: steps.compare.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: monsanto-refresh
+          delete-branch: true
+          title: "Monsanto: numbers changed in the latest OpenStreetMap data"
+          commit-message: "Re-measure Monsanto with the latest OpenStreetMap data"
+          body-path: /tmp/changes.md
+          add-paths: |
+            run/parks_results.csv
+            run/summaries/${{ env.PARK }}.json
+            docs

@@ -41,5 +41,6 @@
   "parking_km": null,
   "parking_km2": 0.2409,
   "parking_pct": 0.54,
-  "status": "ok"
+  "status": "ok",
+  "osm_data_date": "2026-09-27"
 }

@@ -402,7 +402,7 @@ en:{
   fact_area:a=>`That is <strong>${a}</strong> of asphalt and parking.`,
   fact_hw:"More than half of it is highways cutting through the park.",
   square_caption:"The green square is Monsanto. The grey corner is all its roads and parking, gathered together at true scale.",
-  prelim:"Data from OpenStreetMap, September 2026: {n} large urban parks, all measured the same way. For some parks the area differs from Wikipedia's figure, usually because Wikipedia counts lakes or the sea.",
+  prelim:"Data from OpenStreetMap, {date}: {n} large urban parks, all measured the same way. For some parks the area differs from Wikipedia's figure, usually because Wikipedia counts lakes or the sea.",
   fact_rank:(r,n)=>`It ranks <strong>${r}${["th","st","nd","rd"][(r%100>10&&r%100<14)?0:(r%10<4?r%10:0)]}</strong> of ${n} large parks worldwide.`,
   d_cut:(km,n,w)=>`Highways run ${km} km through this park.${n > 1 ? ` It is split into ${n} pieces, with ${w} walking ${w === 1 ? "crossing" : "crossings"} over its highways.` : ""}`,
   show_all:n=>`Show all ${n} parks`, show_less:"Show the top 25",
@@ -508,7 +508,7 @@ pt:{
   fact_area:a=>`São <strong>${a}</strong> de asfalto e estacionamento.`,
   fact_hw:"Mais de metade são autoestradas e vias rápidas que atravessam o parque.",
   square_caption:"O quadrado verde é Monsanto. O canto cinzento são todas as suas estradas e estacionamento, juntos, à escala real.",
-  prelim:"Dados do OpenStreetMap, setembro de 2026: {n} grandes parques urbanos, todos medidos da mesma forma. Nalguns parques a área difere da indicada na Wikipédia, normalmente porque a Wikipédia conta lagos ou o mar.",
+  prelim:"Dados do OpenStreetMap, {date}: {n} grandes parques urbanos, todos medidos da mesma forma. Nalguns parques a área difere da indicada na Wikipédia, normalmente porque a Wikipédia conta lagos ou o mar.",
   fact_rank:(r,n)=>`É o <strong>${r}.º</strong> de ${n} grandes parques no mundo.`,
   d_cut:(km,n,w)=>`Autoestradas e vias rápidas percorrem ${km} km deste parque.${n > 1 ? ` Está dividido em ${n} pedaços, com ${w} ${w === 1 ? "travessia pedonal" : "travessias pedonais"} sobre as suas autoestradas.` : ""}`,
   show_all:n=>`Mostrar os ${n} parques`, show_less:"Mostrar os 25 primeiros",
@@ -659,7 +659,7 @@ function renderStatic(){
     <li>${t("fact_rank")(rank, PARKS.length)}</li>
     <li>${t("fact_area")(km2Fmt(car))}</li>
     ${mons.split.highways > car / 2 ? `<li>${t("fact_hw")}</li>` : ""}`;
-  $(".prelim").textContent = t("prelim").replace("{n}", PARKS.length);
+  $(".prelim").textContent = t("prelim").replace("{n}", PARKS.length).replace(/, \{date\}/, dataDate() ? `, ${dataDate()}` : "");
   renderHero();
   $("#storyToggle").textContent = $("#monsanto").open ? t("story_close") : t("story_open");
 }
@@ -687,6 +687,13 @@ function renderParkList(){
     listSort.key = k;
     renderParkList();
   });
+}
+
+function dataDate(){         // e.g. "September 2026", or "September 2026 to March 2027"
+  if(!SITE.dates) return "";
+  const fmt = iso => new Intl.DateTimeFormat(t("locale"), {month: "long", year: "numeric"}).format(new Date(iso + "T12:00:00Z"));
+  const [a, b] = SITE.dates.map(fmt);
+  return a === b ? a : `${a} ${state.lang === "pt" ? "a" : "to"} ${b}`;
 }
 
 function renderHero(){

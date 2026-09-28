@@ -45,6 +45,8 @@ Usage
   python run_all_parks.py                        everything (resumable: re-run to continue)
   python run_all_parks.py --delete-pbf           delete each extract after its region is done
   python run_all_parks.py --refresh              re-measure parks already done
+  python run_all_parks.py --offline              no Nominatim: boundaries from the extracts
+  python run_all_parks.py --set-missing-date 2026-09-27   stamp older results with their data date
 """
 
 import argparse
@@ -52,6 +54,7 @@ import json
 import math
 import subprocess
 import time
+from datetime import date
 from pathlib import Path
 
 import geopandas as gpd
@@ -335,14 +338,16 @@ def export_layers(pbf, bounds, workdir, layers):
                     "-a", "type,id", f"--geometry-types={geom_type}")
 
 
-def boundary_from_ids(p, pbf):
+def boundary_from_ids(p, pbf, ids=None, method=None):
     """Polygon for the override IDs, read from the region's extract with osmium.
     Tries, in order: the IDs' own polygons; the union of their members' polygons
     (for type=collection relations, e.g. Forêt de Fontainebleau); a polygon
     assembled from their member ways (for boundaries with small gaps)."""
     wd = WORK / p["slug"] / "ids"
     wd.mkdir(parents=True, exist_ok=True)
-    ids = [i[0].lower() + i[1:] for i in p["override_ids"]]
+    wanted_ids = ids or p["override_ids"]
+    label = method or override_method(p)
+    ids = [i[0].lower() + i[1:] for i in wanted_ids]
     try:
         core.osmium("getid", "-r", pbf, *ids, "-o", wd / "ids.osm.pbf", "--overwrite")
     except RuntimeError as e:
@@ -354,19 +359,19 @@ def boundary_from_ids(p, pbf):
         core.osmium("export", wd / "ids.osm.pbf", "-o", wd / f"ids_{gtype}.geojson", "--overwrite",
                     "-a", "type,id", f"--geometry-types={gtype}")
     polys = read(wd / "ids_polygon.geojson", "EPSG:4326")
-    want = {(i[0].upper(), i[1:]) for i in p["override_ids"]}
+    want = {(i[0].upper(), i[1:]) for i in wanted_ids}
     if len(polys):
         mine = polys[[(str(t)[:1].upper(), str(n)) in want
                       for t, n in zip(core.col(polys, "@type"), core.col(polys, "@id"))]]
         if len(mine):
-            return unary_union([x.buffer(0) for x in mine.geometry]), override_method(p)
-        return unary_union([x.buffer(0) for x in polys.geometry]), override_method(p) + " from members"
+            return unary_union([x.buffer(0) for x in mine.geometry]), label
+        return unary_union([x.buffer(0) for x in polys.geometry]), label + " from members"
     lines = read(wd / "ids_linestring.geojson", "EPSG:4326")
     if len(lines):
         from shapely.ops import polygonize
         rings = list(polygonize(unary_union(list(lines.geometry))))
         if rings:
-            return unary_union(rings), override_method(p) + " from member ways"
+            return unary_union(rings), label + " from member ways"
     return None, None
 
 
@@ -391,6 +396,17 @@ def boundary_from_coords(p, pbf):
     best = cand.sort_values("score").iloc[0]
     geom = gpd.GeoSeries([best.geometry], crs=utm).to_crs("EPSG:4326").iloc[0]
     return geom, f"coordinates: {best.get('@type')}/{best.get('@id')} {best.get('name') or ''}".strip()
+
+
+def extract_date(pbf):
+    """Date of the OpenStreetMap data in an extract, from its header (YYYY-MM-DD)."""
+    try:
+        r = subprocess.run(["osmium", "fileinfo", "-g", "header.option.osmosis_replication_timestamp",
+                            str(pbf)], capture_output=True, text=True, timeout=60)
+        stamp = r.stdout.strip()
+        return stamp[:10] if len(stamp) >= 10 else None
+    except Exception:
+        return None
 
 
 def measure(p, geom_wgs, method, pbf, snap=False):
@@ -471,6 +487,7 @@ def measure(p, geom_wgs, method, pbf, snap=False):
         "unmarked_to_check": int((crossings["type"] == "unmarked").sum()) if len(crossings) else 0,
         "highway_km_per_walking_crossing": round(hw_km / len(walk), 2) if len(walk) else None,
         "speed_limit_coverage_pct": coverage, "road_km_above_30": over30,
+        "osm_data_date": extract_date(pbf), "measured_on": date.today().isoformat(),
     }
     for c in ("highways", "main roads", "local roads", "service roads", "parking"):
         key = c.split()[0]
@@ -524,6 +541,11 @@ def phase_measure(plan, refresh, delete_pbf):
                         raise RuntimeError("override IDs not found in the extract either; check overrides.json")
                     geom = close_gaps(geom, p)
                     save_boundary(p["slug"], geom, method)
+                if geom is None and p.get("osm_id") and not p.get("override_ids"):
+                    geom, method = boundary_from_ids(p, pbf, ids=[p["osm_id"]],
+                                                     method=f"OSM {p['osm_id']} (from extract)")
+                    if geom is not None:
+                        save_boundary(p["slug"], geom, method)
                 if geom is None and p.get("lat") is not None:
                     geom, method = boundary_from_coords(p, pbf)
                     if geom is not None:
@@ -611,9 +633,24 @@ def main():
     ap.add_argument("--refresh", action="store_true", help="re-measure parks already done")
     ap.add_argument("--delete-pbf", action="store_true", help="delete each extract after use")
     ap.add_argument("--results-only", action="store_true", help="just rebuild parks_results.csv")
+    ap.add_argument("--offline", action="store_true",
+                    help="skip Nominatim: read boundaries from the extracts by OSM ID (used on GitHub)")
+    ap.add_argument("--set-missing-date", metavar="YYYY-MM-DD",
+                    help="stamp results measured before dates were recorded, then rebuild the CSV")
     args = ap.parse_args()
 
     parks = load_parks()
+    if args.set_missing_date:
+        n = 0
+        for f in SUM_DIR.glob("*.json"):
+            s = json.loads(f.read_text())
+            if s.get("status") == "ok" and not s.get("osm_data_date"):
+                s["osm_data_date"] = args.set_missing_date
+                f.write_text(json.dumps(s, indent=2, ensure_ascii=False, default=float))
+                n += 1
+        print(f"Stamped {n} results with OpenStreetMap data date {args.set_missing_date}")
+        write_results(parks)
+        return
     if args.results_only:
         write_results(parks)
         return
@@ -626,7 +663,8 @@ def main():
             raise SystemExit(f"Unknown slug(s): {', '.join(sorted(missing))}")
         parks = [p for p in parks if p["slug"] in wanted]
 
-    phase_boundaries(parks)
+    if not args.offline:
+        phase_boundaries(parks)
     plan = phase_regions(parks)
     print_plan(plan)
     if args.plan:
