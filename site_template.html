@@ -44,7 +44,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--text);font-variant-numeric:tabular-nums;-webkit-text-size-adjust:100%}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:2px}
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1440px;margin:0 auto;padding:0 24px}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--rule)}
 .nav-links{display:flex;gap:22px;flex-wrap:wrap;font-weight:500}
 .nav-links a{text-decoration:none;color:var(--muted);padding:4px 0}
@@ -57,7 +57,7 @@ a{color:inherit}
 .lang{display:flex;border:1px solid var(--rule);border-radius:999px;overflow:hidden}
 .lang button{font:500 14px var(--text);background:none;border:0;color:var(--muted);padding:5px 12px;cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center;padding:56px 0 40px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;padding:56px 0 40px}
 .hero h1{font:700 clamp(40px,6vw,76px)/.95 var(--display);letter-spacing:-.01em;margin:0 0 22px;max-width:14ch}
 .lede{font-size:19px;color:var(--muted);max-width:56ch;margin:0 0 26px}
 .facts{margin:0;padding:0;list-style:none;display:grid;gap:10px;max-width:52ch}
@@ -86,7 +86,7 @@ a{color:inherit}
 .check input{width:18px;height:18px;accent-color:var(--forest)}
 .sort{display:flex;align-items:center;gap:8px;font-size:15px}
 .sort select{font:500 15px var(--text);padding:5px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink)}
-.main{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:40px;padding:28px 0 40px;align-items:start}
+.main{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:40px;padding:28px 0 40px;align-items:start}
 .list h2,.detail h2,.method h2{font:600 26px/1.15 var(--display);margin:0 0 14px}
 .rows{border-top:1px solid var(--rule)}
 .row{display:grid;grid-template-columns:28px minmax(0,1fr) 84px minmax(120px,.8fr);gap:12px;align-items:center;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--rule);padding:11px 8px;font:inherit;color:inherit;cursor:pointer}
@@ -106,7 +106,7 @@ a{color:inherit}
 .empty{padding:28px 8px;color:var(--muted)}
 .detail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - 32px - env(safe-area-inset-top,0px));overflow-y:auto;overscroll-behavior:contain;padding-right:4px}
 .dsub{color:var(--muted);margin:-8px 0 16px}
-.dsq{max-width:320px}
+.dsq{max-width:460px}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin:20px 0}
 .stat dt{font-size:13px;color:var(--muted)}
 .stat dd{margin:0;font:600 24px/1.1 var(--display)}
@@ -135,7 +135,7 @@ a{color:inherit}
 .chapter h3{font:600 28px/1.1 var(--display);margin:0 0 12px}
 .chapter p{max-width:68ch;margin:0 0 14px}
 .chapter .big{font:600 22px/1.3 var(--text);max-width:40ch}
-.tbl{border-collapse:collapse;width:100%;max-width:720px;font-size:15px;margin:6px 0 16px}
+.tbl{border-collapse:collapse;width:100%;font-size:15px;margin:6px 0 16px}
 .tbl th,.tbl td{text-align:right;padding:7px 10px;border-bottom:1px solid var(--rule)}
 .tbl th:first-child,.tbl td:first-child{text-align:left}
 .tbl thead th{font-weight:500;color:var(--muted);font-size:13px}
@@ -159,7 +159,11 @@ a{color:inherit}
 .vtog{margin:0 0 12px;width:max-content}
 .dmap{margin:0}
 .dmap-na{border:1px dashed var(--rule);border-radius:8px;padding:28px 18px;color:var(--muted);font-size:15px;max-width:320px}
-.parklist{margin:18px 0 0;max-width:900px}
+.parklist{margin:18px 0 0}
+.parklist td{white-space:nowrap}
+.parklist th{cursor:pointer;user-select:none;white-space:nowrap}
+.parklist th[aria-sort]::after{content:" ▾";color:var(--muted)}
+.parklist th[aria-sort="ascending"]::after{content:" ▴"}
 .parklist summary{cursor:pointer;font-weight:600;color:var(--forest);padding:6px 0}
 .tblwrap{overflow-x:auto}
 .src{font-size:13px;color:var(--muted);margin:-6px 0 18px;max-width:68ch}
@@ -174,6 +178,11 @@ a{color:inherit}
 .bm-attr{position:absolute;right:6px;bottom:4px;font-size:10px;color:var(--muted);background:var(--paper);padding:1px 4px;border-radius:3px;z-index:2}
 .bm-note{position:absolute;left:8px;top:8px;right:90px;z-index:2;font-size:12px;background:var(--warn-bg);color:var(--warn-ink);padding:4px 8px;border-radius:4px}
 .bm-on .m-park,.bm-on .m-piece{fill-opacity:.45}
+.mapbox.bm-active{background:transparent}
+.mapbox svg{position:relative;z-index:1}
+.bm-gl{position:absolute;left:0;top:0;right:0;z-index:0;pointer-events:none}
+.bm-gl .maplibregl-canvas-container,.bm-gl canvas{position:absolute;left:0;top:0}
+.bm-gl .maplibregl-control-container{display:none}
 .legend i.sgn{width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px #C62828 inset}
 .cx-path{fill:var(--forest)}
 .cx-road{fill:var(--main)}
@@ -192,11 +201,11 @@ a{color:inherit}
 .steps{margin:6px 0 14px;padding-left:22px;max-width:68ch}
 .steps li{margin:0 0 8px}
 .method{border-top:1px solid var(--rule);padding:40px 0 20px}
-.method p{max-width:70ch;margin:0 0 14px}
+.method p{margin:0 0 14px}
 footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:14px;color:var(--muted)}
 @media (max-width:900px){
   .hero{grid-template-columns:1fr;gap:28px;padding-top:36px}
-  .hero-fig{max-width:360px}
+  .hero-fig{max-width:520px}
   .main{grid-template-columns:1fr}
   .detail{position:static;max-height:none;overflow:visible}
 }
@@ -475,7 +484,8 @@ en:{
   hero_cap_map:"Monsanto's roads at their real width, its parking, and the two halves the A5 cuts it into.",
   d_hw:"Highways inside", bm:"Basemap", bm_blocked:"The basemap can't load in this preview. It will on the published site.",
   col_size:"Park size", col_density:"Road length per km²",
-  list_h:n=>`The ${n} parks we measured`, list_city:"City",
+  list_h:n=>`The ${n} parks we measured`, list_city:"City, country",
+  list_hint:"Sorted by country, then park name. Click a column to sort by it.",
   footer_map:"Also by this project: the Portugal illegal parking map.",
   m_title:"How we measured",
   m_body:[
@@ -580,7 +590,8 @@ pt:{
   hero_cap_map:"As estradas de Monsanto na sua largura real, o estacionamento e as duas metades em que a A5 o corta.",
   d_hw:"Autoestradas no interior", bm:"Mapa de fundo", bm_blocked:"O mapa de fundo não carrega nesta pré-visualização. Vai carregar no site publicado.",
   col_size:"Área do parque", col_density:"Km de estrada por km²",
-  list_h:n=>`Os ${n} parques que medimos`, list_city:"Cidade",
+  list_h:n=>`Os ${n} parques que medimos`, list_city:"Cidade, país",
+  list_hint:"Ordenados por país e depois por nome do parque. Clique numa coluna para ordenar por ela.",
   footer_map:"Do mesmo projeto: o mapa do estacionamento ilegal em Portugal.",
   m_title:"Como medimos",
   m_body:[
@@ -640,10 +651,7 @@ function renderStatic(){
     chips.appendChild(b);
   });
   $("#methodBody").innerHTML = t("m_body").map(x => `<p>${x.replace("{skipped}", SITE.skipped || 0)}</p>`).join("");
-  const byCountry = [...PARKS].sort((a, b) => L(a.country).localeCompare(L(b.country)) || L(a.name).localeCompare(L(b.name)));
-  $("#parklist").innerHTML = `<summary>${t("list_h")(PARKS.length)}</summary>
-    <div class="tblwrap"><table class="tbl"><thead><tr><th>${t("col_park")}</th><th>${t("list_city")}</th><th>${t("col_area")}</th><th>${t("col_share")}</th></tr></thead>
-    <tbody>${byCountry.map(p => `<tr><td>${L(p.name)}</td><td>${L(p.city)}, ${L(p.country)}</td><td>${num(p.km2, 2)} km²</td><td>${pctFmt(p.pct)}</td></tr>`).join("")}</tbody></table></div>`;
+  renderParkList();
   const mons = PARKS.find(p => p.id === HOME);
   const car = mons.roadM2 + mons.parkingM2;
   const rank = [...PARKS].sort((a, b) => b.pct - a.pct).findIndex(p => p.id === HOME) + 1;
@@ -654,6 +662,31 @@ function renderStatic(){
   $(".prelim").textContent = t("prelim").replace("{n}", PARKS.length);
   renderHero();
   $("#storyToggle").textContent = $("#monsanto").open ? t("story_close") : t("story_open");
+}
+
+const listSort = {key: "country", dir: 1};
+function renderParkList(){
+  const keyFn = {
+    name: p => L(p.name), country: p => `${L(p.country)} ${L(p.name)}`,
+    area: p => p.km2, share: p => p.pct,
+  }[listSort.key];
+  const rows = [...PARKS].sort((a, b) => {
+    const x = keyFn(a), y = keyFn(b);
+    return (typeof x === "number" ? x - y : String(x).localeCompare(String(y))) * listSort.dir;
+  });
+  const th = (k, label) => `<th data-k="${k}"${listSort.key === k ? ` aria-sort="${listSort.dir > 0 ? "ascending" : "descending"}"` : ""}>${label}</th>`;
+  const open = $("#parklist").open;
+  $("#parklist").innerHTML = `<summary>${t("list_h")(PARKS.length)}</summary>
+    <p class="maphint">${t("list_hint")}</p>
+    <div class="tblwrap"><table class="tbl"><thead><tr>${th("name", t("col_park"))}${th("country", t("list_city"))}${th("area", t("col_area"))}${th("share", t("col_share"))}</tr></thead>
+    <tbody>${rows.map(p => `<tr><td>${L(p.name)}</td><td>${L(p.city)}, ${L(p.country)}</td><td>${num(p.km2, 2)} km²</td><td>${pctFmt(p.pct)}</td></tr>`).join("")}</tbody></table></div>`;
+  $("#parklist").open = open;
+  document.querySelectorAll("#parklist th").forEach(el => el.onclick = () => {
+    const k = el.dataset.k;
+    listSort.dir = listSort.key === k ? -listSort.dir : (k === "area" || k === "share" ? -1 : 1);
+    listSort.key = k;
+    renderParkList();
+  });
 }
 
 function renderHero(){
@@ -744,7 +777,7 @@ function renderDetail(){
   if(isMap && p.has_map) getMap(p.id).then(geo => {
     const box = $("#detailMap");
     if(!box || state.selected !== p.id || state.detailView !== "map") return;
-    if(geo) buildMap(box, geo, {pieces:false, signs:true, unmarked:false, height:300});
+    if(geo) buildMap(box, geo, {pieces:false, signs:true, unmarked:false, height:440});
     else box.innerHTML = `<p class="empty">${t("map_na")}</p>`;
   });
   if(!isMap) drawSquare($("#detailSq"), p, false);
@@ -809,19 +842,28 @@ const ROAD_WORDS = {
        tertiary:"estrada local", unclassified:"estrada local", residential:"rua residencial", service:"via de serviço",
        footway:"caminho pedonal", path:"caminho", pedestrian:"rua pedonal", steps:"escadas", cycleway:"ciclovia", track:"estradão"}};
 const roadWords = txt => String(txt).split(", ").map(w => ROAD_WORDS[state.lang][w] || w).join(", ");
-function tileUrl(z, x, y){
-  return `https://${"abcd"[(x + y) % 4]}.basemaps.cartocdn.com/light_all/${z}/${x}/${y}@2x.png`;
+const BASEMAP_STYLE = "https://tiles.openfreemap.org/styles/positron";   // free, no key
+const MAPLIBRE_JS = "https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js";
+let maplibreLoading = null;
+function loadMapLibre(){        // only fetched the first time someone turns the basemap on
+  if(window.maplibregl) return Promise.resolve(window.maplibregl);
+  if(!maplibreLoading) maplibreLoading = new Promise((ok, fail) => {
+    const sc = document.createElement("script");
+    sc.src = MAPLIBRE_JS; sc.onload = () => ok(window.maplibregl); sc.onerror = fail;
+    document.head.appendChild(sc);
+  });
+  return maplibreLoading;
 }
 function buildMap(box, geo, opts){
+  liveMaps.forEach(m => { if(m.box === box){ m.destroy(); liveMaps.delete(m); } });
   box.innerHTML = `<div class="tip"></div>`;
   const tip = box.querySelector(".tip");
   if(typeof d3 === "undefined"){ box.insertAdjacentHTML("beforeend", `<p class="empty">${t("map_noload")}</p>`); return null; }
   const o = {...opts};
-  const w = box.clientWidth || 600, h = Math.round(o.height || Math.min(620, Math.max(340, w * 0.72)));
+  const w = box.clientWidth || 600, h = Math.round(o.height || Math.min(760, Math.max(340, w * 0.62)));
   const svg = d3.select(box).append("svg").attr("viewBox", `0 0 ${w} ${h}`).attr("role","img").attr("aria-label", t("map_aria"));
   const proj = d3.geoMercator().fitExtent([[14,14],[w-14,h-14]], geo.park);
   const path = d3.geoPath(proj);
-  const tilesG = svg.append("g");
   const g = svg.append("g");
   g.append("path").datum(geo.park).attr("class","m-park").attr("d", path).attr("vector-effect","non-scaling-stroke");
   const pieceG = g.append("g");
@@ -863,34 +905,34 @@ function buildMap(box, geo, opts){
   btn.type = "button"; btn.className = "bm-btn"; btn.textContent = t("bm");
   box.appendChild(btn);
   const attr = document.createElement("div");
-  attr.className = "bm-attr"; attr.innerHTML = "© OpenStreetMap contributors © CARTO";
+  attr.className = "bm-attr"; attr.innerHTML = "© OpenFreeMap © OpenMapTiles © OpenStreetMap contributors";
   box.appendChild(attr);
-  let tileErrors = 0, tileLoads = 0, noted = false;
+  let gl = null, glDiv = null, noted = false;
+  const blocked = () => {
+    if(noted) return; noted = true;
+    box.insertAdjacentHTML("beforeend", `<div class="bm-note">${t("bm_blocked")}</div>`);
+  };
 
   let tr = d3.zoomIdentity;
   const at = (x, y) => `translate(${x},${y}) scale(${1 / tr.k})`;
-  function drawTiles(){
-    if(!basemapOn){ tilesG.selectAll("image").remove(); return; }
-    const W = 2 * Math.PI * proj.scale() * tr.k;
-    const z = Math.max(0, Math.min(19, Math.round(Math.log2(W / 256))));
-    const n = 2 ** z, ts = W / n;
-    const [tx0, ty0] = proj.translate();
-    const ox = tx0 * tr.k + tr.x - W / 2, oy = ty0 * tr.k + tr.y - W / 2;
-    const tiles = [];
-    for(let x = Math.floor(-ox / ts); x <= Math.floor((w - ox) / ts); x++)
-      for(let y = Math.max(0, Math.floor(-oy / ts)); y <= Math.min(n - 1, Math.floor((h - oy) / ts)); y++)
-        tiles.push({z, x: ((x % n) + n) % n, y, px: ox + x * ts, py: oy + y * ts, ts, key: `${z}/${x}/${y}`});
-    tilesG.selectAll("image").data(tiles, d => d.key).join(
-      enter => enter.append("image").attr("href", d => tileUrl(d.z, d.x, d.y))
-        .on("load", () => { tileLoads++; })
-        .on("error", () => {
-          tileErrors++;
-          if(!noted && tileLoads === 0 && tileErrors >= 2){
-            noted = true;
-            box.insertAdjacentHTML("beforeend", `<div class="bm-note">${t("bm_blocked")}</div>`);
-          }
-        })
-    ).attr("x", d => d.px).attr("y", d => d.py).attr("width", d => d.ts + 0.5).attr("height", d => d.ts + 0.5);
+  function view(){        // where MapLibre should look to match the d3 view
+    const centre = proj.invert(tr.invert([w / 2, h / 2]));
+    const zoom = Math.log2(2 * Math.PI * proj.scale() * tr.k / 512);
+    return {center: centre, zoom};
+  }
+  function syncBasemap(){
+    box.classList.toggle("bm-active", basemapOn);
+    if(!basemapOn){ if(glDiv) glDiv.style.display = "none"; return; }
+    if(glDiv){ glDiv.style.display = ""; if(gl) gl.jumpTo(view()); return; }
+    glDiv = document.createElement("div");
+    glDiv.className = "bm-gl";
+    glDiv.style.height = h + "px";
+    box.insertBefore(glDiv, box.querySelector("svg"));
+    loadMapLibre().then(ml => {
+      gl = new ml.Map({container: glDiv, style: BASEMAP_STYLE, interactive: false,
+                       attributionControl: false, fadeDuration: 0, ...view()});
+      gl.on("error", blocked);
+    }).catch(blocked);
   }
   function refresh(){
     const accepted = [];
@@ -916,14 +958,15 @@ function buildMap(box, geo, opts){
     svg.classed("bm-on", basemapOn);
     btn.setAttribute("aria-pressed", String(basemapOn));
     attr.style.display = basemapOn ? "block" : "none";
-    drawTiles();
+    syncBasemap();
   }
   btn.onclick = () => { basemapOn = !basemapOn; liveMaps.forEach(m => m.refresh()); };
   svg.call(d3.zoom().scaleExtent([1, 16]).translateExtent([[0,0],[w,h]]).on("zoom", ev => {
     tr = ev.transform; g.attr("transform", tr); refresh();
   }));
-  const handle = { refresh, set(u){ Object.assign(o, u); refresh(); } };
-  liveMaps.forEach(m => { if(!document.body.contains(m.box)) liveMaps.delete(m); });
+  const handle = { refresh, set(u){ Object.assign(o, u); refresh(); },
+                   destroy(){ if(gl){ gl.remove(); gl = null; } } };
+  liveMaps.forEach(m => { if(!document.body.contains(m.box)){ m.destroy(); liveMaps.delete(m); } });
   handle.box = box;
   liveMaps.add(handle);
   refresh();
