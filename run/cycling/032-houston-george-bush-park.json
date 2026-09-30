@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "032-houston-george-bush-park",
+  "name": "George Bush Park",
+  "city": "Houston",
+  "country": "United States",
+  "park_area_km2": 32.776,
+  "road_km": 28.43,
+  "main_road_km": 19.01,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 4.98,
+  "shared_km": 7.44,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 12.42,
+  "ecf_ratio_main_roads_pct": 65.3,
+  "status": "ok"
+}

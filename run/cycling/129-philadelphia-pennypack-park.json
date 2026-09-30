@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "129-philadelphia-pennypack-park",
+  "name": "Pennypack Park",
+  "city": "Philadelphia",
+  "country": "United States",
+  "park_area_km2": 5.529,
+  "road_km": 5.24,
+  "main_road_km": 1.88,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 15.22,
+  "shared_km": 1.02,
+  "painted_km": 0.49,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 16.73,
+  "ecf_ratio_main_roads_pct": 889.9,
+  "status": "ok"
+}

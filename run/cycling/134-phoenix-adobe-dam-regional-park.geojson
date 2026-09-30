@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "134-phoenix-adobe-dam-regional-park",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "residential", "name": "North 43rd Avenue" }, "geometry": { "type": "LineString", "coordinates": [ [ -112.15217, 33.687003 ], [ -112.152201, 33.690445 ], [ -112.152203, 33.691009 ], [ -112.152208, 33.692242 ], [ -112.152212, 33.693324 ], [ -112.152217, 33.69355 ], [ -112.152238, 33.69446 ], [ -112.152239, 33.694529 ], [ -112.152247, 33.695463 ], [ -112.15225, 33.695685 ], [ -112.152251, 33.696028 ], [ -112.152252, 33.696218 ], [ -112.152257, 33.696915 ], [ -112.152263, 33.697528 ], [ -112.152258, 33.698064 ], [ -112.152257, 33.698093 ] ] } }
+]
+}

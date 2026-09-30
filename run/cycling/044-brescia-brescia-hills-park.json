@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "044-brescia-brescia-hills-park",
+  "name": "Brescia Hills Park",
+  "city": "Brescia",
+  "country": "Italy",
+  "park_area_km2": 42.669,
+  "road_km": 74.8,
+  "main_road_km": 10.89,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 3.09,
+  "shared_km": 7.64,
+  "painted_km": 0.35,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.02,
+  "dedicated_km": 11.08,
+  "ecf_ratio_main_roads_pct": 101.7,
+  "status": "ok"
+}

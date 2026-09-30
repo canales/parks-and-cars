@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "097-bristol-steele-creek-park",
+  "name": "Steele Creek Park",
+  "city": "Bristol",
+  "country": "United States",
+  "park_area_km2": 8.673,
+  "road_km": 0.08,
+  "main_road_km": 0.0,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 34.41,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 34.41,
+  "ecf_ratio_main_roads_pct": null,
+  "status": "ok"
+}

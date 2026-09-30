@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "058-los-angeles-griffith-park",
+  "name": "Griffith Park",
+  "city": "Los Angeles",
+  "country": "United States",
+  "park_area_km2": 17.75,
+  "road_km": 62.73,
+  "main_road_km": 28.62,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 8.5,
+  "shared_km": 0.89,
+  "painted_km": 7.68,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 17.07,
+  "ecf_ratio_main_roads_pct": 59.6,
+  "status": "ok"
+}

@@ -3695,5 +3695,18 @@
     "lon": -123.14,
     "osm_id": "W37063023",
     "osm_id_source": "overpass wikidata tag"
-  }
+  },
+     {
+     "wiki_rank": 201,
+     "slug": "201-sintra-sintra-cascais-natural-park",
+     "name": "Sintra-Cascais Natural Park",
+     "city": "Sintra",
+     "country": "Portugal",
+     "region": "Europe",
+     "size_ha": 14583,
+     "osm_id": "R6267731",
+     "osm_id_source": "manual",
+     "lat": 38.7994,
+     "lon": -9.4422
+   }
 ]

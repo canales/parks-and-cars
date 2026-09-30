@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "114-meriden-hubbard-park",
+  "name": "Hubbard Park",
+  "city": "Meriden",
+  "country": "United States",
+  "park_area_km2": 3.745,
+  "road_km": 11.98,
+  "main_road_km": 4.16,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.0,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 0.0,
+  "ecf_ratio_main_roads_pct": 0.0,
+  "status": "ok"
+}

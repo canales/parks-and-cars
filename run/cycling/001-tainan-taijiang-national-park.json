@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "001-tainan-taijiang-national-park",
+  "name": "Taijiang National Park",
+  "city": "Tainan",
+  "country": "Taiwan",
+  "park_area_km2": 368.442,
+  "road_km": 54.27,
+  "main_road_km": 5.96,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 1.09,
+  "shared_km": 0.96,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 2.05,
+  "ecf_ratio_main_roads_pct": 34.4,
+  "status": "ok"
+}

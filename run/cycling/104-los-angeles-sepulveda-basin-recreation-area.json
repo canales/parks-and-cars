@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "104-los-angeles-sepulveda-basin-recreation-area",
+  "name": "Sepulveda Basin Recreation Area",
+  "city": "Los Angeles",
+  "country": "United States",
+  "park_area_km2": 7.849,
+  "road_km": 27.14,
+  "main_road_km": 14.33,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.4,
+  "shared_km": 22.41,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 22.81,
+  "ecf_ratio_main_roads_pct": 159.2,
+  "status": "ok"
+}

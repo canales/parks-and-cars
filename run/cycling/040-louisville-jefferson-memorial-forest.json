@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "040-louisville-jefferson-memorial-forest",
+  "name": "Jefferson Memorial Forest",
+  "city": "Louisville",
+  "country": "United States",
+  "park_area_km2": 13.553,
+  "road_km": 7.06,
+  "main_road_km": 1.94,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.0,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 0.0,
+  "ecf_ratio_main_roads_pct": 0.0,
+  "status": "ok"
+}

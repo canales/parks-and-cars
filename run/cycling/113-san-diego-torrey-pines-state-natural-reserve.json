@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "113-san-diego-torrey-pines-state-natural-reserve",
+  "name": "Torrey Pines State Natural Reserve",
+  "city": "San Diego",
+  "country": "United States",
+  "park_area_km2": 5.338,
+  "road_km": 10.42,
+  "main_road_km": 7.0,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.0,
+  "painted_km": 3.4,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 3.4,
+  "ecf_ratio_main_roads_pct": 48.6,
+  "status": "ok"
+}

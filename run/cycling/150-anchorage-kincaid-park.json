@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "150-anchorage-kincaid-park",
+  "name": "Kincaid Park",
+  "city": "Anchorage",
+  "country": "United States",
+  "park_area_km2": 6.448,
+  "road_km": 6.73,
+  "main_road_km": 3.21,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 23.37,
+  "shared_km": 19.46,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 42.83,
+  "ecf_ratio_main_roads_pct": 1334.3,
+  "status": "ok"
+}

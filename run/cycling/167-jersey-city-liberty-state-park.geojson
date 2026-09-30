@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "167-jersey-city-liberty-state-park",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "tertiary", "name": "Jersey Avenue" }, "geometry": { "type": "LineString", "coordinates": [ [ -74.052057, 40.709966 ], [ -74.052048, 40.710059 ], [ -74.051984, 40.710706 ], [ -74.05197, 40.710816 ], [ -74.051951, 40.710908 ], [ -74.051923, 40.710992 ], [ -74.051894, 40.711057 ], [ -74.051863, 40.711125 ], [ -74.051407, 40.711926 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "tertiary", "name": "Jersey Avenue" }, "geometry": { "type": "Point", "coordinates": [ -74.051407, 40.711926 ] } }
+]
+}

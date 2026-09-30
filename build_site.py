@@ -36,6 +36,16 @@ from pathlib import Path
 BASE      = Path(__file__).resolve().parent
 RESULTS   = BASE / "run" / "parks_results.csv"
 GEO_IN    = BASE / "run" / "geojson"
+CYC_IN    = BASE / "run" / "cycling"                # from cycling_infra.py (optional)
+CYC_VERSION = 3                                    # cycling results older than this are ignored
+CYC_MAP_CLASSES = {"separated", "shared", "painted"}   # what's drawn and counted
+CYC_CSV   = BASE / "run" / "cycling_results.csv"
+
+# ── classification (change these and every label, filter and sentence follows) ──
+CAR_LOW_PCT      = 1.0    # under this share of the park given to cars: "mostly car-free"
+CAR_HEAVY_PCT    = 4.0    # this share or more: "car-heavy"; in between: "some car infrastructure"
+BIKES_SHARE_PER100 = 50   # km of cycling per 100 km of road for "bikes get a share"
+MIN_ROAD_KM_RATIO  = 5    # parks with less road show cycling km but no ratio
 OVERRIDES = BASE / "overrides.json"
 TEMPLATE  = BASE / "site_template.html"
 OUT       = BASE / "docs"                  # served by GitHub Pages
@@ -43,6 +53,7 @@ PREVIEW   = BASE / "preview"               # single-file preview (not committed)
 MAPS_OUT  = OUT / "data" / "maps"
 
 HOME_SLUG   = "084-lisbon-monsanto-forest-park"   # the park the story is about
+WIKI_LIST_SIZE = 193   # parks ranked 1 to 193 come from Wikipedia's list; higher ranks were added by hand
 SIMPLIFY_M  = 1.5                                  # outline simplification tolerance
 REGION_CODES = {"Europe": "eu", "North America": "na", "South America": "sa",
                 "Asia": "as", "Africa": "af", "Oceania": "oc"}
@@ -195,6 +206,7 @@ def compact_map(path):
            "surfaces": {"type": "FeatureCollection", "features": []},
            "parking": None, "crossings": [], "signs": []}
     speed_lines = []
+    max_speed = {"hw": 0, "road": 0}    # highest mapped limit on highways / on other roads
     ref_km = {}                  # km of each numbered highway inside the park (e.g. "A 5")
     for f in feats:
         p, geom, layer = f["properties"], f["geometry"], f["properties"].get("layer")
@@ -215,6 +227,9 @@ def compact_map(path):
                 # a one-way way is one carriageway: two of them make one km of motorway
                 ref_km[ref] = ref_km.get(ref, 0) + (km / 2 if truthy(p.get("oneway")) else km)
             kmh = number(p.get("maxspeed_kmh"))
+            if kmh:
+                k = "hw" if p.get("category") == "highways" else "road"
+                max_speed[k] = max(max_speed[k], int(5 * round(kmh / 5)))
             if kmh and not truthy(p.get("in_tunnel")) and geom["type"] in ("LineString", "MultiLineString"):
                 # nearest 5 km/h: limits converted from mph (25 mph = 40.2) read naturally
                 speed_lines.append((int(5 * round(kmh / 5)), geom))
@@ -228,10 +243,72 @@ def compact_map(path):
     out["pieces"]["features"].sort(key=lambda f: f["properties"]["id"])
     out["signs"] = place_signs(speed_lines, proj)
     out["refs"] = {k: round(v, 2) for k, v in ref_km.items()}
+    out["maxspd"] = {k: v or None for k, v in max_speed.items()}
     return out
 
 
 # ── park table ────────────────────────────────────────────────────────
+
+_cyc_rows = None
+
+
+def cycling_record(slug):
+    """Cycling figures for a park: from run/cycling_results.csv, else run/cycling/<slug>.json."""
+    global _cyc_rows
+    if _cyc_rows is None:
+        _cyc_rows = {}
+        if CYC_CSV.exists():
+            with open(CYC_CSV, newline="", encoding="utf-8") as f:
+                _cyc_rows = {r["slug"]: r for r in csv.DictReader(f)}
+    c = _cyc_rows.get(slug)
+    if c is None:
+        f = CYC_IN / f"{slug}.json"
+        if not f.exists():
+            return None
+        c = json.loads(f.read_text())
+    if c.get("status") != "ok" or (number(c.get("method_version")) or 0) < CYC_VERSION:
+        return None
+    c = {k: (number(v) if k != "status" else v) for k, v in c.items()}
+    keys = ["separated_km", "shared_km", "painted_km", "advisory_km", "sharrow_km", "dedicated_km",
+            "dedicated_per_road_km", "ecf_ratio_main_roads_pct", "main_road_km"]
+    return {k: c.get(k) for k in keys}
+
+
+def cycling_layer(slug):
+    """Compact cycling lines for the map, or None."""
+    f = CYC_IN / f"{slug}.geojson"
+    if not f.exists():
+        return None
+    g = json.loads(f.read_text())
+    feats = [x for x in g.get("features", []) if x.get("geometry") and x["geometry"].get("coordinates")
+             and x["properties"].get("cls") in CYC_MAP_CLASSES
+             and x["geometry"]["type"] in ("LineString", "MultiLineString")]
+    if not feats:
+        return {"type": "FeatureCollection", "features": []}
+    proj = Local(first_coord(feats[0]["geometry"])[1])
+    return {"type": "FeatureCollection", "features": [
+        {"type": "Feature", "properties": {"c": x["properties"]["cls"]},
+         "geometry": simplify_geom(x["geometry"], proj)} for x in feats]}
+
+
+def classify(pct, road_km, cyc):
+    """Car group from car space; cycling tag only for parks with car infrastructure."""
+    group = "free" if pct < CAR_LOW_PCT else ("heavy" if pct >= CAR_HEAVY_PCT else "some")
+    per100 = None
+    if cyc is not None:
+        ded = cyc.get("dedicated_km") or 0
+        if road_km and road_km > 0:
+            per100 = 100 * ded / road_km
+        elif ded > 0:
+            per100 = float("inf")                   # cycling but no road at all
+        else:
+            per100 = 0.0
+    tag = None
+    if group != "free" and per100 is not None:
+        tag = "share" if per100 >= BIKES_SHARE_PER100 else "little"
+    shown = per100 if (per100 is not None and road_km and road_km >= MIN_ROAD_KM_RATIO) else None
+    return group, tag, (round(shown, 1) if shown is not None else None)
+
 
 def park_record(r):
     n = number
@@ -256,6 +333,8 @@ def park_record(r):
         "hw_per_walk": n(r["highway_km_per_walking_crossing"]),
         "speed_cov": n(r["speed_limit_coverage_pct"]), "above30_km": n(r["road_km_above_30"]),
         "osm_date": r.get("osm_data_date") or None,
+        "cyc": cycling_record(r["slug"]),
+        "added": int(r["slug"].split("-")[0]) > WIKI_LIST_SIZE,
     }
 
 
@@ -270,6 +349,8 @@ def main():
     with open(RESULTS, newline="", encoding="utf-8") as f:
         rows = [r for r in csv.DictReader(f) if r.get("status") == "ok" and r["slug"] not in skipped]
     parks = [park_record(r) for r in rows]
+    for p in parks:
+        p["group"], p["bikes"], p["cyc_per100"] = classify(p["pct"] or 0, p["road_km"], p["cyc"])
     print(f"Parks: {len(parks)} (skipped in overrides.json: {len(skipped)})")
 
     MAPS_OUT.mkdir(parents=True, exist_ok=True)
@@ -280,24 +361,35 @@ def main():
     maps, total, kept = {}, 0, 0
     for p in parks:
         src, dst = GEO_IN / f"{p['id']}.geojson", MAPS_OUT / f"{p['id']}.json"
+        m = None
         if src.exists():
             m = compact_map(src)
-            if m is not None:
-                text = json.dumps(m, separators=(",", ":"), ensure_ascii=False)
-                dst.write_text(text, encoding="utf-8")
         elif dst.exists():
             kept += 1                           # layers not on this machine: keep the published map
+            m = json.loads(dst.read_text(encoding="utf-8"))
+        if m is not None:
+            cyc = cycling_layer(p["id"])
+            if cyc is not None:
+                m["cycling"] = cyc
+            dst.write_text(json.dumps(m, separators=(",", ":"), ensure_ascii=False), encoding="utf-8")
         p["has_map"] = dst.exists()
+        spd = (m or {}).get("maxspd") or {}
+        p["max_hw"], p["max_road"] = spd.get("hw"), spd.get("road")
         if dst.exists():
             text = dst.read_text(encoding="utf-8")
             maps[p["id"]] = json.loads(text)
             total += len(text)
     if kept:
         print(f"Kept {kept} existing map files (their layers aren't in run/geojson here)")
+    print(f"Cycling: {sum(1 for p in parks if p.get('cyc'))} parks measured")
+    from collections import Counter
+    print("Groups:", dict(Counter(p["group"] for p in parks)), "| cycling tags:", dict(Counter(p["bikes"] for p in parks if p["bikes"])))
     print(f"Maps: {len(maps)} files, {total/1e6:.1f} MB in {MAPS_OUT.relative_to(BASE)}")
 
     dates = sorted(p["osm_date"] for p in parks if p.get("osm_date"))
     site = {"home": HOME_SLUG, "parks": parks, "skipped": len(skipped),
+            "rules": {"car_low": CAR_LOW_PCT, "car_heavy": CAR_HEAVY_PCT,
+                      "bikes_share": BIKES_SHARE_PER100, "min_road_km": MIN_ROAD_KM_RATIO},
             "dates": [dates[0], dates[-1]] if dates else None}
     print(f"OpenStreetMap data dates: {dates[0]} to {dates[-1]}" if dates else "No data dates recorded yet")
     template = TEMPLATE.read_text(encoding="utf-8")

@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "116-austin-barton-creek-greenbelt",
+  "name": "Barton Creek Greenbelt",
+  "city": "Austin",
+  "country": "United States",
+  "park_area_km2": 3.402,
+  "road_km": 0.74,
+  "main_road_km": 0.71,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 1.26,
+  "shared_km": 7.09,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 8.35,
+  "ecf_ratio_main_roads_pct": 1176.1,
+  "status": "ok"
+}

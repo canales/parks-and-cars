@@ -1,0 +1,24 @@
+{
+"type": "FeatureCollection",
+"name": "001-tainan-taijiang-national-park",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": "山海圳綠道" }, "geometry": { "type": "LineString", "coordinates": [ [ 120.170079, 23.019705 ], [ 120.169899, 23.019525 ], [ 120.169361, 23.018967 ], [ 120.168459, 23.017694 ], [ 120.168301, 23.017549 ], [ 120.168112, 23.017434 ], [ 120.167685, 23.016983 ], [ 120.167112, 23.016468 ], [ 120.166822, 23.01626 ], [ 120.166565, 23.016081 ], [ 120.166007, 23.015911 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": "山海圳綠道" }, "geometry": { "type": "LineString", "coordinates": [ [ 120.173883, 23.022937 ], [ 120.173793, 23.022902 ], [ 120.172907, 23.022261 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.146688, 23.00375 ], [ 120.147037, 23.003763 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.152263, 23.005634 ], [ 120.152606, 23.005829 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.15651, 23.00739 ], [ 120.156127, 23.007286 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.158951, 23.007798 ], [ 120.159322, 23.007868 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.138883, 23.00544 ], [ 120.139102, 23.005405 ], [ 120.139425, 23.00538 ], [ 120.13958, 23.005411 ], [ 120.139639, 23.00551 ], [ 120.139608, 23.005909 ], [ 120.139522, 23.00609 ], [ 120.139528, 23.006139 ], [ 120.139573, 23.006175 ], [ 120.139647, 23.00622 ], [ 120.13969, 23.006367 ], [ 120.139723, 23.006598 ], [ 120.139733, 23.006777 ], [ 120.139714, 23.006849 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.139714, 23.006849 ], [ 120.139639, 23.006972 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.139639, 23.006972 ], [ 120.139594, 23.007024 ], [ 120.139542, 23.00737 ], [ 120.139516, 23.007511 ], [ 120.139341, 23.007774 ], [ 120.139255, 23.00788 ], [ 120.139186, 23.008042 ], [ 120.138955, 23.008404 ], [ 120.138856, 23.008675 ], [ 120.138768, 23.008797 ], [ 120.138511, 23.009301 ], [ 120.138414, 23.009463 ], [ 120.138211, 23.010111 ], [ 120.138185, 23.010266 ], [ 120.138127, 23.010371 ], [ 120.138049, 23.010413 ], [ 120.137812, 23.010443 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.137812, 23.010443 ], [ 120.137771, 23.010657 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.137771, 23.010657 ], [ 120.137795, 23.010707 ], [ 120.137585, 23.011631 ], [ 120.137676, 23.012698 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.059165, 23.057237 ], [ 120.059338, 23.057602 ], [ 120.059397, 23.057777 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.060232, 23.058774 ], [ 120.060287, 23.059058 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.047455, 23.064828 ], [ 120.047516, 23.064848 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": "台灣極西行" }, "geometry": { "type": "LineString", "coordinates": [ [ 120.041975, 23.077664 ], [ 120.04204, 23.077676 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 120.080229, 23.079369 ], [ 120.080874, 23.079941 ] ] } }
+]
+}

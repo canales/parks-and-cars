@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "083-new-york-city-pelham-bay-park",
+  "name": "Pelham Bay Park",
+  "city": "New York City",
+  "country": "United States",
+  "park_area_km2": 8.327,
+  "road_km": 41.04,
+  "main_road_km": 32.13,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 5.15,
+  "shared_km": 10.63,
+  "painted_km": 0.03,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 15.81,
+  "ecf_ratio_main_roads_pct": 49.2,
+  "status": "ok"
+}

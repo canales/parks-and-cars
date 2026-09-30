@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "170-tallahassee-alfred-b-maclay-gardens-state-park",
+  "name": "Alfred B. Maclay Gardens State Park",
+  "city": "Tallahassee",
+  "country": "United States",
+  "park_area_km2": 4.936,
+  "road_km": 3.01,
+  "main_road_km": 0.0,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.0,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 0.0,
+  "ecf_ratio_main_roads_pct": null,
+  "status": "ok"
+}

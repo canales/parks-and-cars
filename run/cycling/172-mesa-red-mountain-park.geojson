@@ -1,0 +1,25 @@
+{
+"type": "FeatureCollection",
+"name": "172-mesa-red-mountain-park",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.659667, 33.436855 ], [ -111.659181, 33.436843 ], [ -111.658823, 33.436844 ], [ -111.658769, 33.436847 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.662718, 33.436842 ], [ -111.662585, 33.436842 ], [ -111.661026, 33.436838 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.662837, 33.436845 ], [ -111.662718, 33.436842 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.663729, 33.436846 ], [ -111.662837, 33.436845 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.665496, 33.436848 ], [ -111.663729, 33.436846 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.666107, 33.436849 ], [ -111.665496, 33.436848 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.666444, 33.436849 ], [ -111.666107, 33.436849 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.666829, 33.43685 ], [ -111.666444, 33.436849 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.667331, 33.43685 ], [ -111.667238, 33.43685 ], [ -111.666829, 33.43685 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.661026, 33.436838 ], [ -111.659667, 33.436855 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.658771, 33.436983 ], [ -111.658838, 33.436983 ], [ -111.659217, 33.436982 ], [ -111.659652, 33.436982 ], [ -111.662591, 33.437001 ], [ -111.662723, 33.437002 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.662723, 33.437002 ], [ -111.662845, 33.437002 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.662845, 33.437002 ], [ -111.665531, 33.437008 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.665531, 33.437008 ], [ -111.666108, 33.43701 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.666108, 33.43701 ], [ -111.666744, 33.437013 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.666744, 33.437013 ], [ -111.66726, 33.437009 ] ] } },
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "secondary", "name": "East Brown Road" }, "geometry": { "type": "LineString", "coordinates": [ [ -111.66726, 33.437009 ], [ -111.667334, 33.437009 ] ] } }
+]
+}

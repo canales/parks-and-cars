@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "063-austin-walter-e-long-park",
+  "name": "Walter E. Long Park",
+  "city": "Austin",
+  "country": "United States",
+  "park_area_km2": 14.653,
+  "road_km": 12.81,
+  "main_road_km": 0.0,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 2.17,
+  "shared_km": 0.38,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 2.55,
+  "ecf_ratio_main_roads_pct": null,
+  "status": "ok"
+}

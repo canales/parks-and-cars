@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "109-dallas-white-rock-lake-park",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": "White Rock Lake Trail" }, "geometry": { "type": "LineString", "coordinates": [ [ -96.719232, 32.818631 ], [ -96.719116, 32.818428 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": "White Rock Lake Trail" }, "geometry": { "type": "LineString", "coordinates": [ [ -96.724988, 32.851364 ], [ -96.722655, 32.851464 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": "White Rock Lake Trail" }, "geometry": { "type": "LineString", "coordinates": [ [ -96.731157, 32.825196 ], [ -96.730826, 32.825627 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": "White Rock Lake Trail" }, "geometry": { "type": "LineString", "coordinates": [ [ -96.72986, 32.843664 ], [ -96.729841, 32.843713 ] ] } }
+]
+}

@@ -14,7 +14,7 @@
   --hw:#303336; --main:#565B60; --local:#80868B; --service:#AAB0B4; --roads:#565B60;
   --marking:#E0B72E; --focus:#E0B72E; --highlight:#EEF2EC; --sel:#E3EBDF;
   --warn-bg:#FBF3D9; --warn-ink:#6B5712;
-  --p1:#C2DAB6; --p2:#A3C895; --p3:#DDE9D7;
+  --p1:#C2DAB6; --p2:#A3C895; --p3:#DDE9D7; --cyc-sep:#1B6CA8; --cyc-shared:#6BAED6;
   --display:"Barlow Condensed","Roboto Condensed","Arial Narrow",system-ui,sans-serif;
   --text:"Barlow","Segoe UI",Roboto,system-ui,sans-serif;
   box-sizing:border-box;
@@ -28,7 +28,7 @@
     --hw:#E3E6E8; --main:#BFC4C8; --local:#979DA2; --service:#71777C; --roads:#BFC4C8;
     --marking:#E8C547; --focus:#E8C547; --highlight:#1B211E; --sel:#22302A;
     --warn-bg:#2E2912; --warn-ink:#E9D58B;
-    --p1:#274634; --p2:#325A43; --p3:#1C2E24;
+    --p1:#274634; --p2:#325A43; --p3:#1C2E24; --cyc-sep:#6FB3F0; --cyc-shared:#A7D0F2;
   }
 }
 :root[data-theme="dark"]{
@@ -37,7 +37,7 @@
   --hw:#E3E6E8; --main:#BFC4C8; --local:#979DA2; --service:#71777C; --roads:#BFC4C8;
   --marking:#E8C547; --focus:#E8C547; --highlight:#1B211E; --sel:#22302A;
   --warn-bg:#2E2912; --warn-ink:#E9D58B;
-  --p1:#274634; --p2:#325A43; --p3:#1C2E24;
+  --p1:#274634; --p2:#325A43; --p3:#1C2E24; --cyc-sep:#6FB3F0; --cyc-shared:#A7D0F2;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
@@ -107,7 +107,13 @@ a{color:inherit}
 .detail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - 32px - env(safe-area-inset-top,0px));overflow-y:auto;overscroll-behavior:contain;padding-right:4px}
 .dsub{color:var(--muted);margin:-8px 0 16px}
 .dsq{max-width:460px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin:20px 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 20px;margin:20px 0}
+.msign{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2.5px #C62828;color:#1D2321;font:700 11px var(--text);margin-left:8px;vertical-align:3px;cursor:help}
+.search{font:400 15px var(--text);padding:6px 12px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);color:var(--ink);min-width:220px}
+.method h3{font:600 21px/1.2 var(--display);margin:26px 0 8px}
+.labels{margin:4px 0 14px;padding:0;list-style:none}
+.labels li{margin:0 0 8px}
+.labels .pill{margin-right:8px}
 .stat dt{font-size:13px;color:var(--muted)}
 .stat dd{margin:0;font:600 24px/1.1 var(--display)}
 .stat dd small{font:400 14px var(--text);color:var(--muted)}
@@ -133,8 +139,8 @@ a{color:inherit}
 .chapter{padding:28px 0 8px;border-bottom:1px solid var(--rule)}
 .chapter:last-child{border-bottom:0}
 .chapter h3{font:600 28px/1.1 var(--display);margin:0 0 12px}
-.chapter p{max-width:68ch;margin:0 0 14px}
-.chapter .big{font:600 22px/1.3 var(--text);max-width:40ch}
+.chapter p{margin:0 0 14px}
+.chapter .big{font:600 22px/1.3 var(--text)}
 .tbl{border-collapse:collapse;width:100%;font-size:15px;margin:6px 0 16px}
 .tbl th,.tbl td{text-align:right;padding:7px 10px;border-bottom:1px solid var(--rule)}
 .tbl th:first-child,.tbl td:first-child{text-align:left}
@@ -166,29 +172,47 @@ a{color:inherit}
 .parklist th[aria-sort="ascending"]::after{content:" ▴"}
 .parklist summary{cursor:pointer;font-weight:600;color:var(--forest);padding:6px 0}
 .tblwrap{overflow-x:auto}
-.src{font-size:13px;color:var(--muted);margin:-6px 0 18px;max-width:68ch}
+.src{font-size:13px;color:var(--muted);margin:-6px 0 18px}
 .src a{color:var(--muted)}
 .why h4{font:600 20px/1.2 var(--display);margin:18px 0 6px}
 .hero-map{aspect-ratio:1/1;margin:0}
 .hero-map svg{height:100%}
 .m-scale line{stroke:var(--ink);stroke-width:1.5}
 .m-scale text{font:500 11px var(--text);fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:3px}
-.bm-btn{position:absolute;top:8px;right:8px;z-index:2;font:500 12px var(--text);padding:4px 10px;border-radius:999px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer}
+.map-btns{position:absolute;top:8px;right:8px;z-index:2;display:flex;gap:6px}
+.bm-btn{font:500 12px var(--text);padding:4px 10px;border-radius:999px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer}
 .bm-btn[aria-pressed="true"]{background:var(--forest);border-color:var(--forest);color:var(--paper)}
 .bm-attr{position:absolute;right:6px;bottom:4px;font-size:10px;color:var(--muted);background:var(--paper);padding:1px 4px;border-radius:3px;z-index:2}
-.bm-note{position:absolute;left:8px;top:8px;right:90px;z-index:2;font-size:12px;background:var(--warn-bg);color:var(--warn-ink);padding:4px 8px;border-radius:4px}
+.bm-note{position:absolute;left:8px;top:44px;right:8px;z-index:2;font-size:12px;background:var(--warn-bg);color:var(--warn-ink);padding:4px 8px;border-radius:4px}
 .bm-on .m-park,.bm-on .m-piece{fill-opacity:.45}
 .mapbox.bm-active{background:transparent}
 .mapbox svg{position:relative;z-index:1}
 .bm-gl{position:absolute;left:0;top:0;right:0;z-index:0;pointer-events:none}
 .bm-gl .maplibregl-canvas-container,.bm-gl canvas{position:absolute;left:0;top:0}
 .bm-gl .maplibregl-control-container{display:none}
+.pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.pill{display:inline-block;font:500 12px/1.5 var(--text);padding:0 8px;border-radius:999px;white-space:nowrap}
+.g-free{background:var(--canopy);color:var(--forest)}
+.g-some{background:var(--warn-bg);color:var(--warn-ink)}
+.g-heavy{background:var(--hw);color:var(--paper)}
+.b-share{box-shadow:inset 0 0 0 1px var(--cyc-sep);color:var(--cyc-sep)}
+.p-added{box-shadow:inset 0 0 0 1px var(--marking);color:var(--warn-ink)}
+.b-little{box-shadow:inset 0 0 0 1px var(--rule);color:var(--muted)}
+.dpills{margin:-8px 0 6px}
+.gdesc{font-size:13px;color:var(--muted);margin:0 0 14px}
+#sortDir{margin-left:4px}
+.legend i.cyc{height:0;width:18px;border-top:3px solid var(--cyc-sep)}
+.legend i.cyc.sh{border-top-color:var(--cyc-shared)}
+.legend i.cyc.pt{border-top-style:dashed}
+.cycrows{margin:0 0 8px;padding:0;list-style:none}
+.cycrows li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:15px;padding:5px 0;border-bottom:1px solid var(--rule)}
+.cycrows b{font:600 16px var(--display)}
 .legend i.sgn{width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px #C62828 inset}
 .cx-path{fill:var(--forest)}
 .cx-road{fill:var(--main)}
 .cx-mw{stroke:var(--marking)}
 .cx-unmarked{fill:none;stroke:var(--muted)}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 22px;margin:14px 0 18px;max-width:760px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 22px;margin:14px 0 18px}
 .kpi b{display:block;font:600 34px/1 var(--display)}
 .kpi span{font-size:14px;color:var(--muted)}
 .cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:10px 0 16px}
@@ -198,7 +222,7 @@ a{color:inherit}
 .case p{font-size:15px;margin:0}
 .case .src{margin:8px 0 0;font-size:12px}
 .case.warn{background:var(--warn-bg);border-color:transparent;color:var(--warn-ink)}
-.steps{margin:6px 0 14px;padding-left:22px;max-width:68ch}
+.steps{margin:6px 0 14px;padding-left:22px}
 .steps li{margin:0 0 8px}
 .method{border-top:1px solid var(--rule);padding:40px 0 20px}
 .method p{margin:0 0 14px}
@@ -260,13 +284,16 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:14px;color
 
   <div class="controls">
     <fieldset class="chips" id="chips"><legend data-t="f_region"></legend></fieldset>
-    <label class="check"><input type="checkbox" id="similar"><span data-t="f_similar"></span></label>
+    <fieldset class="chips" id="groups"><legend data-t="f_group"></legend></fieldset>
+    <input type="search" class="search" id="q" data-tp="search_ph" aria-label="Search">
     <label class="sort"><span data-t="f_sort"></span>
       <select id="sort">
         <option value="share" data-t="s_share"></option>
         <option value="size" data-t="s_size"></option>
         <option value="density" data-t="s_density"></option>
+        <option value="cycling" data-t="s_cycling"></option>
       </select>
+      <button type="button" class="chip" id="sortDir"></button>
     </label>
   </div>
 
@@ -289,6 +316,7 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:14px;color
         <h3 data-t="s1_h"></h3>
         <p data-t="s1_p"></p>
         <p class="big" id="chHook"></p>
+        <p id="chCycle"></p>
       </section>
 
       <section class="chapter">
@@ -370,10 +398,12 @@ const INLINE_MAPS = __MAPS__;
 const MAPS_URL = "__MAPS_URL__";
 const HOME = SITE.home;
 const HOME_MOTORWAY = ["A 5", "Duarte Pacheco"];   // the motorway the story is about
+const PT_NAMES = {"201-sintra-sintra-cascais-natural-park": "Parque Natural de Sintra-Cascais"};
 const PARKS = SITE.parks.map(r => {
   const split = Object.fromEntries(Object.entries(r.cat_km2).map(([k, v]) => [k, (v || 0) * 1e6]));
   return {...r,
-    name: r.id === HOME ? {en:"Monsanto Forest Park", pt:"Parque Florestal de Monsanto"} : r.name,
+    name: r.id === HOME ? {en:"Monsanto Forest Park", pt:"Parque Florestal de Monsanto"}
+        : (PT_NAMES[r.id] ? {en: r.name, pt: PT_NAMES[r.id]} : r.name),
     city: r.id === HOME ? {en:"Lisbon", pt:"Lisboa"} : r.city,
     roadKm: r.road_km, split,
     roadM2: split.highways + split.main + split.local + split.service, parkingM2: split.parking};
@@ -386,7 +416,6 @@ function getMap(id){
   return mapCache[id];
 }
 const FIELD_M2 = 105 * 68;
-const SIMILAR = [3, 15];
 const REGIONS = ["all","eu","na","sa","as","af","oc"];
 const CAT_ORDER = ["highways","main","local","service","parking"];
 const CAT_VAR = {highways:"--hw", main:"--main", local:"--local", service:"--service", roads:"--roads", parking:"--marking"};
@@ -407,7 +436,6 @@ en:{
   d_cut:(km,n,w)=>`Highways run ${km} km through this park.${n > 1 ? ` It is split into ${n} pieces, with ${w} walking ${w === 1 ? "crossing" : "crossings"} over its highways.` : ""}`,
   show_all:n=>`Show all ${n} parks`, show_less:"Show the top 25",
   f_region:"Region", all:"All", eu:"Europe", na:"North America", sa:"South America", as:"Asia", af:"Africa", oc:"Oceania",
-  f_similar:"Only parks of a similar size to Monsanto (3 to 15 km²)",
   f_sort:"Sort by", s_share:"Share given to cars", s_size:"Park size", s_density:"Road length per km²",
   list_title:"Share of each park given to cars",
   col_park:"Park", col_area:"Area", col_share:"Roads and parking",
@@ -471,7 +499,7 @@ en:{
   s7_5:"<strong>More crossings over the A5</strong>, for people and for animals, agreed with Brisa and the government.",
   s7_link:"How we measured",
   hook:(a,c,p)=>`Monsanto covers ${a} km². Of that, ${c} km² is asphalt and parking: ${p}% of the forest is already paved.`,
-  scale:(km,hw,n,r)=>`Inside Monsanto there are ${km} km of road, about the distance from Lisbon to Setúbal and back. Highways alone take ${hw}% of the park, more than all the internal roads and parking together. Among the ${n} large urban parks we measured, all taken from <a href='https://en.wikipedia.org/wiki/List_of_urban_parks_by_size'>Wikipedia's list of urban parks by size</a> (<a href='#parklist'>see the full list</a>), Monsanto has the ${r} highest share of its land given to cars.`,
+  scale:(km,hw,n,r,src)=>`Inside Monsanto there are ${km} km of road, about the distance from Lisbon to Setúbal and back. Highways alone take ${hw}% of the park, more than all the internal roads and parking together. Among the ${n} large urban parks we measured, ${src} (<a href='#parklist'>see the full list</a>), Monsanto has the ${r} highest share of its land given to cars.`,
   ord:r=>r + (["th","st","nd","rd"][(r%100>10&&r%100<14)?0:(r%10<4?r%10:0)]),
   tbl_len:"Length", tbl_surf:"Surface", tbl_share:"Share of the park", tbl_total:"Total",
   cross:(p1,p2,small,km,n,detail)=>`The A5 motorway splits Monsanto in two: one piece of ${p1} km² and another of ${p2} km², plus ${small} small pieces cut off at the edges. ${km ? `Along its ${km} km inside the park, there are` : "Inside the park there are"} only ${n} places to cross the A5 on foot: ${detail}. Anywhere else, crossing means getting over 30 to 38 m of asphalt, plus the median.`,
@@ -487,13 +515,52 @@ en:{
   list_h:n=>`The ${n} parks we measured`, list_city:"City, country",
   list_hint:"Sorted by country, then park name. Click a column to sort by it.",
   footer_map:"Also by this project: the Portugal illegal parking map.",
+  cyc_story:(road,ded,sep)=>`Against ${road} km of road, Monsanto has ${ded} km of dedicated cycling infrastructure, ${sep} km of it separated from traffic.`,
+  cyc_btn:"Cycling", s_cycling:"Cycling per 100 km of road", col_cycling:"Cycling per 100 km of road",
+  lg_cyc_sep:"Cycle path or track (separated)", lg_cyc_shared:"Shared with people walking", lg_cyc_painted:"Painted cycle lane",
+  d_cyc_h:"Cycling infrastructure", d_cyc_sep:"Separated from traffic", d_cyc_shared:"Shared with people walking",
+  d_cyc_painted:"Painted lanes", d_cyc_total:"Total",
+  d_cyc_per:x=>`${x} km of cycling infrastructure per km of road.`,
+  d_cyc_ecf:x=>`ECF ratio: <b>${x}%</b>`,
+  d_cyc_ecf_note:"Dedicated cycling km per km of main roads, as defined by the European Cyclists' Federation. Motorways count as main roads, so parks crossed by motorways score lower.",
+  d_cyc_na:"Cycling infrastructure hasn't been measured for this park yet.",
+  m_cyc:"Cycling infrastructure follows the definitions of the <a href='https://european-cyclists-federation.github.io/Documents/Methodology.pdf'>European Cyclists' Federation (QECIO 2.1)</a>: cycle paths and tracks separated from traffic, paths shared by people cycling and walking, and painted cycle lanes. We leave out sharrows, bus lanes and advisory lanes that cars may drive in; ECF counts advisory lanes as cycle lanes, which is the one difference from its method. As in ECF's method, one-way infrastructure counts half its length. We compare cycling with roads, as km of cycling per 100 km of road, for parks with at least {min} km of road. Most cycle paths in parks run away from roads, so a park can have more km of cycling than of road. Zero means none mapped in OpenStreetMap.",
+  f_group:"Group", g_all:"All groups", g_free:"Mostly car-free", g_some:"Some car infrastructure", g_heavy:"Car-heavy",
+  b_share:"Bikes get a share", b_little:"Little for bikes",
+  g_free_d:(lo)=>`Less than ${lo}% of the park is roads and parking.`,
+  g_some_d:(lo,hi)=>`Between ${lo}% and ${hi}% of the park is roads and parking.`,
+  g_heavy_d:(hi)=>`${hi}% or more of the park is roads and parking.`,
+  b_share_d:(x)=>`At least ${x} km of cycling infrastructure for every 100 km of road.`,
+  b_little_d:(x)=>`Less than ${x} km of cycling infrastructure for every 100 km of road.`,
+  sort_desc:"Highest first ↓", sort_asc:"Lowest first ↑",
+  d_cyc_per100:x=>`${x} km of cycling infrastructure for every 100 km of road.`,
+  d_cyc_fewroads:km=>`With only ${km} km of road, this park has too few roads to compare its cycling with.`,
+  cyc_story2:(road,ded,per)=>`Against ${road} km of road, Monsanto has ${ded} km of dedicated cycling infrastructure: ${per} km for every 100 km of road.`,
+  cyc_story3:(nh,nl)=>` Among the ${nh} car-heavy parks we measured, Monsanto is one of ${nl} that give little of that space back to bikes.`,
+  m_groups:(lo,hi,sh)=>`Parks are grouped by the share of their land given to roads and parking: mostly car-free (under ${lo}%), some car infrastructure (${lo} to ${hi}%) and car-heavy (${hi}% or more). Parks with car infrastructure also get a cycling tag: bikes get a share when there are at least ${sh} km of cycling infrastructure for every 100 km of road, and little for bikes below that. Mostly car-free parks get no cycling tag: with barely any road, there is little for cycling to make up for, and mountain-bike trails are often not mapped as cycling infrastructure.`,
+  search_ph:"Search a park or city",
+  fact_cyc:(ded,per)=>`Only <strong>${ded} km</strong> of cycling infrastructure: ${per} km for every 100 km of road.`,
+  d_cyc_km:"Cycling infrastructure", d_cyc_100:"Per 100 km of road",
+  sign_hw:"Highest speed limit mapped on its highways", sign_road:"Highest speed limit mapped on its other roads",
+  mh_parks:"Which parks, and why", mh_roads:"Roads and parking", mh_pieces:"Pieces and crossings", mh_speed:"Speed limits",
+  mh_cyc:"Cycling", mh_groups:"Groups and labels", mh_limits:"What the data can and can't tell",
+  m_pieces:"Pieces are what remains of a park after taking out its highways: the parts of the forest that highways cut off from each other. Tunnels and viaducts of 100 m or more don't cut the park, since there is open ground over or under them. Pieces smaller than 1 hectare, such as medians and the inside of ramps, are ignored.",
+  m_speed:"Speed limits come from OpenStreetMap, where many roads have none mapped, so in most parks only some roads show one. The signs next to \u201cHighways inside\u201d and \u201cRoads inside\u201d show the highest limit mapped on each; parks with none mapped show no sign. Limits in miles per hour are converted and rounded to the nearest 5 km/h.",
+  m_groups_intro:"Every park belongs to one of three groups, based on the share of its land given to roads and parking. Parks with car infrastructure also get a cycling tag.",
+  m_groups_note:"Mostly car-free parks get no cycling tag: with barely any road, there is little for cycling to make up for, and mountain-bike trails are often not mapped as cycling infrastructure.",
+  m_limits_zero:"Zero cycling infrastructure means none is mapped in OpenStreetMap, not necessarily none on the ground.",
+  src_all:`all taken from <a href='https://en.wikipedia.org/wiki/List_of_urban_parks_by_size'>Wikipedia's list of urban parks by size</a>`,
+  src_plus:names=>`taken from <a href='https://en.wikipedia.org/wiki/List_of_urban_parks_by_size'>Wikipedia's list of urban parks by size</a>, plus ${names}`,
+  added:"Added",
+  d_added:"Not on Wikipedia's list of urban parks: added because of the current debate about urban development inside it.",
+  m_added:names=>`We also added ${names}, which is not on the list, because of the current debate about urban development inside it. Unlike most parks on the list, it includes whole towns and villages, so its roads include their streets.`,
   m_title:"How we measured",
   m_body:[
     "Parks come from <a href='https://en.wikipedia.org/wiki/List_of_urban_parks_by_size'>Wikipedia's list of urban parks by size</a>, which covers urban parks of about 4 km² or more around the world. We measured every park on it except {skipped} that have no Wikipedia article of their own or no single boundary in OpenStreetMap. <a href='#parklist'>The full list is below</a>. Each park's boundary is its polygon in OpenStreetMap.",
     "Roads are every OpenStreetMap road open to cars inside that boundary, in four groups: highways (motorways, trunk roads and their ramps), main roads, local roads and service roads. Highways always count: a motorway crossing a park takes forest just as a road inside it does. Footpaths, cycle paths, dirt tracks, parking aisles and private roads are left out.",
     "Each road's surface is its length times its width. When OpenStreetMap has the road's width (between 2 and 40 m), we use it. Otherwise the width is its number of lanes times a lane width (3.75 m on motorways and trunk roads, 3.5 m on primary and secondary roads, 3 m on all others), plus shoulders (4 m per carriageway on motorways, 3 m on trunk roads, 3.5 m on motorway and trunk ramps, 1 m on primary and secondary roads, 0.5 m on tertiary roads, none on the rest). When the number of lanes isn't mapped either, we assume 2 per carriageway on motorways and trunk roads (4 if mapped as a single two-way road), 1 on ramps, living streets and service roads, and 2 on all other roads. A motorway with 3 lanes each way is therefore about 15 m of asphalt per direction. Overlaps at junctions count once, tunnels count as zero, and medians are not counted.",
     "Parking is every car park mapped as an area inside the park. The share is roads plus parking, divided by the park's area. ",
-    "A crossing is a place where a footpath, or another road, crosses a highway inside the park by a bridge, a tunnel or a marked crossing. Both carriageways of a motorway count as one crossing. Junctions where roads meet a highway ramp at the same level, with no crossing mapped, are shown separately for checking. Speed limits are shown where OpenStreetMap has them.",
+    "A crossing is a place where a footpath, or another road, crosses a highway inside the park by a bridge, a tunnel or a marked crossing. Both carriageways of a motorway count as one crossing. Junctions where roads meet a highway ramp at the same level, with no crossing mapped, are shown separately for checking.",
     "Each park's boundary was checked against the map. Its area can differ from Wikipedia's figure, usually because Wikipedia includes lakes or the sea, while we measure the park's land.",
     "These are estimates. OpenStreetMap is more complete in some cities than others, and most local road widths come from typical values rather than measurements."
   ],
@@ -513,7 +580,6 @@ pt:{
   d_cut:(km,n,w)=>`Autoestradas e vias rápidas percorrem ${km} km deste parque.${n > 1 ? ` Está dividido em ${n} pedaços, com ${w} ${w === 1 ? "travessia pedonal" : "travessias pedonais"} sobre as suas autoestradas.` : ""}`,
   show_all:n=>`Mostrar os ${n} parques`, show_less:"Mostrar os 25 primeiros",
   f_region:"Região", all:"Todas", eu:"Europa", na:"América do Norte", sa:"América do Sul", as:"Ásia", af:"África", oc:"Oceânia",
-  f_similar:"Só parques de dimensão semelhante a Monsanto (3 a 15 km²)",
   f_sort:"Ordenar por", s_share:"Parte dada aos carros", s_size:"Área do parque", s_density:"Km de estrada por km²",
   list_title:"Parte de cada parque dada aos carros",
   col_park:"Parque", col_area:"Área", col_share:"Estradas e estacionamento",
@@ -577,7 +643,7 @@ pt:{
   s7_5:"<strong>Mais travessias sobre a A5</strong>, para pessoas e para animais, acordadas com a Brisa e o Governo.",
   s7_link:"Como medimos",
   hook:(a,c,p)=>`Monsanto tem ${a} km². Destes, ${c} km² são asfalto e estacionamento: ${p}% da floresta já está pavimentada.`,
-  scale:(km,hw,n,r)=>`Dentro de Monsanto há ${km} km de estrada, mais ou menos a distância de Lisboa a Setúbal, ida e volta. Só as autoestradas e vias rápidas ocupam ${hw}% do parque, mais do que todas as estradas interiores e o estacionamento juntos. Entre os ${n} grandes parques urbanos que medimos, todos da <a href='https://en.wikipedia.org/wiki/List_of_urban_parks_by_size'>lista da Wikipédia de parques urbanos por área</a> (<a href='#parklist'>ver a lista completa</a>), Monsanto é o ${r} com maior parte do seu território dada aos carros.`,
+  scale:(km,hw,n,r,src)=>`Dentro de Monsanto há ${km} km de estrada, mais ou menos a distância de Lisboa a Setúbal, ida e volta. Só as autoestradas e vias rápidas ocupam ${hw}% do parque, mais do que todas as estradas interiores e o estacionamento juntos. Entre os ${n} grandes parques urbanos que medimos, ${src} (<a href='#parklist'>ver a lista completa</a>), Monsanto é o ${r} com maior parte do seu território dada aos carros.`,
   ord:r=>`${r}.º`,
   tbl_len:"Comprimento", tbl_surf:"Área", tbl_share:"Parte do parque", tbl_total:"Total",
   cross:(p1,p2,small,km,n,detail)=>`A autoestrada A5 divide Monsanto em dois: um pedaço de ${p1} km² e outro de ${p2} km², além de ${small} pedaços pequenos cortados nas margens. ${km ? `Ao longo dos seus ${km} km dentro do parque, há` : "Dentro do parque há"} apenas ${n} sítios para atravessar a A5 a pé: ${detail}. Em qualquer outro ponto, atravessar significa passar 30 a 38 m de asfalto, mais o separador central.`,
@@ -593,13 +659,52 @@ pt:{
   list_h:n=>`Os ${n} parques que medimos`, list_city:"Cidade, país",
   list_hint:"Ordenados por país e depois por nome do parque. Clique numa coluna para ordenar por ela.",
   footer_map:"Do mesmo projeto: o mapa do estacionamento ilegal em Portugal.",
+  cyc_story:(road,ded,sep)=>`Para ${road} km de estrada, Monsanto tem ${ded} km de infraestrutura ciclável dedicada, ${sep} km dos quais segregados do trânsito.`,
+  cyc_btn:"Ciclovias", s_cycling:"Ciclovia por 100 km de estrada", col_cycling:"Ciclovia por 100 km de estrada",
+  lg_cyc_sep:"Ciclovia segregada", lg_cyc_shared:"Partilhada com peões", lg_cyc_painted:"Faixa ciclável pintada",
+  d_cyc_h:"Infraestrutura ciclável", d_cyc_sep:"Segregada do trânsito", d_cyc_shared:"Partilhada com peões",
+  d_cyc_painted:"Faixas pintadas", d_cyc_total:"Total",
+  d_cyc_per:x=>`${x} km de infraestrutura ciclável por km de estrada.`,
+  d_cyc_ecf:x=>`Rácio ECF: <b>${x}%</b>`,
+  d_cyc_ecf_note:"Km de infraestrutura ciclável por km de estradas principais, segundo a definição da Federação Europeia de Ciclistas. As autoestradas contam como estradas principais, por isso os parques atravessados por autoestradas têm valores mais baixos.",
+  d_cyc_na:"A infraestrutura ciclável deste parque ainda não foi medida.",
+  m_cyc:"A infraestrutura ciclável segue as definições da <a href='https://european-cyclists-federation.github.io/Documents/Methodology.pdf'>Federação Europeia de Ciclistas (QECIO 2.1)</a>: ciclovias segregadas do trânsito, percursos partilhados por quem pedala e quem caminha, e faixas cicláveis pintadas. Deixamos de fora as marcas de partilha na via, as faixas bus e as faixas cicláveis sugeridas, em que os carros podem circular; a ECF conta estas últimas como faixas cicláveis, e é essa a única diferença face ao seu método. Tal como no método da ECF, a infraestrutura de sentido único conta metade do seu comprimento. Comparamos a infraestrutura ciclável com as estradas, em km por cada 100 km de estrada, nos parques com pelo menos {min} km de estrada. A maioria das ciclovias nos parques não acompanha estradas, por isso um parque pode ter mais km de ciclovia do que de estrada. Zero significa nenhuma mapeada no OpenStreetMap.",
+  f_group:"Grupo", g_all:"Todos os grupos", g_free:"Quase sem carros", g_some:"Alguma infraestrutura para carros", g_heavy:"Dominado pelos carros",
+  b_share:"Com espaço para bicicletas", b_little:"Pouco para bicicletas",
+  g_free_d:(lo)=>`Menos de ${lo}% do parque são estradas e estacionamento.`,
+  g_some_d:(lo,hi)=>`Entre ${lo}% e ${hi}% do parque são estradas e estacionamento.`,
+  g_heavy_d:(hi)=>`${hi}% ou mais do parque são estradas e estacionamento.`,
+  b_share_d:(x)=>`Pelo menos ${x} km de infraestrutura ciclável por cada 100 km de estrada.`,
+  b_little_d:(x)=>`Menos de ${x} km de infraestrutura ciclável por cada 100 km de estrada.`,
+  sort_desc:"Maior primeiro ↓", sort_asc:"Menor primeiro ↑",
+  d_cyc_per100:x=>`${x} km de infraestrutura ciclável por cada 100 km de estrada.`,
+  d_cyc_fewroads:km=>`Com apenas ${km} km de estrada, este parque tem estradas a menos para comparar a sua infraestrutura ciclável.`,
+  cyc_story2:(road,ded,per)=>`Para ${road} km de estrada, Monsanto tem ${ded} km de infraestrutura ciclável dedicada: ${per} km por cada 100 km de estrada.`,
+  cyc_story3:(nh,nl)=>` Entre os ${nh} parques dominados pelos carros que medimos, Monsanto é um dos ${nl} que devolvem pouco desse espaço às bicicletas.`,
+  m_groups:(lo,hi,sh)=>`Os parques estão agrupados pela parte do seu território dada a estradas e estacionamento: quase sem carros (menos de ${lo}%), alguma infraestrutura para carros (${lo} a ${hi}%) e dominados pelos carros (${hi}% ou mais). Os parques com infraestrutura para carros recebem também uma etiqueta ciclável: com espaço para bicicletas quando há pelo menos ${sh} km de infraestrutura ciclável por cada 100 km de estrada, e pouco para bicicletas abaixo disso. Os parques quase sem carros não recebem etiqueta: com tão poucas estradas, há pouco a compensar, e os trilhos de BTT muitas vezes não estão mapeados como infraestrutura ciclável.`,
+  search_ph:"Procurar um parque ou cidade",
+  fact_cyc:(ded,per)=>`Apenas <strong>${ded} km</strong> de infraestrutura ciclável: ${per} km por cada 100 km de estrada.`,
+  d_cyc_km:"Infraestrutura ciclável", d_cyc_100:"Por 100 km de estrada",
+  sign_hw:"Limite de velocidade mais alto mapeado nas suas autoestradas", sign_road:"Limite de velocidade mais alto mapeado nas restantes estradas",
+  mh_parks:"Que parques, e porquê", mh_roads:"Estradas e estacionamento", mh_pieces:"Pedaços e travessias", mh_speed:"Limites de velocidade",
+  mh_cyc:"Infraestrutura ciclável", mh_groups:"Grupos e etiquetas", mh_limits:"O que os dados podem e não podem dizer",
+  m_pieces:"Os pedaços são o que resta de um parque depois de retiradas as suas autoestradas: as partes da floresta que as autoestradas separam umas das outras. Os túneis e os viadutos de 100 m ou mais não cortam o parque, porque há terreno livre por cima ou por baixo. Os pedaços com menos de 1 hectare, como separadores e o interior dos ramais, são ignorados.",
+  m_speed:"Os limites de velocidade vêm do OpenStreetMap, onde muitas estradas não os têm mapeados, por isso na maioria dos parques só algumas estradas mostram um. Os sinais junto a \u00abAutoestradas no interior\u00bb e \u00abEstradas no interior\u00bb mostram o limite mais alto mapeado em cada caso; os parques sem nenhum mapeado não mostram sinal. Os limites em milhas por hora são convertidos e arredondados aos 5 km/h mais próximos.",
+  m_groups_intro:"Cada parque pertence a um de três grupos, conforme a parte do seu território dada a estradas e estacionamento. Os parques com infraestrutura para carros recebem também uma etiqueta ciclável.",
+  m_groups_note:"Os parques quase sem carros não recebem etiqueta ciclável: com tão poucas estradas, há pouco a compensar, e os trilhos de BTT muitas vezes não estão mapeados como infraestrutura ciclável.",
+  m_limits_zero:"Zero de infraestrutura ciclável significa que não há nenhuma mapeada no OpenStreetMap, não necessariamente que não exista.",
+  src_all:`todos da <a href='https://en.wikipedia.org/wiki/List_of_urban_parks_by_size'>lista da Wikipédia de parques urbanos por área</a>`,
+  src_plus:names=>`da <a href='https://en.wikipedia.org/wiki/List_of_urban_parks_by_size'>lista da Wikipédia de parques urbanos por área</a>, mais o ${names}`,
+  added:"Acrescentado",
+  d_added:"Não consta da lista da Wikipédia de parques urbanos: foi acrescentado devido ao debate atual sobre a urbanização no seu interior.",
+  m_added:names=>`Acrescentámos também o ${names}, que não consta da lista, devido ao debate atual sobre a urbanização no seu interior. Ao contrário da maioria dos parques da lista, inclui vilas e aldeias inteiras, por isso as suas estradas incluem as ruas dessas povoações.`,
   m_title:"Como medimos",
   m_body:[
     "Os parques vêm da <a href='https://en.wikipedia.org/wiki/List_of_urban_parks_by_size'>lista da Wikipédia de parques urbanos por área</a>, que reúne parques urbanos de cerca de 4 km² ou mais em todo o mundo. Medimos todos os parques da lista exceto {skipped} que não têm artigo próprio na Wikipédia ou um limite único no OpenStreetMap. <a href='#parklist'>A lista completa está abaixo</a>. O limite de cada parque é o seu polígono no OpenStreetMap.",
     "As estradas são todas as vias do OpenStreetMap abertas a carros dentro desse limite, em quatro grupos: autoestradas e vias rápidas (com os seus ramais), estradas principais, estradas locais e vias de serviço. As autoestradas contam sempre: uma autoestrada que atravessa um parque ocupa floresta tal como uma estrada no seu interior. Ficam de fora caminhos pedonais, ciclovias, estradões de terra, corredores de parques de estacionamento e vias privadas.",
     "A área de cada estrada é o seu comprimento vezes a sua largura. Quando o OpenStreetMap tem a largura da estrada (entre 2 e 40 m), usamo-la. Caso contrário, a largura é o número de vias vezes a largura de uma via (3,75 m em autoestradas e vias rápidas, 3,5 m em estradas principais, 3 m nas restantes), mais as bermas (4 m por faixa em autoestradas, 3 m em vias rápidas, 3,5 m nos ramais, 1 m em estradas principais, 0,5 m em estradas terciárias, nenhuma nas restantes). Quando o número de vias também não está mapeado, assumimos 2 por faixa em autoestradas e vias rápidas (4 se mapeadas como uma única via nos dois sentidos), 1 em ramais, zonas residenciais de coexistência e vias de serviço, e 2 nas restantes estradas. Uma autoestrada com 3 vias em cada sentido tem assim cerca de 15 m de asfalto por sentido. As sobreposições nos cruzamentos contam uma vez, os túneis não contam e os separadores centrais não são contados.",
     "O estacionamento são todos os parques de estacionamento mapeados como área dentro do parque. A percentagem é estradas mais estacionamento, a dividir pela área do parque. ",
-    "Uma travessia é um local onde um caminho pedonal, ou outra estrada, atravessa uma autoestrada dentro do parque, por ponte, túnel ou passadeira. As duas faixas de uma autoestrada contam como uma travessia. Os cruzamentos de nível com ramais, sem travessia mapeada, aparecem à parte para verificação. Os limites de velocidade aparecem onde o OpenStreetMap os tem.",
+    "Uma travessia é um local onde um caminho pedonal, ou outra estrada, atravessa uma autoestrada dentro do parque, por ponte, túnel ou passadeira. As duas faixas de uma autoestrada contam como uma travessia. Os cruzamentos de nível com ramais, sem travessia mapeada, aparecem à parte para verificação.",
     "O limite de cada parque foi verificado no mapa. A sua área pode diferir da indicada na Wikipédia, normalmente porque a Wikipédia inclui lagos ou o mar, enquanto nós medimos a terra do parque.",
     "São estimativas. O OpenStreetMap é mais completo nalgumas cidades do que noutras, e a largura da maioria das estradas locais vem de valores típicos e não de medições."
   ],
@@ -607,7 +712,7 @@ pt:{
   locale:"pt-PT"
 }};
 
-const state = {lang:"en", region:"all", similar:false, sort:"share", selected:HOME, detailView:"square", heroView:"square", showAll:false};
+const state = {lang:"en", region:"all", q:"", sort:"share", selected:HOME, detailView:"square", heroView:"square", showAll:false, group:"all", dir:-1};
 try{ const saved = localStorage.getItem("pc_lang"); if(saved) state.lang = saved; else if((navigator.language||"").toLowerCase().startsWith("pt")) state.lang = "pt"; }catch(e){}
 
 const $ = s => document.querySelector(s);
@@ -639,6 +744,7 @@ const legendHtml = cats => cats.map(([c]) => `<li><i style="background:var(${CAT
 function renderStatic(){
   document.documentElement.lang = state.lang;
   document.querySelectorAll("[data-t]").forEach(el => { const v = t(el.dataset.t); if(typeof v === "string") el.textContent = v; });
+  document.querySelectorAll("[data-tp]").forEach(el => { el.placeholder = t(el.dataset.tp); });
   document.querySelectorAll("[data-th]").forEach(el => { const v = t(el.dataset.th); if(typeof v === "string") el.innerHTML = v; });
   document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === state.lang)));
   const chips = $("#chips");
@@ -650,7 +756,36 @@ function renderStatic(){
     b.onclick = () => { state.region = r; renderStatic(); renderList(); };
     chips.appendChild(b);
   });
-  $("#methodBody").innerHTML = t("m_body").map(x => `<p>${x.replace("{skipped}", SITE.skipped || 0)}</p>`).join("");
+  const mb = t("m_body").map(x => x.replace("{skipped}", SITE.skipped || 0));
+  const R = SITE.rules || {car_low: 1, car_heavy: 4, bikes_share: 50, min_road_km: 5};
+  const lo = num(R.car_low, 0), hi = num(R.car_heavy, 0);
+  const labelList = `<ul class="labels">
+      <li><span class="pill g-free">${t("g_free")}</span>${t("g_free_d")(lo)}</li>
+      <li><span class="pill g-some">${t("g_some")}</span>${t("g_some_d")(lo, hi)}</li>
+      <li><span class="pill g-heavy">${t("g_heavy")}</span>${t("g_heavy_d")(hi)}</li>
+      <li><span class="pill b-share">${t("b_share")}</span>${t("b_share_d")(R.bikes_share)}</li>
+      <li><span class="pill b-little">${t("b_little")}</span>${t("b_little_d")(R.bikes_share)}</li></ul>`;
+  const sections = [
+    ["mh_parks", [mb[0], ...(PARKS.some(p => p.added) ? [t("m_added")(PARKS.filter(p => p.added).map(p => L(p.name)).join(", "))] : []), mb[5]]],
+    ["mh_roads", [mb[1], mb[2], mb[3]]],
+    ["mh_pieces", [t("m_pieces"), mb[4]]],
+    ["mh_speed", [t("m_speed")]],
+    ...(PARKS.some(p => p.cyc) ? [["mh_cyc", [t("m_cyc").replace("{min}", R.min_road_km)]]] : []),
+    ["mh_groups", [t("m_groups_intro"), labelList, t("m_groups_note")]],
+    ["mh_limits", [mb[6], t("m_limits_zero")]],
+  ];
+  const gchips = $("#groups");
+  gchips.querySelectorAll("button").forEach(b => b.remove());
+  ["all", "free", "some", "heavy"].forEach(g => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = t("g_" + g);
+    b.setAttribute("aria-pressed", String(state.group === g));
+    b.onclick = () => { state.group = g; renderStatic(); renderList(); };
+    gchips.appendChild(b);
+  });
+  $("#sortDir").textContent = t(state.dir < 0 ? "sort_desc" : "sort_asc");
+  $("#methodBody").innerHTML = sections.map(([h, ps]) =>
+    `<h3>${t(h)}</h3>` + ps.map(x => x.startsWith("<ul") ? x : `<p>${x}</p>`).join("")).join("");
   renderParkList();
   const mons = PARKS.find(p => p.id === HOME);
   const car = mons.roadM2 + mons.parkingM2;
@@ -658,7 +793,8 @@ function renderStatic(){
   $("#facts").innerHTML = `<li>${t("fact_share")(pctFmt(mons.pct))}</li>
     <li>${t("fact_rank")(rank, PARKS.length)}</li>
     <li>${t("fact_area")(km2Fmt(car))}</li>
-    ${mons.split.highways > car / 2 ? `<li>${t("fact_hw")}</li>` : ""}`;
+    ${mons.split.highways > car / 2 ? `<li>${t("fact_hw")}</li>` : ""}
+    ${mons.cyc ? `<li>${t("fact_cyc")(num(mons.cyc.dedicated_km, 1), num(mons.cyc_per100 ?? 0, 1))}</li>` : ""}`;
   $(".prelim").textContent = t("prelim").replace("{n}", PARKS.length).replace(/, \{date\}/, dataDate() ? `, ${dataDate()}` : "");
   renderHero();
   $("#storyToggle").textContent = $("#monsanto").open ? t("story_close") : t("story_open");
@@ -707,7 +843,7 @@ function renderHero(){
   $("#heroMap").hidden = !isMap;
   $("#heroCaption").textContent = t(isMap ? "hero_cap_map" : "hero_cap_sq");
   if(isMap){
-    $("#heroLegend").innerHTML = mapLegendHtml(true);
+    $("#heroLegend").innerHTML = mapLegendHtml(true, !!PARKS.find(p => p.id === HOME).cyc);
     if(!heroMapBuilt) getMap(HOME).then(geo => {
       if(!geo || heroMapBuilt) return;
       heroMapBuilt = true;
@@ -721,11 +857,33 @@ function renderHero(){
 }
 let heroMapBuilt = false;
 
+const fold = x => String(x || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 function visibleParks(){
-  let list = PARKS.filter(p => state.region === "all" || p.region === state.region);
-  if(state.similar) list = list.filter(p => p.km2 >= SIMILAR[0] && p.km2 <= SIMILAR[1]);
-  const key = {share: p => p.pct, size: p => p.km2, density: p => p.roadKm / p.km2}[state.sort];
-  return list.sort((a,b) => key(b) - key(a));
+  const q = fold(state.q.trim());
+  const list = PARKS.filter(p => (state.region === "all" || p.region === state.region)
+                              && (state.group === "all" || p.group === state.group)
+                              && (!q || fold(`${L(p.name)} ${L(p.city)} ${L(p.country)} ${p.name}`).includes(q)));
+  const key = {share: p => p.pct, size: p => p.km2, density: p => p.roadKm / p.km2,
+               cycling: p => p.cyc_per100}[state.sort];
+  return list.sort((a, b) => {
+    const x = key(a), y = key(b);
+    if(x == null && y == null) return 0;
+    if(x == null) return 1;                 // parks without the figure always go last
+    if(y == null) return -1;
+    return state.dir < 0 ? y - x : x - y;
+  });
+}
+function groupDesc(p){
+  const R = SITE.rules || {car_low: 1, car_heavy: 4, bikes_share: 50};
+  const lo = num(R.car_low, 0), hi = num(R.car_heavy, 0);
+  const g = {free: t("g_free_d")(lo), some: t("g_some_d")(lo, hi), heavy: t("g_heavy_d")(hi)}[p.group];
+  const b = p.bikes ? " " + t(p.bikes === "share" ? "b_share_d" : "b_little_d")(R.bikes_share) : "";
+  return g + b;
+}
+function pillsHtml(p){
+  return `<span class="pill g-${p.group}">${t("g_" + p.group)}</span>`
+       + (p.bikes ? `<span class="pill b-${p.bikes}">${t("b_" + p.bikes)}</span>` : "")
+       + (p.added ? `<span class="pill p-added">${t("added")}</span>` : "");
 }
 function renderList(){
   const list = visibleParks();
@@ -735,13 +893,15 @@ function renderList(){
     share:   {val: p => p.pct, fmt: p => pctFmt(p.pct), label: t("col_share")},
     size:    {val: p => p.km2, fmt: p => `${num(p.km2, p.km2 < 100 ? 1 : 0)} km²`, label: t("col_size")},
     density: {val: p => p.roadKm / p.km2, fmt: p => `${num(p.roadKm / p.km2, 1)} km/km²`, label: t("col_density")},
+    cycling: {val: p => p.cyc_per100 || 0,
+              fmt: p => p.cyc_per100 != null ? `${num(p.cyc_per100, 0)} km` : "–", label: t("col_cycling")},
   }[state.sort];
   $(".colhead span:nth-child(4)").textContent = metric.label;
   const max = Math.max(...list.map(metric.val)) || 1;
   const shown = state.showAll ? list : list.slice(0, 25);
   rows.innerHTML = shown.map((p,i) => `<button type="button" class="row${p.id === HOME?" home":""}" data-id="${p.id}" aria-pressed="${p.id===state.selected}">
       <span class="rank">${i+1}</span>
-      <span><span class="pname">${L(p.name)}</span><span class="pcity">${L(p.city)}, ${L(p.country)}</span></span>
+      <span><span class="pname">${L(p.name)}</span><span class="pcity">${L(p.city)}, ${L(p.country)}</span><span class="pills">${pillsHtml(p)}</span></span>
       <span class="parea">${num(p.km2, p.km2 < 100 ? 2 : 0)} km²</span>
       <span class="share"><span class="bar"><i style="width:${(metric.val(p)/max*100).toFixed(1)}%"></i></span><span class="pct">${metric.fmt(p)}</span></span>
     </button>`).join("");
@@ -761,24 +921,38 @@ function renderDetail(){
   $("#detail").innerHTML = `
     <h2>${L(p.name)}</h2>
     <p class="dsub">${L(p.city)}, ${L(p.country)}</p>
+    <div class="pills dpills">${pillsHtml(p)}</div>
+    <p class="gdesc">${groupDesc(p)}</p>
+    ${p.added ? `<p class="dnote" style="margin:-8px 0 14px">${t("d_added")}</p>` : ""}
     <div class="seg vtog" role="group" aria-label="${t("v_label")}">
       <button type="button" data-v="square" aria-pressed="${!isMap}">${t("v_square")}</button>
       <button type="button" data-v="map" aria-pressed="${isMap}">${t("v_map")}</button>
     </div>
     ${isMap
-      ? (p.has_map ? `<div class="mapbox dmap" id="detailMap"></div><ul class="legend">${mapLegendHtml(false)}</ul>` : `<p class="dmap-na">${t("map_na")}</p>`)
+      ? (p.has_map ? `<div class="mapbox dmap" id="detailMap"></div><ul class="legend">${mapLegendHtml(false, !!p.cyc)}</ul>` : `<p class="dmap-na">${t("map_na")}</p>`)
       : `<div class="dsq"><div class="sq" id="detailSq"></div><ul class="legend">${legendHtml(v.cats)}</ul></div>`}
     <dl class="stats">
       <div class="stat"><dt>${t("d_area")}</dt><dd>${num(p.km2, 2)} <small>km²</small></dd></div>
       <div class="stat"><dt>${t("d_car")}</dt><dd>${pctFmt(v.pct)} <small>${km2Fmt(v.carM2)}</small></dd></div>
-      <div class="stat"><dt>${t("d_hw")}</dt><dd>${num(p.hw_km || 0, 1)} <small>km</small></dd></div>
-      <div class="stat"><dt>${t("d_roads")}</dt><dd>${num(v.roadKm, 1)} <small>km</small></dd></div>
+      <div class="stat"><dt>${t("d_hw")}</dt><dd>${num(p.hw_km || 0, 1)} <small>km</small>${p.hw_km > 0 && p.max_hw ? `<span class="msign" title="${t("sign_hw")}">${p.max_hw}</span>` : ""}</dd></div>
+      <div class="stat"><dt>${t("d_roads")}</dt><dd>${num(v.roadKm, 1)} <small>km</small>${p.max_road ? `<span class="msign" title="${t("sign_road")}">${p.max_road}</span>` : ""}</dd></div>
+      <div class="stat"><dt>${t("d_cyc_km")}</dt><dd>${p.cyc ? `${num(p.cyc.dedicated_km, 1)} <small>km</small>` : "–"}</dd></div>
+      <div class="stat"><dt>${t("d_cyc_100")}</dt><dd>${p.cyc_per100 != null ? `${num(p.cyc_per100, 1)} <small>km</small>` : "–"}</dd></div>
     </dl>
     ${p.id !== HOME ? `<p class="vs">${t("d_vs")(pctFmt(mons.pct))}</p>` : ""}
     <h2 style="font-size:20px;margin-top:18px">${t("d_breakdown")}</h2>
     <ul class="breakdown">${v.cats.map(([c,m]) => `<li><i style="background:var(${CAT_VAR[c]})"></i><span>${t("cat_"+c)}</span><em>${km2Fmt(m, 2)}</em><b>${pctFmt(m/area*100)}</b></li>`).join("")}</ul>
     ${p.hw_km > 0 ? `<p class="vs">${t("d_cut")(num(p.hw_km, 1), p.pieces, p.walk)}</p>` : ""}
-    <p class="dnote">${t("d_method2")}</p>
+    <h2 style="font-size:20px;margin-top:22px">${t("d_cyc_h")}</h2>
+    ${p.cyc ? `<ul class="cycrows">
+        <li><i class="cyc"></i><span>${t("d_cyc_sep")}</span><b>${num(p.cyc.separated_km, 1)} km</b></li>
+        <li><i class="cyc sh"></i><span>${t("d_cyc_shared")}</span><b>${num(p.cyc.shared_km, 1)} km</b></li>
+        <li><i class="cyc pt"></i><span>${t("d_cyc_painted")}</span><b>${num(p.cyc.painted_km, 1)} km</b></li>
+        <li><i></i><span>${t("d_cyc_total")}</span><b>${num(p.cyc.dedicated_km, 1)} km</b></li>
+      </ul>
+      <p class="vs">${p.cyc_per100 != null ? t("d_cyc_per100")(num(p.cyc_per100, 0)) : t("d_cyc_fewroads")(num(p.road_km, 1))}</p>`
+      : `<p class="dnote">${t("d_cyc_na")}</p>`}
+    <p class="dnote" style="margin-top:14px">${t("d_method2")}</p>
     ${p.id === HOME ? `<a class="story-link" href="#monsanto" id="openStory">${t("d_story")}</a>` : ""}`;
   document.querySelectorAll("#detail .vtog button").forEach(b => b.onclick = () => { state.detailView = b.dataset.v; renderDetail(); });
   if(isMap && p.has_map) getMap(p.id).then(geo => {
@@ -801,7 +975,14 @@ function renderStoryNumbers(GEO){
   const f1 = n => new Intl.NumberFormat(t("locale"), {maximumFractionDigits: 1}).format(n);
   const rank = [...PARKS].sort((a, b) => b.pct - a.pct).findIndex(p => p.id === HOME) + 1;
   $("#chHook").textContent = t("hook")(f(M.km2), f(M.car_km2), f(M.pct));
-  $("#chScaleLede").innerHTML = t("scale")(Math.round(M.road_km), f(M.cat_pct.highways), PARKS.length, t("ord")(rank));
+  const heavy = PARKS.filter(p => p.group === "heavy");
+  $("#chCycle").textContent = M.cyc
+    ? t("cyc_story2")(Math.round(M.road_km), f1(M.cyc.dedicated_km), num(M.cyc_per100 ?? 0, 1))
+      + (M.group === "heavy" && M.bikes === "little" ? t("cyc_story3")(heavy.length, heavy.filter(p => p.bikes === "little").length) : "")
+    : "";
+  const added = PARKS.filter(p => p.added).map(p => L(p.name));
+  const src = added.length ? t("src_plus")(added.join(", ")) : t("src_all");
+  $("#chScaleLede").innerHTML = t("scale")(Math.round(M.road_km), f(M.cat_pct.highways), PARKS.length, t("ord")(rank), src);
   const keys = ["highways", "main", "local", "service", "parking"];
   $("#catTable").innerHTML = `<thead><tr><th></th><th>${t("tbl_len")}</th><th>${t("tbl_surf")}</th><th>${t("tbl_share")}</th></tr></thead>
     <tbody>${keys.map(k => `<tr><td><i style="background:var(${CAT_VAR[k]})"></i>${t("cat_" + k)}</td><td>${M.cat_km[k] == null ? "" : f(M.cat_km[k]) + " km"}</td><td>${f(M.cat_km2[k])} km²</td><td>${f(M.cat_pct[k])}%</td></tr>`).join("")}</tbody>
@@ -825,10 +1006,15 @@ function renderStoryNumbers(GEO){
 
 /* ── park map: pieces, road surfaces at real width, parking, speed signs, crossings ── */
 let storyMap = null;
-function mapLegendHtml(withPieces){
+function mapLegendHtml(withPieces, withCycling){
   const items = [];
   if(withPieces) items.push(`<li><i style="background:var(--p1)"></i><i style="background:var(--p2);margin-left:-4px"></i>${t("lg_piece")}</li>`);
   ["highways","main","local","service","parking"].forEach(c => items.push(`<li><i style="background:var(${CAT_VAR[c]})"></i>${t("cat_"+c)}</li>`));
+  if(withCycling){
+    items.push(`<li><i class="cyc"></i>${t("lg_cyc_sep")}</li>`);
+    items.push(`<li><i class="cyc sh"></i>${t("lg_cyc_shared")}</li>`);
+    items.push(`<li><i class="cyc pt"></i>${t("lg_cyc_painted")}</li>`);
+  }
   items.push(`<li><i class="sgn"></i>${t("lg_sign")}</li>`);
   items.push(`<li><i class="dot" style="background:var(--forest)"></i>${t("lg_path")}</li>`);
   items.push(`<li><i class="dot" style="background:var(--main)"></i>${t("lg_road")}</li>`);
@@ -836,8 +1022,9 @@ function mapLegendHtml(withPieces){
   return items.join("");
 }
 const SIGN_GAP_PX = 34, MAX_SIGNS = 24;     // screen-space spacing of speed signs
-const SCALE_STEPS = [20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000];
-let basemapOn = false;                     // Positron tiles, shared by every map
+const SCALE_STEPS = [10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000];
+let basemapOn = false;                     // OpenFreeMap basemap, shared by every map
+let cyclingOn = true;                      // cycling layer, shared by every map
 const liveMaps = new Set();
 const ROAD_WORDS = {
   en: {motorway:"motorway", motorway_link:"motorway ramp", trunk:"expressway", trunk_link:"expressway ramp",
@@ -878,8 +1065,16 @@ function buildMap(box, geo, opts){
   pieceG.selectAll("path").data(pieces).join("path").attr("class","m-piece").attr("d", path)
     .attr("fill", d => `var(--p${Math.min(d.properties.id, 3)})`);
   const surf = g.append("g");
-  surf.selectAll("path").data(geo.surfaces.features).join("path").attr("d", path).attr("fill", d => `var(${CAT_VAR[d.properties.c]})`);
+  surf.selectAll("path").data(geo.surfaces.features).join("path").attr("d", path)
+    .attr("fill", d => `var(${CAT_VAR[d.properties.c]})`)
+    .attr("stroke", d => `var(${CAT_VAR[d.properties.c]})`).attr("stroke-width", 0.8)
+    .attr("stroke-linejoin", "round").attr("vector-effect", "non-scaling-stroke");   // hides hairline seams
   if(geo.parking) surf.append("path").datum(geo.parking).attr("d", path).attr("fill","var(--marking)");
+  const cycG = g.append("g").attr("fill", "none").attr("stroke-linecap", "round");
+  cycG.selectAll("path").data(geo.cycling ? geo.cycling.features : []).join("path").attr("d", path)
+    .attr("stroke", d => d.properties.c === "shared" ? "var(--cyc-shared)" : "var(--cyc-sep)")
+    .attr("stroke-width", 2.8).attr("stroke-dasharray", d => d.properties.c === "painted" ? "5 4" : null)
+    .attr("vector-effect", "non-scaling-stroke");
   const labelG = g.append("g");
   const labels = labelG.selectAll("g").data(pieces.filter(f => f.properties.id <= 2 && pieces.length > 1)).join("g").attr("class","plabel");
   labels.append("text").text(d => `${num(d.properties.km2, 2)} km²`);
@@ -908,9 +1103,18 @@ function buildMap(box, geo, opts){
   const mPerPx = 6371008.8 * Math.cos(centre[1] * Math.PI / 180) / proj.scale();
 
   // basemap button, attribution and note
+  const btns = document.createElement("div");
+  btns.className = "map-btns";
+  box.appendChild(btns);
+  let cycBtn = null;
+  if(geo.cycling && geo.cycling.features.length){
+    cycBtn = document.createElement("button");
+    cycBtn.type = "button"; cycBtn.className = "bm-btn"; cycBtn.textContent = t("cyc_btn");
+    btns.appendChild(cycBtn);
+  }
   const btn = document.createElement("button");
   btn.type = "button"; btn.className = "bm-btn"; btn.textContent = t("bm");
-  box.appendChild(btn);
+  btns.appendChild(btn);
   const attr = document.createElement("div");
   attr.className = "bm-attr"; attr.innerHTML = "© OpenFreeMap © OpenMapTiles © OpenStreetMap contributors";
   box.appendChild(attr);
@@ -962,13 +1166,17 @@ function buildMap(box, geo, opts){
     const step = SCALE_STEPS.filter(m => m / mpp <= 110).pop() || SCALE_STEPS[0];
     scaleLine.attr("x2", step / mpp);
     scaleText.text(step >= 1000 ? `${step / 1000} km` : `${step} m`);
+    cycG.style("display", cyclingOn ? null : "none");
+    if(cycBtn) cycBtn.setAttribute("aria-pressed", String(cyclingOn));
     svg.classed("bm-on", basemapOn);
     btn.setAttribute("aria-pressed", String(basemapOn));
     attr.style.display = basemapOn ? "block" : "none";
     syncBasemap();
   }
   btn.onclick = () => { basemapOn = !basemapOn; liveMaps.forEach(m => m.refresh()); };
-  svg.call(d3.zoom().scaleExtent([1, 16]).translateExtent([[0,0],[w,h]]).on("zoom", ev => {
+  if(cycBtn) cycBtn.onclick = () => { cyclingOn = !cyclingOn; liveMaps.forEach(m => m.refresh()); };
+  const kMax = Math.max(16, mPerPx * 90 / 20);        // deep enough for a ~20 m scale bar
+  svg.call(d3.zoom().scaleExtent([1, kMax]).translateExtent([[0,0],[w,h]]).on("zoom", ev => {
     tr = ev.transform; g.attr("transform", tr); refresh();
   }));
   const handle = { refresh, set(u){ Object.assign(o, u); refresh(); },
@@ -986,7 +1194,7 @@ function initStoryMap(){
   getMap(HOME).then(geo => {
     if(!geo) return;
     storyMap = buildMap($("#map"), geo, {pieces: $("#optPieces").checked, signs: $("#optSpeed").checked, unmarked: $("#showUnmarked").checked});
-    $("#mapLegend").innerHTML = mapLegendHtml(true);
+    $("#mapLegend").innerHTML = mapLegendHtml(true, !!PARKS.find(p => p.id === HOME).cyc);
   });
 }
 $("#optPieces").onchange = e => storyMap && storyMap.set({pieces: e.target.checked});
@@ -1002,9 +1210,10 @@ document.querySelectorAll(".lang button").forEach(b => b.onclick = () => {
   try{ localStorage.setItem("pc_lang", state.lang); }catch(e){}
   renderStatic(); renderList();
   if(storyGeo) renderStoryNumbers(storyGeo);
-  if(storyMap) $("#mapLegend").innerHTML = mapLegendHtml(true);
+  if(storyMap) $("#mapLegend").innerHTML = mapLegendHtml(true, !!PARKS.find(p => p.id === HOME).cyc);
 });
-$("#similar").onchange = e => { state.similar = e.target.checked; renderList(); };
+$("#q").oninput = e => { state.q = e.target.value; renderList(); };
+$("#sortDir").onclick = () => { state.dir = -state.dir; $("#sortDir").textContent = t(state.dir < 0 ? "sort_desc" : "sort_asc"); renderList(); };
 $("#sort").onchange = e => { state.sort = e.target.value; renderList(); };
 
 renderStatic(); renderList();

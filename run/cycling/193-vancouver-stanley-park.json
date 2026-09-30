@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "193-vancouver-stanley-park",
+  "name": "Stanley Park",
+  "city": "Vancouver",
+  "country": "Canada",
+  "park_area_km2": 3.906,
+  "road_km": 19.75,
+  "main_road_km": 14.74,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 8.7,
+  "shared_km": 9.86,
+  "painted_km": 0.35,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.25,
+  "dedicated_km": 18.91,
+  "ecf_ratio_main_roads_pct": 128.3,
+  "status": "ok"
+}

@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "122-jacksonville-big-talbot-island-state-park",
+  "name": "Big Talbot Island State Park",
+  "city": "Jacksonville",
+  "country": "United States",
+  "park_area_km2": 6.263,
+  "road_km": 10.48,
+  "main_road_km": 6.5,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 5.98,
+  "shared_km": 1.02,
+  "painted_km": 0.02,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 7.02,
+  "ecf_ratio_main_roads_pct": 108.0,
+  "status": "ok"
+}

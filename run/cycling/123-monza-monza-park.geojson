@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "123-monza-monza-park",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": "Viale Cavriga" }, "geometry": { "type": "LineString", "coordinates": [ [ 9.297334, 45.601319 ], [ 9.297153, 45.601297 ], [ 9.294978, 45.600998 ], [ 9.292787, 45.600673 ], [ 9.292738, 45.600697 ], [ 9.292765, 45.600738 ], [ 9.294967, 45.601052 ], [ 9.295339, 45.601104 ], [ 9.296064, 45.601205 ], [ 9.296292, 45.601237 ], [ 9.297302, 45.601378 ], [ 9.297323, 45.601381 ], [ 9.297756, 45.601439 ], [ 9.29779, 45.601417 ], [ 9.297772, 45.601382 ], [ 9.297533, 45.601349 ], [ 9.297334, 45.601319 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "footway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 9.299279, 45.607533 ], [ 9.299429, 45.607522 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 9.287676, 45.606666 ], [ 9.287437, 45.606534 ], [ 9.28729, 45.606447 ], [ 9.286782, 45.60606 ], [ 9.286701, 45.606036 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": "Viale Vedano" }, "geometry": { "type": "LineString", "coordinates": [ [ 9.294389, 45.605938 ], [ 9.292354, 45.606534 ], [ 9.291299, 45.606851 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 9.289101, 45.607532 ], [ 9.288998, 45.607444 ], [ 9.28888, 45.607333 ], [ 9.288265, 45.606757 ], [ 9.288027, 45.606661 ], [ 9.287813, 45.606631 ], [ 9.287676, 45.606666 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 9.287676, 45.606666 ], [ 9.287753, 45.606733 ], [ 9.287771, 45.60682 ], [ 9.287912, 45.607788 ], [ 9.287922, 45.607846 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 9.275896, 45.607526 ], [ 9.27589, 45.6075 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 9.27589, 45.6075 ], [ 9.276074, 45.607463 ], [ 9.276304, 45.607461 ], [ 9.276574, 45.60747 ], [ 9.276922, 45.607501 ], [ 9.277106, 45.607533 ], [ 9.277241, 45.607569 ], [ 9.277366, 45.607612 ], [ 9.277473, 45.607669 ], [ 9.277566, 45.607743 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 9.277489, 45.607781 ], [ 9.277566, 45.607743 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 9.277566, 45.607743 ], [ 9.27764, 45.607832 ], [ 9.277685, 45.60802 ], [ 9.277712, 45.608164 ], [ 9.277776, 45.608464 ], [ 9.277786, 45.608545 ], [ 9.277768, 45.608967 ], [ 9.277765, 45.609242 ], [ 9.277765, 45.609486 ], [ 9.277743, 45.60975 ], [ 9.277728, 45.609848 ] ] } }
+]
+}

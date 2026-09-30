@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"name": "027-ulsan-ulsan-grand-park",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway" }, "geometry": { "type": "LineString", "coordinates": [ [ 129.286224, 35.529364 ], [ 129.286266, 35.529389 ], [ 129.286281, 35.529416 ], [ 129.286287, 35.529427 ], [ 129.286281, 35.529469 ], [ 129.286251, 35.529503 ], [ 129.286203, 35.529521 ], [ 129.286151, 35.529516 ], [ 129.286109, 35.529491 ], [ 129.286089, 35.529452 ], [ 129.286094, 35.52941 ], [ 129.286125, 35.529376 ], [ 129.286173, 35.529359 ], [ 129.286224, 35.529364 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway" }, "geometry": { "type": "LineString", "coordinates": [ [ 129.285874, 35.529826 ], [ 129.285992, 35.529833 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway" }, "geometry": { "type": "LineString", "coordinates": [ [ 129.285811, 35.529846 ], [ 129.285874, 35.529826 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway" }, "geometry": { "type": "LineString", "coordinates": [ [ 129.28607, 35.529679 ], [ 129.286189, 35.529743 ], [ 129.286213, 35.529806 ], [ 129.286144, 35.529943 ], [ 129.286062, 35.530099 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway" }, "geometry": { "type": "LineString", "coordinates": [ [ 129.286151, 35.529516 ], [ 129.28607, 35.529679 ], [ 129.286051, 35.529716 ], [ 129.285992, 35.529833 ], [ 129.285888, 35.530051 ], [ 129.285851, 35.530118 ], [ 129.285696, 35.530474 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway" }, "geometry": { "type": "LineString", "coordinates": [ [ 129.285696, 35.530474 ], [ 129.2856, 35.530451 ], [ 129.285558, 35.530404 ], [ 129.285533, 35.530353 ], [ 129.285505, 35.530308 ], [ 129.285483, 35.530208 ], [ 129.285519, 35.530126 ], [ 129.285569, 35.530089 ], [ 129.285596, 35.530072 ], [ 129.285688, 35.530012 ], [ 129.285709, 35.529994 ], [ 129.285752, 35.529897 ], [ 129.285811, 35.529846 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "cycleway" }, "geometry": { "type": "LineString", "coordinates": [ [ 129.285709, 35.529994 ], [ 129.285888, 35.530051 ], [ 129.286062, 35.530099 ], [ 129.28599, 35.530269 ], [ 129.285966, 35.530412 ], [ 129.285924, 35.530478 ], [ 129.285812, 35.530502 ], [ 129.285755, 35.530491 ], [ 129.285696, 35.530474 ] ] } }
+]
+}

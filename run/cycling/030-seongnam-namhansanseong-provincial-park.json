@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "030-seongnam-namhansanseong-provincial-park",
+  "name": "Namhansanseong Provincial Park",
+  "city": "Seongnam",
+  "country": "South Korea",
+  "park_area_km2": 54.196,
+  "road_km": 37.51,
+  "main_road_km": 29.76,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.0,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 0.0,
+  "ecf_ratio_main_roads_pct": 0.0,
+  "status": "ok"
+}

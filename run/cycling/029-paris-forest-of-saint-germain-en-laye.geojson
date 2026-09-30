@@ -1,0 +1,27 @@
+{
+"type": "FeatureCollection",
+"name": "029-paris-forest-of-saint-germain-en-laye",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": "Route du Pavillon Chinois" }, "geometry": { "type": "LineString", "coordinates": [ [ 2.092659, 48.903833 ], [ 2.092623, 48.903853 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.076719, 48.908854 ], [ 2.080869, 48.90606 ], [ 2.081234, 48.905786 ], [ 2.081607, 48.905516 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.090044, 48.905138 ], [ 2.090167, 48.905249 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.081607, 48.905516 ], [ 2.081679, 48.905461 ], [ 2.082339, 48.904959 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.081349, 48.905981 ], [ 2.081327, 48.905906 ], [ 2.081266, 48.905835 ], [ 2.081234, 48.905786 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": "Route de la Mare à la Douzaine" }, "geometry": { "type": "LineString", "coordinates": [ [ 2.081388, 48.905915 ], [ 2.081349, 48.905981 ], [ 2.080072, 48.908142 ], [ 2.078781, 48.910371 ], [ 2.078766, 48.910397 ], [ 2.078501, 48.910878 ], [ 2.077827, 48.911861 ], [ 2.077795, 48.912144 ], [ 2.077488, 48.912659 ], [ 2.077428, 48.912761 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": "Route des Mares" }, "geometry": { "type": "LineString", "coordinates": [ [ 2.089295, 48.911773 ], [ 2.089523, 48.911683 ], [ 2.089592, 48.911656 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": "Route des Mares" }, "geometry": { "type": "LineString", "coordinates": [ [ 2.083202, 48.914146 ], [ 2.083223, 48.914137 ], [ 2.083291, 48.914122 ], [ 2.083353, 48.914108 ], [ 2.085941, 48.913096 ], [ 2.089295, 48.911773 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.056139, 48.922477 ], [ 2.056723, 48.922089 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.054488, 48.923559 ], [ 2.055271, 48.923036 ], [ 2.056103, 48.9225 ], [ 2.056139, 48.922477 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.056723, 48.922089 ], [ 2.057489, 48.921566 ], [ 2.059449, 48.920296 ], [ 2.061638, 48.918865 ], [ 2.062978, 48.917974 ], [ 2.063122, 48.917878 ], [ 2.066072, 48.915925 ], [ 2.068205, 48.914524 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.068205, 48.914524 ], [ 2.071984, 48.912037 ], [ 2.072034, 48.912007 ], [ 2.072213, 48.911883 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.133318, 48.958884 ], [ 2.132451, 48.959281 ], [ 2.131778, 48.959609 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.131778, 48.959609 ], [ 2.131476, 48.959748 ], [ 2.130209, 48.960331 ], [ 2.128826, 48.960963 ], [ 2.128082, 48.961258 ], [ 2.128016, 48.961284 ], [ 2.127808, 48.961358 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": "Route de la Ferme" }, "geometry": { "type": "LineString", "coordinates": [ [ 2.108235, 48.97618 ], [ 2.108204, 48.976231 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.136019, 48.9576 ], [ 2.134817, 48.958145 ], [ 2.133663, 48.958668 ], [ 2.133574, 48.958708 ], [ 2.133493, 48.958745 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.133493, 48.958745 ], [ 2.133318, 48.958769 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.133493, 48.958745 ], [ 2.133481, 48.958781 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 2.133481, 48.958781 ], [ 2.133405, 48.95883 ], [ 2.133318, 48.958884 ] ] } }
+]
+}

@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "102-berkeley-tilden-regional-park",
+  "name": "Tilden Regional Park",
+  "city": "Berkeley",
+  "country": "United States",
+  "park_area_km2": 5.908,
+  "road_km": 18.46,
+  "main_road_km": 8.89,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 2.95,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 2.2,
+  "dedicated_km": 2.95,
+  "ecf_ratio_main_roads_pct": 33.2,
+  "status": "ok"
+}

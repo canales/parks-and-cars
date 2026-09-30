@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "046-vilnius-pavilniai-regional-park",
+  "name": "Pavilniai Regional Park",
+  "city": "Vilnius",
+  "country": "Lithuania",
+  "park_area_km2": 21.725,
+  "road_km": 75.66,
+  "main_road_km": 12.87,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 5.5,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 5.5,
+  "ecf_ratio_main_roads_pct": 42.7,
+  "status": "ok"
+}

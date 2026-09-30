@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "176-huntsville-monte-sano-nature-preserve",
+  "name": "Monte Sano Nature Preserve",
+  "city": "Huntsville",
+  "country": "United States",
+  "park_area_km2": 4.033,
+  "road_km": 2.67,
+  "main_road_km": 1.39,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.55,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 0.55,
+  "ecf_ratio_main_roads_pct": 39.6,
+  "status": "ok"
+}

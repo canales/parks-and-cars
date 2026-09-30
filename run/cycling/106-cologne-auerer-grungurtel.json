@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "106-cologne-auerer-grungurtel",
+  "name": "Äußerer Grüngürtel",
+  "city": "Cologne",
+  "country": "Germany",
+  "park_area_km2": 7.101,
+  "road_km": 9.55,
+  "main_road_km": 4.13,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 4.96,
+  "shared_km": 11.89,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 16.85,
+  "ecf_ratio_main_roads_pct": 408.0,
+  "status": "ok"
+}

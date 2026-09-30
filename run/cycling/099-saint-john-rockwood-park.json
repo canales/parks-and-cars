@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "099-saint-john-rockwood-park",
+  "name": "Rockwood Park",
+  "city": "Saint John",
+  "country": "Canada",
+  "park_area_km2": 6.95,
+  "road_km": 8.77,
+  "main_road_km": 0.0,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 2.42,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 2.42,
+  "ecf_ratio_main_roads_pct": null,
+  "status": "ok"
+}

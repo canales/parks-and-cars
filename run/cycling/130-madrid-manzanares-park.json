@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "130-madrid-manzanares-park",
+  "name": "Manzanares Park",
+  "city": "Madrid",
+  "country": "Spain",
+  "park_area_km2": 1.782,
+  "road_km": 2.74,
+  "main_road_km": 0.77,
+  "osm_data_date": "2026-09-27",
+  "separated_km": 8.41,
+  "shared_km": 0.82,
+  "painted_km": 0.04,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 9.27,
+  "ecf_ratio_main_roads_pct": 1203.9,
+  "status": "ok"
+}

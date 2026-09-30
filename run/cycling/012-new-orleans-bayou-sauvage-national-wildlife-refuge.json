@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "012-new-orleans-bayou-sauvage-national-wildlife-refuge",
+  "name": "Bayou Sauvage National Wildlife Refuge",
+  "city": "New Orleans",
+  "country": "United States",
+  "park_area_km2": 109.123,
+  "road_km": 24.35,
+  "main_road_km": 18.4,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.0,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 0.0,
+  "ecf_ratio_main_roads_pct": 0.0,
+  "status": "ok"
+}

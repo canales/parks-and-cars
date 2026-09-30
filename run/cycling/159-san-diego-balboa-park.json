@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "159-san-diego-balboa-park",
+  "name": "Balboa Park",
+  "city": "San Diego",
+  "country": "United States",
+  "park_area_km2": 4.947,
+  "road_km": 41.71,
+  "main_road_km": 28.5,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 5.15,
+  "shared_km": 0.88,
+  "painted_km": 3.75,
+  "advisory_km": 0.0,
+  "sharrow_km": 3.29,
+  "dedicated_km": 9.78,
+  "ecf_ratio_main_roads_pct": 34.3,
+  "status": "ok"
+}

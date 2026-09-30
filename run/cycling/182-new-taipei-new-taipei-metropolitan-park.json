@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "182-new-taipei-new-taipei-metropolitan-park",
+  "name": "New Taipei Metropolitan Park",
+  "city": "New Taipei",
+  "country": "Taiwan",
+  "park_area_km2": 4.066,
+  "road_km": 34.54,
+  "main_road_km": 26.65,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 11.23,
+  "shared_km": 12.92,
+  "painted_km": 0.4,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 24.55,
+  "ecf_ratio_main_roads_pct": 92.1,
+  "status": "ok"
+}

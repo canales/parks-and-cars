@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "107-belgrade-ada-ciganlija",
+  "name": "Ada Ciganlija",
+  "city": "Belgrade",
+  "country": "Serbia",
+  "park_area_km2": 2.769,
+  "road_km": 14.34,
+  "main_road_km": 0.14,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 5.05,
+  "shared_km": 0.1,
+  "painted_km": 0.03,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 5.18,
+  "ecf_ratio_main_roads_pct": 3700.0,
+  "status": "ok"
+}

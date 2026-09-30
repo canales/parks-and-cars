@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "128-eureka-springs-lake-leatherwood-park",
+  "name": "Lake Leatherwood Park",
+  "city": "Eureka Springs",
+  "country": "United States",
+  "park_area_km2": 5.705,
+  "road_km": 3.94,
+  "main_road_km": 0.06,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 3.5,
+  "shared_km": 20.09,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 23.59,
+  "ecf_ratio_main_roads_pct": 39316.7,
+  "status": "ok"
+}

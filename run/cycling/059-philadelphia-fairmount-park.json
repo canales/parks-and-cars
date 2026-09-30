@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "059-philadelphia-fairmount-park",
+  "name": "Fairmount Park",
+  "city": "Philadelphia",
+  "country": "United States",
+  "park_area_km2": 7.621,
+  "road_km": 62.99,
+  "main_road_km": 37.99,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 2.01,
+  "shared_km": 29.87,
+  "painted_km": 7.57,
+  "advisory_km": 0.0,
+  "sharrow_km": 1.65,
+  "dedicated_km": 39.45,
+  "ecf_ratio_main_roads_pct": 103.8,
+  "status": "ok"
+}

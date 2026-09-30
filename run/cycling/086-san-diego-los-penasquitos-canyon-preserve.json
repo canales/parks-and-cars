@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "086-san-diego-los-penasquitos-canyon-preserve",
+  "name": "Los Peñasquitos Canyon Preserve",
+  "city": "San Diego",
+  "country": "United States",
+  "park_area_km2": 15.774,
+  "road_km": 11.96,
+  "main_road_km": 6.45,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.27,
+  "shared_km": 0.21,
+  "painted_km": 2.26,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 2.74,
+  "ecf_ratio_main_roads_pct": 42.5,
+  "status": "ok"
+}

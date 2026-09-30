@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "155-st-louis-forest-park",
+  "name": "Forest Park",
+  "city": "St. Louis",
+  "country": "United States",
+  "park_area_km2": 5.467,
+  "road_km": 39.76,
+  "main_road_km": 14.64,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.9,
+  "shared_km": 18.49,
+  "painted_km": 0.81,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.01,
+  "dedicated_km": 20.2,
+  "ecf_ratio_main_roads_pct": 138.0,
+  "status": "ok"
+}

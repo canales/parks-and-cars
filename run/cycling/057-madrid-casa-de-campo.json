@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "057-madrid-casa-de-campo",
+  "name": "Casa de Campo",
+  "city": "Madrid",
+  "country": "Spain",
+  "park_area_km2": 13.731,
+  "road_km": 10.71,
+  "main_road_km": 0.25,
+  "osm_data_date": "2026-09-27",
+  "separated_km": 4.43,
+  "shared_km": 0.75,
+  "painted_km": 1.01,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.83,
+  "dedicated_km": 6.19,
+  "ecf_ratio_main_roads_pct": 2476.0,
+  "status": "ok"
+}

@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "006-islamabad-margalla-hills-national-park",
+  "name": "Margalla Hills National Park",
+  "city": "Islamabad",
+  "country": "Pakistan",
+  "park_area_km2": 86.018,
+  "road_km": 42.39,
+  "main_road_km": 30.26,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 3.26,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 3.26,
+  "ecf_ratio_main_roads_pct": 10.8,
+  "status": "ok"
+}

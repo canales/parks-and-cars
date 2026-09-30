@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "002-gatineau-gatineau-park",
+  "name": "Gatineau Park",
+  "city": "Gatineau",
+  "country": "Canada",
+  "park_area_km2": 363.373,
+  "road_km": 135.32,
+  "main_road_km": 74.89,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.67,
+  "shared_km": 140.25,
+  "painted_km": 3.18,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 144.1,
+  "ecf_ratio_main_roads_pct": 192.4,
+  "status": "ok"
+}

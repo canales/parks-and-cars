@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "095-strongsville-mill-stream-run-reservation",
+  "name": "Mill Stream Run Reservation",
+  "city": "Strongsville",
+  "country": "United States",
+  "park_area_km2": 13.853,
+  "road_km": 26.73,
+  "main_road_km": 21.81,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 18.55,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 18.55,
+  "ecf_ratio_main_roads_pct": 85.1,
+  "status": "ok"
+}

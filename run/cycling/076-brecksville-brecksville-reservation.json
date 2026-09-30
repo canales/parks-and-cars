@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "076-brecksville-brecksville-reservation",
+  "name": "Brecksville Reservation",
+  "city": "Brecksville",
+  "country": "United States",
+  "park_area_km2": 16.857,
+  "road_km": 36.35,
+  "main_road_km": 30.43,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.18,
+  "shared_km": 19.96,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 20.14,
+  "ecf_ratio_main_roads_pct": 66.2,
+  "status": "ok"
+}

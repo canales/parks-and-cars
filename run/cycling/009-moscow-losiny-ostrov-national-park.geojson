@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "009-moscow-losiny-ostrov-national-park",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "cls": "painted", "highway": "service", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 37.726669, 55.842411 ], [ 37.735905, 55.842536 ], [ 37.736005, 55.842539 ], [ 37.738153, 55.842561 ], [ 37.738901, 55.84257 ], [ 37.739517, 55.842579 ], [ 37.744316, 55.842645 ], [ 37.74603, 55.84268 ], [ 37.747462, 55.842728 ], [ 37.748349, 55.842727 ], [ 37.754946, 55.842857 ], [ 37.762488, 55.842931 ], [ 37.762626, 55.842927 ], [ 37.76267, 55.842918 ], [ 37.762714, 55.842903 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 37.687923, 55.817198 ], [ 37.688389, 55.81739 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "pedestrian", "name": "Бумажная просека" }, "geometry": { "type": "LineString", "coordinates": [ [ 37.728403, 55.829755 ], [ 37.728054, 55.832111 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "pedestrian", "name": "Бумажная просека" }, "geometry": { "type": "LineString", "coordinates": [ [ 37.728054, 55.832111 ], [ 37.728004, 55.832413 ], [ 37.727274, 55.837473 ], [ 37.726822, 55.841134 ], [ 37.726783, 55.841443 ], [ 37.726706, 55.842054 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "pedestrian", "name": "Бумажная просека" }, "geometry": { "type": "LineString", "coordinates": [ [ 37.726706, 55.842054 ], [ 37.726691, 55.84218 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "pedestrian", "name": "Бумажная просека" }, "geometry": { "type": "LineString", "coordinates": [ [ 37.726691, 55.84218 ], [ 37.726669, 55.842411 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "pedestrian", "name": "Бумажная просека" }, "geometry": { "type": "LineString", "coordinates": [ [ 37.726669, 55.842411 ], [ 37.72663, 55.842668 ], [ 37.726629, 55.842674 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "pedestrian", "name": "Бумажная просека" }, "geometry": { "type": "LineString", "coordinates": [ [ 37.726629, 55.842674 ], [ 37.726608, 55.842853 ], [ 37.726384, 55.844805 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "pedestrian", "name": "Бумажная просека" }, "geometry": { "type": "LineString", "coordinates": [ [ 37.726384, 55.844805 ], [ 37.72629, 55.845595 ], [ 37.726266, 55.845912 ], [ 37.726209, 55.846382 ], [ 37.726147, 55.846819 ], [ 37.725919, 55.848721 ], [ 37.725558, 55.851334 ], [ 37.725535, 55.851527 ], [ 37.724937, 55.856008 ], [ 37.724725, 55.857597 ], [ 37.724341, 55.860963 ], [ 37.72388, 55.865605 ], [ 37.723733, 55.867329 ], [ 37.72367, 55.868077 ], [ 37.723538, 55.869396 ], [ 37.723409, 55.870432 ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "path", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 37.715895, 55.870242 ], [ 37.716316, 55.870224 ], [ 37.718796, 55.870319 ], [ 37.719559, 55.870347 ], [ 37.720285, 55.870374 ], [ 37.720389, 55.870377 ], [ 37.721848, 55.870404 ], [ 37.723409, 55.870432 ] ] } }
+]
+}

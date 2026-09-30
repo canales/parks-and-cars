@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "041-raleigh-william-b-umstead-state-park",
+  "name": "William B. Umstead State Park",
+  "city": "Raleigh",
+  "country": "United States",
+  "park_area_km2": 22.078,
+  "road_km": 10.17,
+  "main_road_km": 0.0,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 11.82,
+  "shared_km": 0.2,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 12.02,
+  "ecf_ratio_main_roads_pct": null,
+  "status": "ok"
+}

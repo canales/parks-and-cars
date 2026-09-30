@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "013-seoul-bukhansan-national-park",
+  "name": "Bukhansan National Park",
+  "city": "Seoul",
+  "country": "South Korea",
+  "park_area_km2": 76.756,
+  "road_km": 50.76,
+  "main_road_km": 13.74,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.09,
+  "shared_km": 0.89,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 0.98,
+  "ecf_ratio_main_roads_pct": 7.1,
+  "status": "ok"
+}

@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "025-rio-de-janeiro-tijuca-national-park",
+  "name": "Tijuca National Park",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "park_area_km2": 39.719,
+  "road_km": 46.34,
+  "main_road_km": 7.91,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.0,
+  "painted_km": 2.67,
+  "advisory_km": 0.0,
+  "sharrow_km": 21.5,
+  "dedicated_km": 2.67,
+  "ecf_ratio_main_roads_pct": 33.8,
+  "status": "ok"
+}

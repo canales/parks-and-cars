@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "125-mexico-city-chapultepec-park",
+  "name": "Chapultepec Park",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "park_area_km2": 5.505,
+  "road_km": 33.95,
+  "main_road_km": 14.78,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 3.18,
+  "shared_km": 3.22,
+  "painted_km": 0.01,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.12,
+  "dedicated_km": 6.41,
+  "ecf_ratio_main_roads_pct": 43.4,
+  "status": "ok"
+}

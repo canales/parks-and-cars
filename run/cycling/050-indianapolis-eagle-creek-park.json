@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "050-indianapolis-eagle-creek-park",
+  "name": "Eagle Creek Park",
+  "city": "Indianapolis",
+  "country": "United States",
+  "park_area_km2": 19.173,
+  "road_km": 29.67,
+  "main_road_km": 3.99,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 3.74,
+  "shared_km": 3.24,
+  "painted_km": 0.82,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 7.8,
+  "ecf_ratio_main_roads_pct": 195.5,
+  "status": "ok"
+}

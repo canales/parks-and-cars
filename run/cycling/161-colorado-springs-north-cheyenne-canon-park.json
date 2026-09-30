@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "161-colorado-springs-north-cheyenne-canon-park",
+  "name": "North Cheyenne Cañon Park",
+  "city": "Colorado Springs",
+  "country": "United States",
+  "park_area_km2": 5.547,
+  "road_km": 13.74,
+  "main_road_km": 8.64,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 19.54,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 19.54,
+  "ecf_ratio_main_roads_pct": 226.2,
+  "status": "ok"
+}

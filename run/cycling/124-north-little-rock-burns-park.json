@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "124-north-little-rock-burns-park",
+  "name": "Burns Park",
+  "city": "North Little Rock",
+  "country": "United States",
+  "park_area_km2": 6.932,
+  "road_km": 42.86,
+  "main_road_km": 17.99,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 4.28,
+  "shared_km": 2.42,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 6.7,
+  "ecf_ratio_main_roads_pct": 37.2,
+  "status": "ok"
+}

@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "186-bedford-bedford-reservation",
+  "name": "Bedford Reservation",
+  "city": "Bedford",
+  "country": "United States",
+  "park_area_km2": 10.449,
+  "road_km": 22.25,
+  "main_road_km": 17.44,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 1.91,
+  "shared_km": 12.36,
+  "painted_km": 0.75,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 15.02,
+  "ecf_ratio_main_roads_pct": 86.1,
+  "status": "ok"
+}

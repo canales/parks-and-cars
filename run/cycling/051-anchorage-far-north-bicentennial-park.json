@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "051-anchorage-far-north-bicentennial-park",
+  "name": "Far North Bicentennial Park",
+  "city": "Anchorage",
+  "country": "United States",
+  "park_area_km2": 20.334,
+  "road_km": 9.84,
+  "main_road_km": 3.73,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 34.68,
+  "shared_km": 35.47,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 70.15,
+  "ecf_ratio_main_roads_pct": 1880.7,
+  "status": "ok"
+}

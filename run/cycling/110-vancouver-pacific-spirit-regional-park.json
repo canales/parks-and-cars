@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "110-vancouver-pacific-spirit-regional-park",
+  "name": "Pacific Spirit Regional Park",
+  "city": "Vancouver",
+  "country": "Canada",
+  "park_area_km2": 8.411,
+  "road_km": 14.83,
+  "main_road_km": 11.01,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 1.12,
+  "shared_km": 22.55,
+  "painted_km": 3.93,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.79,
+  "dedicated_km": 27.6,
+  "ecf_ratio_main_roads_pct": 250.7,
+  "status": "ok"
+}

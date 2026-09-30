@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "134-phoenix-adobe-dam-regional-park",
+  "name": "Adobe Dam Regional Park",
+  "city": "Phoenix",
+  "country": "United States",
+  "park_area_km2": 6.093,
+  "road_km": 6.98,
+  "main_road_km": 0.0,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.0,
+  "painted_km": 1.23,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 1.23,
+  "ecf_ratio_main_roads_pct": null,
+  "status": "ok"
+}

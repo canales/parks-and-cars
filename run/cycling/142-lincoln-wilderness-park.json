@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "142-lincoln-wilderness-park",
+  "name": "Wilderness Park",
+  "city": "Lincoln",
+  "country": "United States",
+  "park_area_km2": 5.644,
+  "road_km": 1.26,
+  "main_road_km": 0.0,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.11,
+  "shared_km": 33.41,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 33.52,
+  "ecf_ratio_main_roads_pct": null,
+  "status": "ok"
+}

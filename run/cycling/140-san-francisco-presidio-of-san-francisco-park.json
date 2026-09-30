@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "140-san-francisco-presidio-of-san-francisco-park",
+  "name": "Presidio of San Francisco Park",
+  "city": "San Francisco",
+  "country": "United States",
+  "park_area_km2": 6.077,
+  "road_km": 78.61,
+  "main_road_km": 28.96,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 4.78,
+  "shared_km": 5.55,
+  "painted_km": 11.98,
+  "advisory_km": 0.27,
+  "sharrow_km": 4.78,
+  "dedicated_km": 22.31,
+  "ecf_ratio_main_roads_pct": 77.0,
+  "status": "ok"
+}

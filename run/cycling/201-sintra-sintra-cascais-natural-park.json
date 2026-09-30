@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "201-sintra-sintra-cascais-natural-park",
+  "name": "Sintra-Cascais Natural Park",
+  "city": "Sintra",
+  "country": "Portugal",
+  "park_area_km2": 144.348,
+  "road_km": 729.71,
+  "main_road_km": 158.58,
+  "osm_data_date": "2026-09-29",
+  "separated_km": 11.16,
+  "shared_km": 5.93,
+  "painted_km": 0.51,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.43,
+  "dedicated_km": 17.6,
+  "ecf_ratio_main_roads_pct": 11.1,
+  "status": "ok"
+}

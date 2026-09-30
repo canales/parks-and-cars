@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "028-los-angeles-topanga-state-park",
+  "name": "Topanga State Park",
+  "city": "Los Angeles",
+  "country": "United States",
+  "park_area_km2": 46.63,
+  "road_km": 4.17,
+  "main_road_km": 0.09,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.0,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 0.0,
+  "ecf_ratio_main_roads_pct": 0.0,
+  "status": "ok"
+}

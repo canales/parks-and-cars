@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "047-honolulu-ahupua-a-o-kahana-state-park",
+  "name": "Ahupua'a O Kahana State Park",
+  "city": "Honolulu",
+  "country": "United States",
+  "park_area_km2": 17.641,
+  "road_km": 6.54,
+  "main_road_km": 2.44,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.0,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 0.0,
+  "ecf_ratio_main_roads_pct": 0.0,
+  "status": "ok"
+}

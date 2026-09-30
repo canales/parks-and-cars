@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "038-vilnius-verkiai-regional-park",
+  "name": "Verkiai Regional Park",
+  "city": "Vilnius",
+  "country": "Lithuania",
+  "park_area_km2": 26.916,
+  "road_km": 57.3,
+  "main_road_km": 10.28,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 1.31,
+  "shared_km": 6.47,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 7.78,
+  "ecf_ratio_main_roads_pct": 75.7,
+  "status": "ok"
+}

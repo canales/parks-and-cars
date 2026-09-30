@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "004-cape-town-table-mountain-national-park",
+  "name": "Table Mountain National Park",
+  "city": "Cape Town",
+  "country": "South Africa",
+  "park_area_km2": 249.914,
+  "road_km": 114.59,
+  "main_road_km": 48.29,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.73,
+  "shared_km": 14.12,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 14.85,
+  "ecf_ratio_main_roads_pct": 30.8,
+  "status": "ok"
+}

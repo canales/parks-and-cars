@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "111-birmingham-sandwell-valley-park",
+  "name": "Sandwell Valley Park",
+  "city": "Birmingham",
+  "country": "United Kingdom",
+  "park_area_km2": 1.724,
+  "road_km": 0.59,
+  "main_road_km": 0.02,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 1.79,
+  "shared_km": 1.51,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 3.3,
+  "ecf_ratio_main_roads_pct": 16500.0,
+  "status": "ok"
+}

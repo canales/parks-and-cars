@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "033-phoenix-phoenix-sonoran-preserve",
+  "name": "Phoenix Sonoran Preserve",
+  "city": "Phoenix",
+  "country": "United States",
+  "park_area_km2": 22.352,
+  "road_km": 9.83,
+  "main_road_km": 5.92,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.54,
+  "shared_km": 1.72,
+  "painted_km": 0.05,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 2.31,
+  "ecf_ratio_main_roads_pct": 39.0,
+  "status": "ok"
+}

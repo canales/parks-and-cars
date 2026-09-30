@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "074-nashville-warner-parks",
+  "name": "Warner Parks",
+  "city": "Nashville",
+  "country": "United States",
+  "park_area_km2": 7.974,
+  "road_km": 28.31,
+  "main_road_km": 0.98,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 8.96,
+  "shared_km": 0.98,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 9.94,
+  "ecf_ratio_main_roads_pct": 1014.3,
+  "status": "ok"
+}

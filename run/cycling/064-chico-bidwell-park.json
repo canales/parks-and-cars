@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "064-chico-bidwell-park",
+  "name": "Bidwell Park",
+  "city": "Chico",
+  "country": "United States",
+  "park_area_km2": 13.899,
+  "road_km": 13.63,
+  "main_road_km": 0.06,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 2.96,
+  "shared_km": 0.01,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 2.97,
+  "ecf_ratio_main_roads_pct": 4950.0,
+  "status": "ok"
+}

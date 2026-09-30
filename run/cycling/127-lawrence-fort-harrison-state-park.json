@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "127-lawrence-fort-harrison-state-park",
+  "name": "Fort Harrison State Park",
+  "city": "Lawrence",
+  "country": "United States",
+  "park_area_km2": 7.061,
+  "road_km": 16.79,
+  "main_road_km": 0.04,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.8,
+  "shared_km": 5.2,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 6.0,
+  "ecf_ratio_main_roads_pct": 15000.0,
+  "status": "ok"
+}

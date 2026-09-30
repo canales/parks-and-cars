@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "123-monza-monza-park",
+  "name": "Monza Park",
+  "city": "Monza",
+  "country": "Italy",
+  "park_area_km2": 7.243,
+  "road_km": 19.45,
+  "main_road_km": 0.0,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.66,
+  "shared_km": 1.21,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 1.87,
+  "ecf_ratio_main_roads_pct": null,
+  "status": "ok"
+}

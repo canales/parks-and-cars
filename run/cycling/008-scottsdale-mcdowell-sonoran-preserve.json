@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "008-scottsdale-mcdowell-sonoran-preserve",
+  "name": "McDowell Sonoran Preserve",
+  "city": "Scottsdale",
+  "country": "United States",
+  "park_area_km2": 133.843,
+  "road_km": 29.67,
+  "main_road_km": 11.05,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 4.02,
+  "painted_km": 8.72,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 12.74,
+  "ecf_ratio_main_roads_pct": 115.3,
+  "status": "ok"
+}

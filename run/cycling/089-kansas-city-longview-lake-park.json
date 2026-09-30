@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "089-kansas-city-longview-lake-park",
+  "name": "Longview Lake Park",
+  "city": "Kansas City",
+  "country": "United States",
+  "park_area_km2": 19.691,
+  "road_km": 46.66,
+  "main_road_km": 20.95,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 12.05,
+  "painted_km": 7.09,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 19.14,
+  "ecf_ratio_main_roads_pct": 91.4,
+  "status": "ok"
+}

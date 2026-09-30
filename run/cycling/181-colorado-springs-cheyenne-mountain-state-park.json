@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "181-colorado-springs-cheyenne-mountain-state-park",
+  "name": "Cheyenne Mountain State Park",
+  "city": "Colorado Springs",
+  "country": "United States",
+  "park_area_km2": 8.764,
+  "road_km": 11.31,
+  "main_road_km": 0.96,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 22.1,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 22.1,
+  "ecf_ratio_main_roads_pct": 2302.1,
+  "status": "ok"
+}

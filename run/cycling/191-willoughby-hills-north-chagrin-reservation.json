@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "191-willoughby-hills-north-chagrin-reservation",
+  "name": "North Chagrin Reservation",
+  "city": "Willoughby Hills",
+  "country": "United States",
+  "park_area_km2": 7.953,
+  "road_km": 14.39,
+  "main_road_km": 11.59,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.01,
+  "shared_km": 9.64,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 9.65,
+  "ecf_ratio_main_roads_pct": 83.3,
+  "status": "ok"
+}

@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "167-jersey-city-liberty-state-park",
+  "name": "Liberty State Park",
+  "city": "Jersey City",
+  "country": "United States",
+  "park_area_km2": 1.449,
+  "road_km": 9.97,
+  "main_road_km": 1.09,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.0,
+  "painted_km": 0.23,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 0.23,
+  "ecf_ratio_main_roads_pct": 21.1,
+  "status": "ok"
+}

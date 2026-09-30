@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "120-washington-d-c-rock-creek-park",
+  "name": "Rock Creek Park",
+  "city": "Washington, D.C.",
+  "country": "United States",
+  "park_area_km2": 7.179,
+  "road_km": 29.03,
+  "main_road_km": 15.21,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 3.29,
+  "shared_km": 11.29,
+  "painted_km": 0.66,
+  "advisory_km": 0.0,
+  "sharrow_km": 3.86,
+  "dedicated_km": 15.24,
+  "ecf_ratio_main_roads_pct": 100.2,
+  "status": "ok"
+}

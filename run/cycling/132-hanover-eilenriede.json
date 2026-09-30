@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "132-hanover-eilenriede",
+  "name": "Eilenriede",
+  "city": "Hanover",
+  "country": "Germany",
+  "park_area_km2": 3.572,
+  "road_km": 9.61,
+  "main_road_km": 7.18,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 6.74,
+  "shared_km": 10.95,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 17.69,
+  "ecf_ratio_main_roads_pct": 246.4,
+  "status": "ok"
+}

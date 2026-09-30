@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "037-san-diego-mission-trails-regional-park",
+  "name": "Mission Trails Regional Park",
+  "city": "San Diego",
+  "country": "United States",
+  "park_area_km2": 27.173,
+  "road_km": 22.04,
+  "main_road_km": 4.24,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 3.52,
+  "shared_km": 2.33,
+  "painted_km": 0.64,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.8,
+  "dedicated_km": 6.49,
+  "ecf_ratio_main_roads_pct": 153.1,
+  "status": "ok"
+}

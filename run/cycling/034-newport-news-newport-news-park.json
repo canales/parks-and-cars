@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "034-newport-news-newport-news-park",
+  "name": "Newport News Park",
+  "city": "Newport News",
+  "country": "United States",
+  "park_area_km2": 12.855,
+  "road_km": 15.08,
+  "main_road_km": 0.06,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 6.77,
+  "shared_km": 0.0,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 6.77,
+  "ecf_ratio_main_roads_pct": 11283.3,
+  "status": "ok"
+}

@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "173-new-york-city-van-cortlandt-park",
+  "name": "Van Cortlandt Park",
+  "city": "New York City",
+  "country": "United States",
+  "park_area_km2": 4.603,
+  "road_km": 27.89,
+  "main_road_km": 22.49,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 1.5,
+  "shared_km": 3.75,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 5.25,
+  "ecf_ratio_main_roads_pct": 23.3,
+  "status": "ok"
+}

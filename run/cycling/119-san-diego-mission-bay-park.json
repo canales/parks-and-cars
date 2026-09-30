@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "119-san-diego-mission-bay-park",
+  "name": "Mission Bay Park",
+  "city": "San Diego",
+  "country": "United States",
+  "park_area_km2": 2.1,
+  "road_km": 10.24,
+  "main_road_km": 0.0,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 1.2,
+  "shared_km": 1.65,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 3.64,
+  "dedicated_km": 2.85,
+  "ecf_ratio_main_roads_pct": null,
+  "status": "ok"
+}

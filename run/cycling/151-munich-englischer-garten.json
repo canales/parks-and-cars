@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "151-munich-englischer-garten",
+  "name": "Englischer Garten",
+  "city": "Munich",
+  "country": "Germany",
+  "park_area_km2": 3.932,
+  "road_km": 4.93,
+  "main_road_km": 2.67,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 1.25,
+  "shared_km": 27.15,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 28.4,
+  "ecf_ratio_main_roads_pct": 1063.7,
+  "status": "ok"
+}

@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "158-new-orleans-city-park",
+  "name": "City Park",
+  "city": "New Orleans",
+  "country": "United States",
+  "park_area_km2": 4.889,
+  "road_km": 29.49,
+  "main_road_km": 11.17,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 2.97,
+  "shared_km": 3.83,
+  "painted_km": 2.27,
+  "advisory_km": 0.0,
+  "sharrow_km": 4.14,
+  "dedicated_km": 9.07,
+  "ecf_ratio_main_roads_pct": 81.2,
+  "status": "ok"
+}

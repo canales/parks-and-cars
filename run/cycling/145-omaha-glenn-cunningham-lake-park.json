@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "145-omaha-glenn-cunningham-lake-park",
+  "name": "Glenn Cunningham Lake Park",
+  "city": "Omaha",
+  "country": "United States",
+  "park_area_km2": 3.915,
+  "road_km": 8.93,
+  "main_road_km": 2.36,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 10.03,
+  "shared_km": 0.0,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 10.03,
+  "ecf_ratio_main_roads_pct": 425.0,
+  "status": "ok"
+}

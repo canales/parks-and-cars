@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "013-seoul-bukhansan-national-park",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "cycleway", "name": "무수천 자전거길" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 127.034203, 37.67728 ], [ 127.034254, 37.677299 ] ], [ [ 127.035396, 37.677618 ], [ 127.035592, 37.67767 ], [ 127.035845, 37.67776 ], [ 127.035968, 37.677817 ], [ 127.036008, 37.677835 ] ] ] } },
+{ "type": "Feature", "properties": { "cls": "shared", "highway": "footway", "name": null }, "geometry": { "type": "LineString", "coordinates": [ [ 126.989934, 37.611829 ], [ 126.98064, 37.611951 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "tertiary", "name": "북한산로" }, "geometry": { "type": "LineString", "coordinates": [ [ 126.954295, 37.667122 ], [ 126.954364, 37.667232 ], [ 126.954491, 37.667484 ], [ 126.954494, 37.667491 ] ] } },
+{ "type": "Feature", "properties": { "cls": "separated", "highway": "tertiary", "name": "북한산로" }, "geometry": { "type": "LineString", "coordinates": [ [ 126.963351, 37.689773 ], [ 126.963399, 37.68986 ], [ 126.963467, 37.690025 ], [ 126.963516, 37.690191 ], [ 126.96352, 37.690203 ] ] } }
+]
+}

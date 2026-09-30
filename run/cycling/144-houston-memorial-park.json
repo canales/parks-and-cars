@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "144-houston-memorial-park",
+  "name": "Memorial Park",
+  "city": "Houston",
+  "country": "United States",
+  "park_area_km2": 5.923,
+  "road_km": 22.14,
+  "main_road_km": 15.91,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 6.33,
+  "shared_km": 21.4,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 27.73,
+  "ecf_ratio_main_roads_pct": 174.3,
+  "status": "ok"
+}

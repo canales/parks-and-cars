@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "165-phoenix-cave-buttes-recreation-area",
+  "name": "Cave Buttes Recreation Area",
+  "city": "Phoenix",
+  "country": "United States",
+  "park_area_km2": 11.315,
+  "road_km": 4.46,
+  "main_road_km": 0.58,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.0,
+  "shared_km": 0.72,
+  "painted_km": 0.29,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 1.01,
+  "ecf_ratio_main_roads_pct": 174.1,
+  "status": "ok"
+}

@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "031-jacksonville-timucuan-preserve",
+  "name": "Timucuan Preserve",
+  "city": "Jacksonville",
+  "country": "United States",
+  "park_area_km2": 184.152,
+  "road_km": 83.5,
+  "main_road_km": 32.15,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 6.98,
+  "shared_km": 3.64,
+  "painted_km": 0.97,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 11.59,
+  "ecf_ratio_main_roads_pct": 36.0,
+  "status": "ok"
+}

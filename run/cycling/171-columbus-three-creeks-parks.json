@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "171-columbus-three-creeks-parks",
+  "name": "Three Creeks Parks",
+  "city": "Columbus",
+  "country": "United States",
+  "park_area_km2": 4.817,
+  "road_km": 5.76,
+  "main_road_km": 2.63,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 10.66,
+  "shared_km": 0.0,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 10.66,
+  "ecf_ratio_main_roads_pct": 405.3,
+  "status": "ok"
+}

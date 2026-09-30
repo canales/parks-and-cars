@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "027-ulsan-ulsan-grand-park",
+  "name": "Ulsan Grand Park",
+  "city": "Ulsan",
+  "country": "South Korea",
+  "park_area_km2": 1.037,
+  "road_km": 0.19,
+  "main_road_km": 0.0,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.43,
+  "shared_km": 0.0,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 0.43,
+  "ecf_ratio_main_roads_pct": null,
+  "status": "ok"
+}

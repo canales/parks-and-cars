@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "164-washington-d-c-anacostia-park",
+  "name": "Anacostia Park",
+  "city": "Washington, D.C.",
+  "country": "United States",
+  "park_area_km2": 0.91,
+  "road_km": 9.19,
+  "main_road_km": 2.85,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 0.03,
+  "shared_km": 4.36,
+  "painted_km": 0.0,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.0,
+  "dedicated_km": 4.39,
+  "ecf_ratio_main_roads_pct": 154.0,
+  "status": "ok"
+}

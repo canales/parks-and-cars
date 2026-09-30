@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "189-san-francisco-golden-gate-park",
+  "name": "Golden Gate Park",
+  "city": "San Francisco",
+  "country": "United States",
+  "park_area_km2": 4.063,
+  "road_km": 28.15,
+  "main_road_km": 15.01,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 1.41,
+  "shared_km": 14.87,
+  "painted_km": 0.92,
+  "advisory_km": 0.0,
+  "sharrow_km": 2.53,
+  "dedicated_km": 17.2,
+  "ecf_ratio_main_roads_pct": 114.6,
+  "status": "ok"
+}

@@ -1,0 +1,19 @@
+{
+  "method_version": 3,
+  "slug": "039-stockholm-royal-national-city-park",
+  "name": "Royal National City Park",
+  "city": "Stockholm",
+  "country": "Sweden",
+  "park_area_km2": 10.683,
+  "road_km": 70.27,
+  "main_road_km": 19.72,
+  "osm_data_date": "2026-09-28",
+  "separated_km": 26.99,
+  "shared_km": 21.66,
+  "painted_km": 0.05,
+  "advisory_km": 0.0,
+  "sharrow_km": 0.31,
+  "dedicated_km": 48.7,
+  "ecf_ratio_main_roads_pct": 247.0,
+  "status": "ok"
+}

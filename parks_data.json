@@ -2121,5 +2121,16 @@
     "description": "Harbour-surrounded, natural evolution",
     "included": true,
     "reason": "Urban recreational park, size-comparable to Monsanto, road infrastructure plausible"
-  }
+  },
+     {
+     "wiki_rank": 201,
+     "name": "Sintra-Cascais Natural Park",
+     "city": "Sintra",
+     "country": "Portugal",
+     "region": "Europe",
+     "size_ha": 14583,
+     "description": "Natural park, added manually: not on Wikipedia's list",
+     "included": true,
+     "reason": "Added manually"
+   }
 ]
