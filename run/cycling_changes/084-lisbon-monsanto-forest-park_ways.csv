@@ -1,0 +1,47 @@
+source,status,way,name,class,counted_km,same_in_other_snapshot_pct,osm_url
+now,added,1561516375,Estrada do Outeiro-Norte,separated,0.431,0,https://www.openstreetmap.org/way/1561516375
+now,added,1491627936,,separated,0.16,3,https://www.openstreetmap.org/way/1491627936
+now,added,165741156,Rua Padre José Gallea,sharrow,0.0,0,https://www.openstreetmap.org/way/165741156
+now,added,683278285,Rua Padre Domingos Maurício dos Santos,sharrow,0.0,0,https://www.openstreetmap.org/way/683278285
+now,added,35571889,Rua 5,sharrow,0.0,0,https://www.openstreetmap.org/way/35571889
+now,added,145019601,Rua 2,sharrow,0.0,0,https://www.openstreetmap.org/way/145019601
+now,added,35571894,Rua 6,sharrow,0.0,0,https://www.openstreetmap.org/way/35571894
+now,added,186640385,Rua 7,sharrow,0.0,0,https://www.openstreetmap.org/way/186640385
+now,added,186640369,Rua 2,sharrow,0.0,0,https://www.openstreetmap.org/way/186640369
+now,added,35571871,Rua 12,sharrow,0.0,0,https://www.openstreetmap.org/way/35571871
+now,added,35571893,Rua 10,sharrow,0.0,0,https://www.openstreetmap.org/way/35571893
+now,added,186640364,Rua 8,sharrow,0.0,0,https://www.openstreetmap.org/way/186640364
+now,added,37766352,Rua Miguel Ângelo de Blasco,sharrow,0.0,0,https://www.openstreetmap.org/way/37766352
+now,unchanged,598503048,,separated,1.456,100,https://www.openstreetmap.org/way/598503048
+now,unchanged,976381232,Ciclovia Parque de Campismo,separated,0.931,100,https://www.openstreetmap.org/way/976381232
+now,unchanged,171138506,Pista do Panorâmico,separated,0.711,100,https://www.openstreetmap.org/way/171138506
+now,unchanged,92161645,,separated,0.645,100,https://www.openstreetmap.org/way/92161645
+now,unchanged,529716800,Pista do Panorâmico,separated,0.565,100,https://www.openstreetmap.org/way/529716800
+now,unchanged,529716799,Pista do Panorâmico,separated,0.432,100,https://www.openstreetmap.org/way/529716799
+now,unchanged,169794598,Estrada do Barcal,separated,0.405,100,https://www.openstreetmap.org/way/169794598
+now,unchanged,205835100,,separated,0.331,100,https://www.openstreetmap.org/way/205835100
+now,unchanged,529716804,Pista do Panorâmico,separated,0.264,100,https://www.openstreetmap.org/way/529716804
+now,unchanged,976381232,Ciclovia Parque de Campismo,separated,0.183,100,https://www.openstreetmap.org/way/976381232
+now,unchanged,1013437864,Estrada do Barcal,separated,0.148,100,https://www.openstreetmap.org/way/1013437864
+now,unchanged,529716803,Pista do Panorâmico,separated,0.133,100,https://www.openstreetmap.org/way/529716803
+now,unchanged,691625561,Corredor Verde do Vale de Alcântara,shared,0.118,100,https://www.openstreetmap.org/way/691625561
+now,unchanged,671236895,Corredor Verde do Vale de Alcântara,shared,0.105,100,https://www.openstreetmap.org/way/671236895
+now,unchanged,166102399,,separated,0.088,100,https://www.openstreetmap.org/way/166102399
+now,unchanged,963358128,Corredor Verde do Vale de Alcântara,shared,0.087,100,https://www.openstreetmap.org/way/963358128
+now,unchanged,529716798,Pista do Panorâmico,separated,0.076,100,https://www.openstreetmap.org/way/529716798
+now,unchanged,43323399,Ponte Pedonal e Ciclável acesso norte a Monsanto,shared,0.059,100,https://www.openstreetmap.org/way/43323399
+now,unchanged,92161645,,separated,0.057,100,https://www.openstreetmap.org/way/92161645
+now,unchanged,529707748,,separated,0.056,100,https://www.openstreetmap.org/way/529707748
+now,unchanged,164086086,,separated,0.054,100,https://www.openstreetmap.org/way/164086086
+now,unchanged,163798439,,shared,0.05,100,https://www.openstreetmap.org/way/163798439
+now,unchanged,956549959,,shared,0.037,100,https://www.openstreetmap.org/way/956549959
+now,unchanged,976381232,Ciclovia Parque de Campismo,separated,0.024,100,https://www.openstreetmap.org/way/976381232
+now,unchanged,164086066,,separated,0.024,100,https://www.openstreetmap.org/way/164086066
+now,unchanged,207473752,,shared,0.024,100,https://www.openstreetmap.org/way/207473752
+now,unchanged,598503049,,separated,0.022,100,https://www.openstreetmap.org/way/598503049
+now,unchanged,424010628,,separated,0.014,100,https://www.openstreetmap.org/way/424010628
+now,unchanged,976381232,Ciclovia Parque de Campismo,separated,0.013,100,https://www.openstreetmap.org/way/976381232
+now,unchanged,180625992,,shared,0.012,100,https://www.openstreetmap.org/way/180625992
+now,unchanged,1080606319,Pista do Panorâmico,separated,0.011,100,https://www.openstreetmap.org/way/1080606319
+now,unchanged,507133721,,separated,0.003,100,https://www.openstreetmap.org/way/507133721
+before,unchanged,205835100,,separated,0.389,85,https://www.openstreetmap.org/way/205835100

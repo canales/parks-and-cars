@@ -55,6 +55,7 @@ MAPS_OUT  = OUT / "data" / "maps"
 HOME_SLUG   = "084-lisbon-monsanto-forest-park"   # the park the story is about
 WIKI_LIST_SIZE = 193   # parks ranked 1 to 193 come from Wikipedia's list; higher ranks were added by hand
 SIMPLIFY_M  = 1.5                                  # outline simplification tolerance
+HW_SIMPLIFY_M = 1.0                                # tolerance for highway centre lines (drawn at real width)
 REGION_CODES = {"Europe": "eu", "North America": "na", "South America": "sa",
                 "Asia": "as", "Africa": "af", "Oceania": "oc"}
 CATEGORY_CODES = {"highways": "highways", "main roads": "main", "local roads": "local",
@@ -206,6 +207,7 @@ def compact_map(path):
            "surfaces": {"type": "FeatureCollection", "features": []},
            "parking": None, "crossings": [], "signs": []}
     speed_lines = []
+    hw_groups = {}               # highway centre lines grouped by width (m), drawn one band per carriageway
     max_speed = {"hw": 0, "road": 0}    # highest mapped limit on highways / on other roads
     ref_km = {}                  # km of each numbered highway inside the park (e.g. "A 5")
     for f in feats:
@@ -226,6 +228,15 @@ def compact_map(path):
                 km = sum(proj.dist(l[i], l[i + 1]) for l in parts for i in range(len(l) - 1)) / 1000
                 # a one-way way is one carriageway: two of them make one km of motorway
                 ref_km[ref] = ref_km.get(ref, 0) + (km / 2 if truthy(p.get("oneway")) else km)
+            if (p.get("category") == "highways" and not truthy(p.get("in_tunnel"))
+                    and geom["type"] in ("LineString", "MultiLineString")):
+                wm = number(p.get("width_m"))
+                if wm:
+                    key = round(round(wm * 4) / 4, 2)            # width buckets of 0.25 m
+                    parts = [geom["coordinates"]] if geom["type"] == "LineString" else geom["coordinates"]
+                    for part in parts:
+                        if len(part) >= 2:
+                            hw_groups.setdefault(key, []).append([rnd(c) for c in simplify(part, proj, HW_SIMPLIFY_M)])
             kmh = number(p.get("maxspeed_kmh"))
             if kmh:
                 k = "hw" if p.get("category") == "highways" else "road"
@@ -241,6 +252,13 @@ def compact_map(path):
                        if x.strip() not in ("", "nan", "None")],
                 "lon": round(geom["coordinates"][0], 5), "lat": round(geom["coordinates"][1], 5)})
     out["pieces"]["features"].sort(key=lambda f: f["properties"]["id"])
+    if hw_groups:
+        out["hwl"] = {"type": "FeatureCollection", "features": [
+            {"type": "Feature", "properties": {"w": w},
+             "geometry": {"type": "MultiLineString", "coordinates": lines}}
+            for w, lines in sorted(hw_groups.items())]}
+        # the merged highway shape is no longer drawn when the lines are there
+        out["surfaces"]["features"] = [f for f in out["surfaces"]["features"] if f["properties"]["c"] != "highways"]
     out["signs"] = place_signs(speed_lines, proj)
     out["refs"] = {k: round(v, 2) for k, v in ref_km.items()}
     out["maxspd"] = {k: v or None for k, v in max_speed.items()}

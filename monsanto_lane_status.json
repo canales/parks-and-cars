@@ -1,0 +1,4 @@
+{
+  "_about": "Lanes you have seen being removed on the ground that OpenStreetMap does not show as removed yet. Add one entry per OSM way ID (the number in openstreetmap.org/way/123456789), with the date you saw it. Once OpenStreetMap is updated, cycling_changes.py finds the removal by itself and the entry can be deleted. Only list ways you have seen yourself.",
+  "being_removed": []
+}

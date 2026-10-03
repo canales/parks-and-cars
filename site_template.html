@@ -14,7 +14,7 @@
   --hw:#303336; --main:#565B60; --local:#80868B; --service:#AAB0B4; --roads:#565B60;
   --marking:#E0B72E; --focus:#E0B72E; --highlight:#EEF2EC; --sel:#E3EBDF;
   --warn-bg:#FBF3D9; --warn-ink:#6B5712;
-  --p1:#C2DAB6; --p2:#A3C895; --p3:#DDE9D7; --cyc-sep:#1B6CA8; --cyc-shared:#6BAED6;
+  --p1:#C2DAB6; --p2:#A3C895; --p3:#DDE9D7; --cyc-sep:#0B5CA8; --cyc-edge:#FFFFFF; --hw-edge:#8D9298;
   --display:"Barlow Condensed","Roboto Condensed","Arial Narrow",system-ui,sans-serif;
   --text:"Barlow","Segoe UI",Roboto,system-ui,sans-serif;
   box-sizing:border-box;
@@ -28,7 +28,7 @@
     --hw:#E3E6E8; --main:#BFC4C8; --local:#979DA2; --service:#71777C; --roads:#BFC4C8;
     --marking:#E8C547; --focus:#E8C547; --highlight:#1B211E; --sel:#22302A;
     --warn-bg:#2E2912; --warn-ink:#E9D58B;
-    --p1:#274634; --p2:#325A43; --p3:#1C2E24; --cyc-sep:#6FB3F0; --cyc-shared:#A7D0F2;
+    --p1:#274634; --p2:#325A43; --p3:#1C2E24; --cyc-sep:#6FB3F0; --cyc-edge:#141816; --hw-edge:#7B8187;
   }
 }
 :root[data-theme="dark"]{
@@ -37,7 +37,7 @@
   --hw:#E3E6E8; --main:#BFC4C8; --local:#979DA2; --service:#71777C; --roads:#BFC4C8;
   --marking:#E8C547; --focus:#E8C547; --highlight:#1B211E; --sel:#22302A;
   --warn-bg:#2E2912; --warn-ink:#E9D58B;
-  --p1:#274634; --p2:#325A43; --p3:#1C2E24; --cyc-sep:#6FB3F0; --cyc-shared:#A7D0F2;
+  --p1:#274634; --p2:#325A43; --p3:#1C2E24; --cyc-sep:#6FB3F0; --cyc-edge:#141816; --hw-edge:#7B8187;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
@@ -198,14 +198,13 @@ a{color:inherit}
 .b-share{box-shadow:inset 0 0 0 1px var(--cyc-sep);color:var(--cyc-sep)}
 .p-added{box-shadow:inset 0 0 0 1px var(--marking);color:var(--warn-ink)}
 .b-little{box-shadow:inset 0 0 0 1px var(--rule);color:var(--muted)}
+.dclose{display:none}
 .dpills{margin:-8px 0 6px}
 .gdesc{font-size:13px;color:var(--muted);margin:0 0 14px}
 #sortDir{margin-left:4px}
-.legend i.cyc{height:0;width:18px;border-top:3px solid var(--cyc-sep)}
-.legend i.cyc.sh{border-top-color:var(--cyc-shared)}
-.legend i.cyc.pt{border-top-style:dashed}
+.cyc-sw{width:30px;height:10px;flex:none;display:block}
 .cycrows{margin:0 0 8px;padding:0;list-style:none}
-.cycrows li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:15px;padding:5px 0;border-bottom:1px solid var(--rule)}
+.cycrows li{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:15px;padding:5px 0;border-bottom:1px solid var(--rule)}
 .cycrows b{font:600 16px var(--display)}
 .legend i.sgn{width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px #C62828 inset}
 .cx-path{fill:var(--forest)}
@@ -233,7 +232,12 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:14px;color
   .hero{grid-template-columns:1fr;gap:28px;padding-top:36px}
   .hero-fig{max-width:520px}
   .main{grid-template-columns:1fr}
-  .detail{position:static;max-height:none;overflow:visible}
+  /* phones and tablets: the park detail is a full-screen sheet opened from the list */
+  .detail{position:fixed;inset:0;z-index:60;max-height:none;overflow-y:auto;overscroll-behavior:contain;background:var(--paper);padding:0 16px calc(24px + env(safe-area-inset-bottom,0px));transform:translateY(100%);visibility:hidden;transition:transform .25s,visibility 0s .25s}
+  .detail.open{transform:none;visibility:visible;transition:transform .25s}
+  .dclose{display:flex;position:sticky;top:0;z-index:3;margin:0 -16px 14px;padding:calc(env(safe-area-inset-top,0px) + 10px) 16px 10px;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .dclose button{font:500 15px var(--text);background:none;border:1px solid var(--rule);border-radius:999px;color:var(--ink);padding:6px 14px;cursor:pointer}
+  body.sheet-lock{overflow:hidden}
 }
 @media (max-width:560px){
   .wrap{padding:0 16px}
@@ -421,6 +425,14 @@ function getMap(id){
 const FIELD_M2 = 105 * 68;
 const REGIONS = ["all","eu","na","sa","as","af","oc"];
 const CAT_ORDER = ["highways","main","local","service","parking"];
+const CYC_DASH = {separated: null, shared: "9 3 2 3", painted: "4 4"};   // one blue; the line style carries the type
+const CYC_W = 3;
+function cycSwatch(cls){
+  const d = CYC_DASH[cls];
+  return `<svg class="cyc-sw" viewBox="0 0 30 10" aria-hidden="true"><rect width="30" height="10" rx="2" fill="var(--canopy)"/>`
+    + `<line x1="2" y1="5" x2="28" y2="5" stroke="var(--cyc-edge)" stroke-width="${CYC_W + 3}" stroke-linecap="round"/>`
+    + `<line x1="2" y1="5" x2="28" y2="5" stroke="var(--cyc-sep)" stroke-width="${CYC_W}"${d ? ` stroke-dasharray="${d}"` : ""}/></svg>`;
+}
 const CAT_VAR = {highways:"--hw", main:"--main", local:"--local", service:"--service", roads:"--roads", parking:"--marking"};
 const BANDS = [["b30","--s30"],["b50","--s50"],["b70","--s70"],["b90","--s90"],["b91","--s91"],["none","--snone"]];
 const BAND_VAR = Object.fromEntries(BANDS);
@@ -449,6 +461,7 @@ en:{
   d_method1:"Measured with the first road-width method. Road types are not separated yet.",
   d_method2:"Road widths from lane counts, including shoulders, with road types separated.",
   d_story:"Read the Monsanto story",
+  d_back:"← Ranking",
   v_label:"View", v_square:"Area", v_map:"Map",
   map_na:"The map for this park will appear once it's measured with the new method.",
   map_aria:"Map of the park with its roads at their real width, parking, speed limits and the places where people can cross the highways",
@@ -594,6 +607,7 @@ pt:{
   d_method1:"Medido com o primeiro método de largura das estradas. Os tipos de estrada ainda não estão separados.",
   d_method2:"Larguras calculadas a partir do número de vias, incluindo bermas, com os tipos de estrada separados.",
   d_story:"Ler a história de Monsanto",
+  d_back:"← Classificação",
   v_label:"Vista", v_square:"Área", v_map:"Mapa",
   map_na:"O mapa deste parque vai aparecer quando for medido com o novo método.",
   map_aria:"Mapa do parque com as estradas na sua largura real, estacionamento, limites de velocidade e os locais onde se pode atravessar as autoestradas",
@@ -914,9 +928,26 @@ function renderList(){
     `<button type="button" class="chip" id="showAll" style="margin:14px 8px">${state.showAll ? t("show_less") : t("show_all")(list.length)}</button>`);
   const sa = $("#showAll");
   if(sa) sa.onclick = () => { state.showAll = !state.showAll; renderList(); };
-  rows.querySelectorAll(".row").forEach(b => b.onclick = () => { state.selected = b.dataset.id; renderList(); });
+  rows.querySelectorAll(".row").forEach(b => b.onclick = () => { state.selected = b.dataset.id; renderList(); openSheet(); });
   renderDetail();
 }
+/* ── park detail as a full-screen sheet on narrow screens (list stays where it was) ── */
+const mqSheet = window.matchMedia("(max-width:900px)");
+function openSheet(){
+  const d = $("#detail");
+  if(!mqSheet.matches || d.classList.contains("open")) return;
+  d.classList.add("open"); document.body.classList.add("sheet-lock"); d.scrollTop = 0;
+  history.pushState({sheet: 1}, "");              // the phone's back button closes the sheet
+}
+function closeSheet(fromPop){
+  const d = $("#detail");
+  if(!d.classList.contains("open")) return;
+  d.classList.remove("open"); document.body.classList.remove("sheet-lock");
+  if(!fromPop && history.state && history.state.sheet) history.back();
+}
+window.addEventListener("popstate", () => closeSheet(true));
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeSheet(); });
+mqSheet.addEventListener("change", e => { if(!e.matches) closeSheet(true); });
 function renderDetail(){
   const p = PARKS.find(x => x.id === state.selected);
   const v = view(p);
@@ -924,6 +955,7 @@ function renderDetail(){
   const area = p.km2 * 1e6;
   const isMap = state.detailView === "map";
   $("#detail").innerHTML = `
+    <div class="dclose"><button type="button" id="dBack">${t("d_back")}</button></div>
     <h2>${L(p.name)}</h2>
     <p class="dsub">${L(p.city)}, ${L(p.country)}</p>
     <div class="pills dpills">${pillsHtml(p)}</div>
@@ -950,9 +982,9 @@ function renderDetail(){
     ${p.hw_km > 0 ? `<p class="vs">${t("d_cut")(num(p.hw_km, 1), p.pieces, p.walk)}</p>` : ""}
     <h2 style="font-size:20px;margin-top:22px">${t("d_cyc_h")}</h2>
     ${p.cyc ? `<ul class="cycrows">
-        <li><i class="cyc"></i><span>${t("d_cyc_sep")}</span><b>${num(p.cyc.separated_km, 1)} km</b></li>
-        <li><i class="cyc sh"></i><span>${t("d_cyc_shared")}</span><b>${num(p.cyc.shared_km, 1)} km</b></li>
-        <li><i class="cyc pt"></i><span>${t("d_cyc_painted")}</span><b>${num(p.cyc.painted_km, 1)} km</b></li>
+        <li>${cycSwatch("separated")}<span>${t("d_cyc_sep")}</span><b>${num(p.cyc.separated_km, 1)} km</b></li>
+        <li>${cycSwatch("shared")}<span>${t("d_cyc_shared")}</span><b>${num(p.cyc.shared_km, 1)} km</b></li>
+        <li>${cycSwatch("painted")}<span>${t("d_cyc_painted")}</span><b>${num(p.cyc.painted_km, 1)} km</b></li>
         <li><i></i><span>${t("d_cyc_total")}</span><b>${num(p.cyc.dedicated_km, 1)} km</b></li>
       </ul>
       <p class="vs">${p.cyc_per100 != null ? t("d_cyc_per100")(num(p.cyc_per100, 0)) : t("d_cyc_fewroads")(num(p.road_km, 1))}</p>`
@@ -967,8 +999,9 @@ function renderDetail(){
     else box.innerHTML = `<p class="empty">${t("map_na")}</p>`;
   });
   if(!isMap) drawSquare($("#detailSq"), p, false);
+  $("#dBack").onclick = () => closeSheet();
   const link = $("#openStory");
-  if(link) link.onclick = () => { $("#monsanto").open = true; };
+  if(link) link.onclick = () => { closeSheet(true); $("#monsanto").open = true; };
 }
 
 /* ── story numbers (English for now) ── */
@@ -1016,9 +1049,9 @@ function mapLegendHtml(withPieces, withCycling){
   if(withPieces) items.push(`<li><i style="background:var(--p1)"></i><i style="background:var(--p2);margin-left:-4px"></i>${t("lg_piece")}</li>`);
   ["highways","main","local","service","parking"].forEach(c => items.push(`<li><i style="background:var(${CAT_VAR[c]})"></i>${t("cat_"+c)}</li>`));
   if(withCycling){
-    items.push(`<li><i class="cyc"></i>${t("lg_cyc_sep")}</li>`);
-    items.push(`<li><i class="cyc sh"></i>${t("lg_cyc_shared")}</li>`);
-    items.push(`<li><i class="cyc pt"></i>${t("lg_cyc_painted")}</li>`);
+    items.push(`<li>${cycSwatch("separated")}${t("lg_cyc_sep")}</li>`);
+    items.push(`<li>${cycSwatch("shared")}${t("lg_cyc_shared")}</li>`);
+    items.push(`<li>${cycSwatch("painted")}${t("lg_cyc_painted")}</li>`);
   }
   items.push(`<li><i class="sgn"></i>${t("lg_sign")}</li>`);
   items.push(`<li><i class="dot" style="background:var(--forest)"></i>${t("lg_path")}</li>`);
@@ -1031,6 +1064,7 @@ const SCALE_STEPS = [10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 
 let basemapOn = false;                     // OpenFreeMap basemap, shared by every map
 let cyclingOn = true;                      // cycling layer, shared by every map
 const liveMaps = new Set();
+let mapUid = 0;                           // unique ids for each map's clip path
 const ROAD_WORDS = {
   en: {motorway:"motorway", motorway_link:"motorway ramp", trunk:"expressway", trunk_link:"expressway ramp",
        primary:"main road", primary_link:"main road ramp", secondary:"main road", secondary_link:"main road ramp",
@@ -1063,6 +1097,9 @@ function buildMap(box, geo, opts){
   const svg = d3.select(box).append("svg").attr("viewBox", `0 0 ${w} ${h}`).attr("role","img").attr("aria-label", t("map_aria"));
   const proj = d3.geoMercator().fitExtent([[14,14],[w-14,h-14]], geo.park);
   const path = d3.geoPath(proj);
+  const mPerPx = 6371008.8 * Math.cos(d3.geoCentroid(geo.park)[1] * Math.PI / 180) / proj.scale();   // metres per base pixel
+  const clipId = `pkclip${++mapUid}`;
+  svg.append("defs").append("clipPath").attr("id", clipId).append("path").attr("d", path(geo.park));
   const g = svg.append("g");
   g.append("path").datum(geo.park).attr("class","m-park").attr("d", path).attr("vector-effect","non-scaling-stroke");
   const pieceG = g.append("g");
@@ -1070,15 +1107,34 @@ function buildMap(box, geo, opts){
   pieceG.selectAll("path").data(pieces).join("path").attr("class","m-piece").attr("d", path)
     .attr("fill", d => `var(--p${Math.min(d.properties.id, 3)})`);
   const surf = g.append("g");
-  surf.selectAll("path").data(geo.surfaces.features).join("path").attr("d", path)
+  // highways are drawn carriageway by carriageway (older map files fall back to the merged shape)
+  const hwl = geo.hwl && geo.hwl.features.length ? geo.hwl : null;
+  surf.selectAll("path").data(geo.surfaces.features.filter(d => !(hwl && d.properties.c === "highways"))).join("path").attr("d", path)
     .attr("fill", d => `var(${CAT_VAR[d.properties.c]})`)
     .attr("stroke", d => `var(${CAT_VAR[d.properties.c]})`).attr("stroke-width", 0.8)
     .attr("stroke-linejoin", "round").attr("vector-effect", "non-scaling-stroke");   // hides hairline seams
+  if(hwl){
+    // round ends close the small gaps where segments meet at an angle; the park outline trims the ends at its edge
+    const hwG = surf.append("g").attr("fill", "none").attr("stroke-linejoin", "round").attr("stroke-linecap", "round")
+      .attr("clip-path", `url(#${clipId})`);
+    hwG.selectAll("path.hw-edge").data(hwl.features).join("path").attr("class", "hw-edge").attr("d", path)
+      .attr("stroke", "var(--hw-edge)").attr("stroke-width", d => (d.properties.w + 1.0) / mPerPx);
+    hwG.selectAll("path.hw-band").data(hwl.features).join("path").attr("class", "hw-band").attr("d", path)
+      .attr("stroke", "var(--hw)").attr("stroke-width", d => Math.max(d.properties.w - 0.2, 0.4) / mPerPx);
+    hwG.selectAll("path.hw-min").data(hwl.features).join("path").attr("class", "hw-min").attr("d", path)
+      .attr("stroke", "var(--hw)").attr("stroke-width", 2).attr("vector-effect", "non-scaling-stroke");   // keeps narrow ramps visible when zoomed out
+  }
   if(geo.parking) surf.append("path").datum(geo.parking).attr("d", path).attr("fill","var(--marking)");
-  const cycG = g.append("g").attr("fill", "none").attr("stroke-linecap", "round");
-  cycG.selectAll("path").data(geo.cycling ? geo.cycling.features : []).join("path").attr("d", path)
-    .attr("stroke", d => d.properties.c === "shared" ? "var(--cyc-shared)" : "var(--cyc-sep)")
-    .attr("stroke-width", 2.8).attr("stroke-dasharray", d => d.properties.c === "painted" ? "5 4" : null)
+  // cycling, option C: one blue, line style by type, a thin edge so lines read on green and grey
+  const cycFeats = geo.cycling ? geo.cycling.features : [];
+  const cycG = g.append("g").attr("fill", "none").attr("stroke-linejoin", "round");
+  cycG.selectAll("path.cy-edge").data(cycFeats).join("path").attr("class", "cy-edge").attr("d", path)
+    .attr("stroke", "var(--cyc-edge)").attr("stroke-width", CYC_W + 3).attr("stroke-linecap", "round")
+    .attr("vector-effect", "non-scaling-stroke");
+  cycG.selectAll("path.cy-line").data(cycFeats).join("path").attr("class", "cy-line").attr("d", path)
+    .attr("stroke", "var(--cyc-sep)").attr("stroke-width", CYC_W)
+    .attr("stroke-linecap", d => CYC_DASH[d.properties.c] ? "butt" : "round")
+    .attr("stroke-dasharray", d => CYC_DASH[d.properties.c] || null)
     .attr("vector-effect", "non-scaling-stroke");
   const labelG = g.append("g");
   const labels = labelG.selectAll("g").data(pieces.filter(f => f.properties.id <= 2 && pieces.length > 1)).join("g").attr("class","plabel");
@@ -1104,8 +1160,6 @@ function buildMap(box, geo, opts){
   const scaleG = svg.append("g").attr("class","m-scale").attr("transform", `translate(14,${h - 16})`);
   const scaleLine = scaleG.append("line").attr("y1", 0).attr("y2", 0);
   const scaleText = scaleG.append("text").attr("y", -6);
-  const centre = d3.geoCentroid(geo.park);
-  const mPerPx = 6371008.8 * Math.cos(centre[1] * Math.PI / 180) / proj.scale();
 
   // basemap button, attribution and note
   const btns = document.createElement("div");

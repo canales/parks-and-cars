@@ -1,0 +1,68 @@
+{
+  "slug": "084-lisbon-monsanto-forest-park",
+  "road_km": 105.54,
+  "tolerance_m": 8.0,
+  "baseline": {
+    "date": "2026-01-01",
+    "file": "portugal-260101.osm.pbf",
+    "separated": 6.707,
+    "shared": 0.493,
+    "painted": 0.0,
+    "advisory": 0.0,
+    "sharrow": 0.0,
+    "dedicated_km": 7.2,
+    "per_100_km_road": 6.82
+  },
+  "current": {
+    "date": "2026-10-03",
+    "file": "portugal-latest.osm.pbf",
+    "separated": 7.241,
+    "shared": 0.493,
+    "painted": 0.0,
+    "advisory": 0.0,
+    "sharrow": 0.366,
+    "dedicated_km": 7.734,
+    "per_100_km_road": 7.33
+  },
+  "added_km": 0.586,
+  "unchanged_km": 7.147,
+  "removed_in_osm_km": 0.057,
+  "other_change_km": 0.004,
+  "being_removed_km": 0,
+  "being_removed_ways": [],
+  "observed": [],
+  "dedicated_after_removal_km": 7.734,
+  "per_100_km_road_after_removal": 7.33,
+  "snapshots": [
+    {
+      "date": "2025-01-01",
+      "file": "portugal-250101.osm.pbf",
+      "separated": 6.708,
+      "shared": 0.493,
+      "painted": 0.0,
+      "advisory": 0.0,
+      "sharrow": 0.0,
+      "dedicated_km": 7.201
+    },
+    {
+      "date": "2026-01-01",
+      "file": "portugal-260101.osm.pbf",
+      "separated": 6.707,
+      "shared": 0.493,
+      "painted": 0.0,
+      "advisory": 0.0,
+      "sharrow": 0.0,
+      "dedicated_km": 7.2
+    },
+    {
+      "date": "2026-10-03",
+      "file": "portugal-latest.osm.pbf",
+      "separated": 7.241,
+      "shared": 0.493,
+      "painted": 0.0,
+      "advisory": 0.0,
+      "sharrow": 0.366,
+      "dedicated_km": 7.734
+    }
+  ]
+}
