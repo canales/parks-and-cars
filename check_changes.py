@@ -5,8 +5,9 @@ Compares a park's results before and after a re-measure, and writes a
 Markdown table of what changed (used as the pull request description by the
 monthly GitHub Action).
 
-Usage: python check_changes.py before.json after.json changes.md
-Prints changed=true/false, and sets it as a GitHub Actions step output.
+Usage: python check_changes.py before.json after.json changes.md [output_name] [title]
+Prints changed=true/false, and sets it as a GitHub Actions step output
+(named "changed" unless output_name is given, e.g. "cycling_changed").
 """
 
 import json
@@ -19,6 +20,8 @@ IGNORE = {"osm_data_date", "measured_on", "boundary_method", "region", "continen
 
 def main():
     before_path, after_path, out_path = sys.argv[1:4]
+    out_name = sys.argv[4] if len(sys.argv) > 4 else "changed"
+    title = sys.argv[5] if len(sys.argv) > 5 else "Monthly re-measure"
     before = json.load(open(before_path))
     after = json.load(open(after_path))
 
@@ -35,7 +38,7 @@ def main():
         changes.append((key, old, new))
 
     name = after.get("name", after.get("slug", "park"))
-    lines = [f"Monthly re-measure of **{name}** with the latest OpenStreetMap data "
+    lines = [f"{title} of **{name}** with the latest OpenStreetMap data "
              f"(extract of {after.get('osm_data_date') or 'unknown date'}; "
              f"previous: {before.get('osm_data_date') or 'unknown'}).", ""]
     if changes:
@@ -47,12 +50,12 @@ def main():
     open(out_path, "w").write("\n".join(lines) + "\n")
 
     changed = "true" if changes else "false"
-    print(f"changed={changed}")
+    print(f"{out_name}={changed}")
     for k, o, n in changes:
         print(f"  {k}: {o} -> {n}")
     if os.environ.get("GITHUB_OUTPUT"):
         with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-            f.write(f"changed={changed}\n")
+            f.write(f"{out_name}={changed}\n")
 
 
 if __name__ == "__main__":

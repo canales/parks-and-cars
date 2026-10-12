@@ -1,8 +1,11 @@
 name: Monthly Monsanto refresh
 
-# Re-measures Monsanto with the latest OpenStreetMap data once a month.
+# Re-measures Monsanto (roads, speed limits and cycling) with the latest
+# OpenStreetMap data once a month, from the same extract.
 # Opens a pull request only if a number changed, so nothing is published
-# until you have checked it and merged.
+# until you have checked it and merged. Only Monsanto is re-measured here:
+# other parks are re-measured by hand (run_all_parks.py --only <slug> --refresh),
+# then python build_site.py, then commit.
 on:
   schedule:
     - cron: "0 6 3 * *"        # 06:00 UTC on the 3rd of every month
@@ -34,32 +37,54 @@ jobs:
       - name: Download the Portugal extract
         run: |
           mkdir -p pbf
-          curl -L --retry 3 -f -o pbf/portugal-latest.osm.pbf \
-            https://download.geofabrik.de/europe/portugal-latest.osm.pbf
+          fetch() {
+            curl -L --retry 3 -f -o pbf/portugal-latest.osm.pbf "$1" \
+              && [ "$(stat -c%s pbf/portugal-latest.osm.pbf)" -gt 100000000 ]   # a real extract is a few hundred MB, not an error page
+          }
+          # Geofabrik first; the openstreetmap.fr mirror if Geofabrik refuses, redirects or returns a page instead of the file
+          fetch https://download.geofabrik.de/europe/portugal-latest.osm.pbf \
+            || fetch https://download.openstreetmap.fr/extracts/europe/portugal-latest.osm.pbf
+          echo "Downloaded $(stat -c%s pbf/portugal-latest.osm.pbf) bytes"
 
       - name: Re-measure Monsanto
         run: |
           cp "run/summaries/$PARK.json" /tmp/before.json
+          cp "run/cycling/$PARK.json" /tmp/cycling_before.json || true
           python run_all_parks.py --only "$PARK" --refresh --offline
+
+      - name: Re-measure Monsanto's cycling infrastructure (same extract)
+        continue-on-error: true      # if this fails, the road numbers still go through
+        run: python cycling_infra.py --only "$PARK" --refresh
 
       - name: Compare with the published numbers
         id: compare
-        run: python check_changes.py /tmp/before.json "run/summaries/$PARK.json" /tmp/changes.md
+        run: |
+          python check_changes.py /tmp/before.json "run/summaries/$PARK.json" /tmp/changes.md changed "Monthly re-measure"
+          if [ -f /tmp/cycling_before.json ] && [ -f "run/cycling/$PARK.json" ]; then
+            python check_changes.py /tmp/cycling_before.json "run/cycling/$PARK.json" /tmp/cycling_changes.md cycling_changed "Cycling infrastructure"
+            cat /tmp/changes.md /tmp/cycling_changes.md > /tmp/body.md
+          else
+            echo "cycling_changed=false" >> "$GITHUB_OUTPUT"
+            cp /tmp/changes.md /tmp/body.md
+          fi
 
       - name: Rebuild the site
-        if: steps.compare.outputs.changed == 'true'
+        if: steps.compare.outputs.changed == 'true' || steps.compare.outputs.cycling_changed == 'true'
         run: python build_site.py
 
       - name: Open a pull request
-        if: steps.compare.outputs.changed == 'true'
+        if: steps.compare.outputs.changed == 'true' || steps.compare.outputs.cycling_changed == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           branch: monsanto-refresh
           delete-branch: true
           title: "Monsanto: numbers changed in the latest OpenStreetMap data"
           commit-message: "Re-measure Monsanto with the latest OpenStreetMap data"
-          body-path: /tmp/changes.md
+          body-path: /tmp/body.md
           add-paths: |
             run/parks_results.csv
+            run/cycling_results.csv
             run/summaries/${{ env.PARK }}.json
+            run/cycling/${{ env.PARK }}.json
+            run/cycling/${{ env.PARK }}.geojson
             docs

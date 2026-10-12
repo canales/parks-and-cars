@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Parks and cars</title>
+<title>Urban parks and cars</title>
 <meta name="description" content="We measured roads and parking inside large urban parks around the world with one method and OpenStreetMap data. See where Lisbon's Monsanto Forest Park stands.">
 <link rel="canonical" href="https://canales.github.io/parks-and-cars/">
 <!-- Open Graph: how the page looks when shared on LinkedIn, WhatsApp, Slack, etc. -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Parks and cars">
-<meta property="og:title" content="Parks and cars: how much of the world's great parks goes to cars?">
+<meta property="og:site_name" content="Urban parks and cars">
+<meta property="og:title" content="How much of the world's great urban parks goes to cars?">
 <meta property="og:description" content="We measured roads and parking inside large urban parks around the world with one method and OpenStreetMap data. See where Lisbon's Monsanto Forest Park stands.">
 <meta property="og:url" content="https://canales.github.io/parks-and-cars/">
 <meta property="og:image" content="https://canales.github.io/parks-and-cars/og-image.png">
@@ -20,7 +20,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="pt_PT">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Parks and cars: how much of the world's great parks goes to cars?">
+<meta name="twitter:title" content="How much of the world's great urban parks goes to cars?">
 <meta name="twitter:description" content="We measured roads and parking inside large urban parks around the world with one method and OpenStreetMap data. See where Lisbon's Monsanto Forest Park stands.">
 <meta name="twitter:image" content="https://canales.github.io/parks-and-cars/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,6 +34,8 @@
   --marking:#E0B72E; --focus:#E0B72E; --highlight:#EEF2EC; --sel:#E3EBDF;
   --warn-bg:#FBF3D9; --warn-ink:#6B5712;
   --p1:#C2DAB6; --p2:#A3C895; --p3:#DDE9D7; --cyc-sep:#0B5CA8; --cyc-edge:#FFFFFF; --hw-edge:#8D9298;
+  --spd1:#2F7D4A; --spd2:#D4A21E; --spd3:#D9822B; --spd4:#C0392B; --spdx:#B9BEC1;
+  --mwc:#6E7773; --cb1:#08306B; --cb2:#2F7FC1; --cb3:#6FA8D8; --cbx:#D9DEDB;
   --display:"Barlow Condensed","Roboto Condensed","Arial Narrow",system-ui,sans-serif;
   --text:"Barlow","Segoe UI",Roboto,system-ui,sans-serif;
   box-sizing:border-box;
@@ -48,6 +50,8 @@
     --marking:#E8C547; --focus:#E8C547; --highlight:#1B211E; --sel:#22302A;
     --warn-bg:#2E2912; --warn-ink:#E9D58B;
     --p1:#274634; --p2:#325A43; --p3:#1C2E24; --cyc-sep:#6FB3F0; --cyc-edge:#141816; --hw-edge:#7B8187;
+  --spd1:#6FC08A; --spd2:#E8C547; --spd3:#F0A05A; --spd4:#F06A5A; --spdx:#4A5250;
+  --mwc:#8E9893; --cb1:#9BCBF7; --cb2:#5A9FDF; --cb3:#2F6DA8; --cbx:#3A423E;
   }
 }
 :root[data-theme="dark"]{
@@ -57,6 +61,8 @@
   --marking:#E8C547; --focus:#E8C547; --highlight:#1B211E; --sel:#22302A;
   --warn-bg:#2E2912; --warn-ink:#E9D58B;
   --p1:#274634; --p2:#325A43; --p3:#1C2E24; --cyc-sep:#6FB3F0; --cyc-edge:#141816; --hw-edge:#7B8187;
+  --spd1:#6FC08A; --spd2:#E8C547; --spd3:#F0A05A; --spd4:#F06A5A; --spdx:#4A5250;
+  --mwc:#8E9893; --cb1:#9BCBF7; --cb2:#5A9FDF; --cb3:#2F6DA8; --cbx:#3A423E;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
@@ -64,7 +70,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--
 a{color:inherit}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:2px}
 .wrap{max-width:1440px;margin:0 auto;padding:0 24px}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule)}
 .nav-links{display:flex;gap:22px;flex-wrap:wrap;font-weight:500}
 .nav-links a{text-decoration:none;color:var(--muted);padding:4px 0}
 .nav-links a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--forest)}
@@ -76,16 +82,20 @@ a{color:inherit}
 .lang{display:flex;border:1px solid var(--rule);border-radius:999px;overflow:hidden}
 .lang button{font:500 14px var(--text);background:none;border:0;color:var(--muted);padding:5px 12px;cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;padding:56px 0 40px}
-.hero h1{font:700 clamp(40px,6vw,76px)/.95 var(--display);letter-spacing:-.01em;margin:0 0 22px;max-width:14ch}
-.lede{font-size:19px;color:var(--muted);max-width:56ch;margin:0 0 26px}
-.facts{margin:0;padding:0;list-style:none;display:grid;gap:10px;max-width:52ch}
-.facts li{font-size:19px;padding-left:18px;position:relative}
-.facts li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;background:var(--hw)}
+.hero{--hero-fig:400px;display:grid;grid-template-columns:minmax(0,1fr) var(--hero-fig);gap:36px;align-items:start;padding:18px 0 10px}   /* --hero-fig sets the map size */
+.hero h1{font:700 clamp(30px,3.1vw,46px)/1.02 var(--display);letter-spacing:-.01em;margin:0 0 8px;max-width:26ch}
+.lede{font-size:17px;line-height:1.45;color:var(--muted);max-width:84ch;margin:0 0 12px}
+.facts{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr;gap:7px}
+.facts li{font-size:16px;line-height:1.35;padding-left:16px;position:relative}
+.facts li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;background:var(--hw)}
 .facts li:nth-child(1)::before{background:var(--forest)}
 .facts strong{font:600 1.15em/1 var(--display);letter-spacing:.01em}
+.facts a{color:var(--forest);font-weight:600;text-decoration:none;border-bottom:1px solid var(--forest);white-space:nowrap}
 .hero-fig{margin:0}
-.hero-fig figcaption{font-size:14px;color:var(--muted);margin-top:12px;max-width:44ch}
+.hero-fig figcaption{font-size:12.5px;line-height:1.35;color:var(--muted);margin-top:6px}
+.hero-fig .vtog{margin:0 0 8px}
+.hero-fig .legend{display:none}
+#ranking{scroll-margin-top:10px}
 .sq{position:relative;background:var(--canopy);border:1px solid var(--canopy-edge);aspect-ratio:1/1;width:100%}
 .sq-car{position:absolute;left:0;bottom:0;display:flex;flex-direction:column;overflow:hidden;min-width:2px;min-height:2px;transition:width .35s ease,height .35s ease}
 .sq-car span{display:block}
@@ -95,26 +105,111 @@ a{color:inherit}
 .legend i{width:12px;height:12px;display:inline-block;flex:none}
 .legend i.ln{height:4px;width:18px}
 .legend i.dot{border-radius:50%;width:11px;height:11px}
-.prelim{background:var(--warn-bg);color:var(--warn-ink);font-size:14px;padding:10px 14px;border-radius:6px;margin:0 0 28px;max-width:80ch}
-.controls{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;padding:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.chips{display:flex;flex-wrap:wrap;gap:6px;border:0;margin:0;padding:0}
+.prelim{border-left:3px solid var(--marking);color:var(--warn-ink);font-size:13px;line-height:1.4;padding:2px 10px;margin:14px 0 0;max-width:84ch}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.chips{display:flex;flex-wrap:wrap;gap:4px;border:0;margin:0;padding:0}
 .chips legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.chip{font:500 14px var(--text);padding:5px 12px;border-radius:999px;border:1px solid var(--rule);background:none;color:var(--ink);cursor:pointer}
+.chip{font:500 13px var(--text);padding:3px 9px;border-radius:999px;border:1px solid var(--rule);background:none;color:var(--ink);cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--forest);border-color:var(--forest);color:var(--paper)}
 .check{display:flex;align-items:center;gap:8px;font-size:15px;cursor:pointer}
 .check input{width:18px;height:18px;accent-color:var(--forest)}
-.sort{display:flex;align-items:center;gap:8px;font-size:15px}
-.sort select{font:500 15px var(--text);padding:5px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink)}
-.main{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:40px;padding:28px 0 40px;align-items:start}
+.sort{display:flex;align-items:center;gap:8px;font-size:14px}
+.sort select{font:500 14px var(--text);padding:4px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink)}
+.main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;padding:14px 0 40px;align-items:start}
 .list h2,.detail h2,.method h2{font:600 26px/1.15 var(--display);margin:0 0 14px}
+.list h2{margin:0;font-size:22px}
+.listhead{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;margin:0 0 8px}
 .rows{border-top:1px solid var(--rule)}
-.row{display:grid;grid-template-columns:28px minmax(0,1fr) 84px minmax(120px,.8fr);gap:12px;align-items:center;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--rule);padding:11px 8px;font:inherit;color:inherit;cursor:pointer}
+.row{display:grid;grid-template-columns:28px minmax(0,1fr) 84px minmax(120px,.8fr);gap:12px;align-items:center;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--rule);padding:7px 8px;font:inherit;color:inherit;cursor:pointer}
 .row:hover{background:var(--highlight)}
 .row[aria-pressed="true"]{background:var(--sel)}
 .row.home .pname{font-weight:600}
 .rank{color:var(--muted);font-size:15px}
 .pname{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pcity{display:block;font-size:14px;color:var(--muted)}
+.pmeta{display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px}
+.pmeta .pills{margin-top:0}
+.k1{--c:var(--spd1)}.k2{--c:var(--spd2)}.k3{--c:var(--spd3)}.k4{--c:var(--spd4)}.kx{--c:var(--spdx)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:2px;background:var(--c);flex:none}
+.sp{stroke:var(--c)}
+.spdsub{font:600 14px var(--text);margin:14px 0 2px}
+.rkl{list-style:none;margin:0 0 6px;padding:0}
+.rkl li{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:8px 0 8px 16px;border-bottom:1px solid var(--rule);font-size:14.5px;line-height:1.35}
+.rkl li::before{content:"";position:absolute;left:0;top:1.05em;width:7px;height:7px;background:var(--forest)}
+.rkl li:last-child{border-bottom:0}
+.rkl small{display:block;color:var(--muted);font-size:12.5px;font-weight:400}
+.rkl .rv{text-align:right;flex:none}
+.rkl .rv b{font:600 21px/1.1 var(--display)}
+.rkl .rv b span{font:400 13px var(--text);color:var(--muted)}
+.dual{display:flex;gap:2px;height:8px;margin-top:5px;min-width:150px}
+.dual i{display:block;height:100%;border-radius:2px;background:var(--c)}
+.barcap{font-size:13px;color:var(--muted);margin:2px 0 0}
+.bar2{display:flex;gap:2px;height:22px;margin:6px 0 8px}
+.bar2 i{display:flex;align-items:center;justify-content:center;height:100%;border-radius:2px;font:700 12px var(--text);font-style:normal;color:var(--on,#fff);overflow:hidden;white-space:nowrap}
+.hatch{background:repeating-linear-gradient(135deg,var(--mwc) 0 3px,transparent 3px 7px)!important;box-shadow:inset 0 0 0 1px var(--mwc)}
+.blist{list-style:none;margin:0 0 10px;padding:0;display:flex;flex-wrap:wrap;gap:3px 14px;font-size:13px;color:var(--muted)}
+.blist li{display:flex;align-items:center;gap:6px}
+.blist b{color:var(--ink);font-weight:600}
+.blist em{font-style:normal}
+.blist .cyc-sw{width:24px;height:8px}
+.rt{border-collapse:collapse;margin:0 0 14px;font-size:14px}
+.rt th,.rt td{border-bottom:1px solid var(--rule);padding:4px 18px 4px 0;text-align:left}
+.rt th{color:var(--muted);font-weight:500}
+.spdtop{display:flex;align-items:center;gap:10px;font-size:15px;margin:0 0 4px}
+.spdtop .msign{margin:0;flex:none}
+.spdcta{margin:6px 0 4px;font-size:13px}
+.spdcta a{color:var(--forest);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+.spdmapkey{margin:10px 0 0;padding:10px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--highlight)}
+.spdmapkey .legend{margin:0 0 6px}
+.spdmapkey .spdcta{margin:2px 0 0}
+.bm-btn:disabled{opacity:.45;cursor:not-allowed}
+.s-unsafe{background:var(--spd4);color:var(--paper)}
+.s-mixed{background:var(--spd2);color:#1D2321}
+.s-safe{background:var(--spd1);color:var(--paper)}
+.s-few{box-shadow:inset 0 0 0 1px var(--rule);color:var(--muted)}
+.more-facts{display:none;margin:8px 0 0}
+.controls{display:block}
+.fbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.fmenu{position:relative}
+.fbtn{display:flex;align-items:center;gap:6px;font:500 13.5px var(--text);padding:4px 12px;border-radius:999px;border:1px solid var(--rule);background:none;color:var(--ink);cursor:pointer}
+.fbtn .fl{color:var(--muted)}
+.fbtn b{font-weight:600}
+.fbtn i{font-style:normal;font-size:11px;color:var(--muted)}
+.fbtn[data-on="1"]{border-color:var(--forest);background:var(--canopy)}
+.fbtn[aria-expanded="true"]{box-shadow:0 0 0 2px var(--focus)}
+.fpop{position:absolute;z-index:30;top:calc(100% + 6px);left:0;min-width:240px;background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:8px;box-shadow:0 8px 28px rgba(0,0,0,.2)}
+.fpop[hidden]{display:none}
+.fpop h5{margin:8px 8px 3px;font:600 12px var(--text);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.fpop h5:first-child{margin-top:2px}
+.fopt{display:flex;align-items:center;gap:8px;width:100%;text-align:left;font:400 14.5px var(--text);padding:6px 8px;border:0;border-radius:6px;background:none;color:var(--ink);cursor:pointer}
+.fopt:hover{background:var(--highlight)}
+.fopt[aria-checked="true"]{font-weight:600}
+.fopt .mk{width:14px;color:var(--forest)}
+.fopt small{margin-left:auto;color:var(--muted);font-size:12.5px;padding-left:12px}
+.factive{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 0 0;font-size:13px;color:var(--muted)}
+.factive[hidden]{display:none}
+.achip{display:inline-flex;align-items:center;gap:2px;border:1px solid var(--forest);background:var(--canopy);color:var(--ink);border-radius:999px;padding:1px 3px 1px 10px;font:500 13px var(--text)}
+.achip button{border:0;background:none;font-size:16px;line-height:1;padding:0 6px;cursor:pointer;color:var(--muted)}
+.factive .clear{border:0;background:none;font:500 13px var(--text);color:var(--forest);text-decoration:underline;text-underline-offset:2px;cursor:pointer;padding:0 4px}
+.fback{position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.4)}
+.fback[hidden]{display:none}
+@media (min-width:561px){.fback{display:none!important}}
+.km{--c:var(--mwc)}
+.m-reset{position:absolute;right:10px;bottom:26px;z-index:4;font:500 12.5px var(--text);padding:4px 10px;border-radius:999px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer}
+.mpop{position:absolute;z-index:7;width:max-content;max-width:min(290px,88%);background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:8px;padding:10px 30px 10px 12px;box-shadow:0 6px 20px rgba(0,0,0,.22);font-size:13.5px;line-height:1.4}
+.mpop h4{margin:0 0 1px;font:600 17px/1.2 var(--display)}
+.mpop .ptype{color:var(--muted);margin:0 0 6px}
+.mpop dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px}
+.mpop dt{color:var(--muted)}.mpop dd{margin:0;display:flex;align-items:center;gap:6px}
+.mpop .x{position:absolute;top:3px;right:5px;border:0;background:none;font-size:20px;line-height:1;color:var(--muted);cursor:pointer;padding:2px 6px}
+.hit{cursor:default}
+.pick-halo,.pick-line{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
+.pick-halo{stroke:var(--paper);stroke-opacity:.9;stroke-width:9}
+.pick-line{stroke:var(--ink);stroke-opacity:.8;stroke-width:3.5}
+.mpop::after{content:"";position:absolute;left:var(--ax,50%);bottom:-8px;width:15px;height:15px;margin-left:-7.5px;background:var(--paper);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transform:rotate(45deg)}
+.mpop.below::after{bottom:auto;top:-8px;border:0;border-left:1px solid var(--rule);border-top:1px solid var(--rule)}
+.mpop hr{border:0;border-top:1px solid var(--rule);margin:8px 0}
+.mpop a{color:var(--forest);font-weight:600;font-size:13px;text-decoration:underline;text-underline-offset:2px;display:inline-block;margin-top:8px}
 .parea{font-size:15px;color:var(--muted);text-align:right}
 .share{display:flex;align-items:center;gap:10px}
 .bar{flex:1;height:10px;background:var(--highlight);position:relative}
@@ -123,12 +218,12 @@ a{color:inherit}
 .colhead{display:grid;grid-template-columns:28px minmax(0,1fr) 84px minmax(120px,.8fr);gap:12px;padding:0 8px 6px;font-size:13px;color:var(--muted)}
 .colhead span:nth-child(3){text-align:right}
 .empty{padding:28px 8px;color:var(--muted)}
-.detail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - 32px - env(safe-area-inset-top,0px));overflow-y:auto;overscroll-behavior:contain;padding-right:4px}
+.detail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - 32px - env(safe-area-inset-top,0px));overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
 .dsub{color:var(--muted);margin:-8px 0 16px}
-.dsq{max-width:460px}
+.dsq{max-width:none}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 20px;margin:20px 0}
 .msign{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2.5px #C62828;color:#1D2321;font:700 11px var(--text);margin-left:8px;vertical-align:3px;cursor:help}
-.search{font:400 15px var(--text);padding:6px 12px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);color:var(--ink);min-width:220px}
+.search{font:400 14px var(--text);padding:4px 11px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);color:var(--ink);min-width:190px}
 .method h3{font:600 21px/1.2 var(--display);margin:26px 0 8px}
 .labels{margin:4px 0 14px;padding:0;list-style:none}
 .labels li{margin:0 0 8px}
@@ -243,13 +338,16 @@ a{color:inherit}
 .steps{margin:6px 0 14px;padding-left:22px}
 .steps li{margin:0 0 8px}
 .method{border-top:1px solid var(--rule);padding:40px 0 20px}
-.method p{margin:0 0 14px}
+.method p{margin:0 0 14px;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
 .credit{margin:8px 0 0}
 .credit a{color:var(--muted)}
 footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:14px;color:var(--muted)}
+@media (max-width:1100px){
+  .facts{grid-template-columns:1fr}
+}
 @media (max-width:900px){
-  .hero{grid-template-columns:1fr;gap:28px;padding-top:36px}
-  .hero-fig{max-width:520px}
+  .hero{grid-template-columns:1fr;gap:14px;padding-top:14px}
+  .hero-fig{max-width:300px}
   .main{grid-template-columns:1fr}
   /* phones and tablets: the park detail is a full-screen sheet opened from the list */
   .detail{position:fixed;inset:0;z-index:60;max-height:none;overflow-y:auto;overscroll-behavior:contain;background:var(--paper);padding:0 16px calc(24px + env(safe-area-inset-bottom,0px));transform:translateY(100%);visibility:hidden;transition:transform .25s,visibility 0s .25s}
@@ -259,6 +357,23 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:14px;color
   body.sheet-lock{overflow:hidden}
 }
 @media (max-width:560px){
+  /* phones: the ranking comes first, so the Monsanto square, the header link and most facts step aside */
+  .hero-fig{display:none}
+  .nav-right .ext{display:none}
+  .facts:not(.open) li:nth-child(n+4){display:none}
+  .more-facts{display:inline-block}
+  body:not(.facts-open) .prelim{display:none}               /* the data note opens with "More facts" */
+  .nav{gap:4px 12px}
+  .nav-links{display:contents}                              /* brand and language switch share a row, the links sit below */
+  .nav-links .brand{order:0}
+  .nav-right{order:1;margin-left:auto}
+  .nav-links a:not(.brand){order:2}
+  .controls{gap:6px}
+  .fbar{gap:6px}
+  .fpop{position:fixed;left:0;right:0;bottom:0;top:auto;min-width:0;max-height:72vh;overflow:auto;border-radius:16px 16px 0 0;padding:12px 12px calc(18px + env(safe-area-inset-bottom,0px));z-index:40}
+  .fopt{padding:10px 8px;font-size:16px}
+  .search{width:100%;min-width:0}
+  .sort>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}      /* the menu says what it does; the label stays for screen readers */
   .wrap{padding:0 16px}
   .row,.colhead{grid-template-columns:22px minmax(0,1fr) minmax(96px,.9fr)}
   .parea,.colhead span:nth-child(3){display:none}
@@ -290,8 +405,10 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:14px;color
   <section class="hero">
     <div>
       <h1 data-t="title"></h1>
-      <p class="lede" data-t="lede"></p>
+      <p class="lede" id="lede"></p>
       <ul class="facts" id="facts"></ul>
+      <button type="button" class="chip more-facts" id="moreFacts" aria-controls="facts" aria-expanded="false"></button>
+      <p class="prelim" data-t="prelim"></p>
     </div>
     <figure class="hero-fig">
       <div class="seg vtog" role="group" id="heroTog">
@@ -305,26 +422,33 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:14px;color
     </figure>
   </section>
 
-  <p class="prelim" data-t="prelim"></p>
-
-  <div class="controls">
-    <fieldset class="chips" id="chips"><legend data-t="f_region"></legend></fieldset>
-    <fieldset class="chips" id="groups"><legend data-t="f_group"></legend></fieldset>
+  <div class="controls" id="ranking">
+    <div class="fbar" id="fbar">
+      <div class="fmenu" id="mRegion"></div>
+      <div class="fmenu" id="mCar"></div>
+      <div class="fmenu" id="mSpeed"></div>
     <input type="search" class="search" id="q" data-tp="search_ph" aria-label="Search">
-    <label class="sort"><span data-t="f_sort"></span>
-      <select id="sort">
-        <option value="share" data-t="s_share"></option>
-        <option value="size" data-t="s_size"></option>
-        <option value="density" data-t="s_density"></option>
-        <option value="cycling" data-t="s_cycling"></option>
-      </select>
-      <button type="button" class="chip" id="sortDir"></button>
-    </label>
+    </div>
+    <div class="factive" id="factive" hidden></div>
   </div>
+
+  <div class="fback" id="fback" hidden></div>
 
   <div class="main">
     <section class="list" aria-labelledby="listTitle">
-      <h2 id="listTitle" data-t="list_title"></h2>
+      <div class="listhead">
+        <h2 id="listTitle" data-t="list_title"></h2>
+        <label class="sort"><span data-t="f_sort"></span>
+          <select id="sort">
+            <option value="share" data-t="s_share"></option>
+            <option value="size" data-t="s_size"></option>
+            <option value="density" data-t="s_density"></option>
+            <option value="cycling" data-t="s_cycling"></option>
+            <option value="unsafe" data-t="s_unsafe"></option>
+          </select>
+          <button type="button" class="chip" id="sortDir"></button>
+        </label>
+      </div>
       <div class="colhead" aria-hidden="true"><span></span><span data-t="col_park"></span><span data-t="col_area"></span><span data-t="col_share"></span></div>
       <div class="rows" id="rows"></div>
     </section>
@@ -422,16 +546,28 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:14px;color
 const SITE = __SITE__;
 const INLINE_MAPS = __MAPS__;
 const MAPS_URL = "__MAPS_URL__";
+const INLINE_SPEED = __SPEED__;
+const SPEED_URL = "__SPEED_URL__";
 const HOME = SITE.home;
 const HOME_MOTORWAY = ["A 5", "Duarte Pacheco"];   // the motorway the story is about
 const PT_NAMES = {"201-sintra-sintra-cascais-natural-park": "Parque Natural de Sintra-Cascais"};
+function spdStats(s){        // average pedestrian risk at the posted limit, only where enough limits are mapped to compare
+  if(!s || s.rated == null) return null;
+  const R = (SITE.rules && SITE.rules.speed) || {min_cover: 25, min_km: 3, risk_safe_below: 10, risk_unsafe_from: 34};
+  const cover = s.rated ? 100 * s.mapped / s.rated : 0;
+  const gated = cover >= R.min_cover && s.mapped >= R.min_km;
+  const risk = gated ? s.risk / s.mapped : null;
+  const safe = gated ? 100 * s.b1 / s.mapped : null;
+  const grp = !gated ? "few" : (risk < R.risk_safe_below ? "safe" : (risk >= R.risk_unsafe_from ? "unsafe" : "mixed"));
+  return {cover, gated, risk, safe, above: gated ? 100 - safe : null, grp};
+}
 const PARKS = SITE.parks.map(r => {
   const split = Object.fromEntries(Object.entries(r.cat_km2).map(([k, v]) => [k, (v || 0) * 1e6]));
   return {...r,
     name: r.id === HOME ? {en:"Monsanto Forest Park", pt:"Parque Florestal de Monsanto"}
         : (PT_NAMES[r.id] ? {en: r.name, pt: PT_NAMES[r.id]} : r.name),
     city: r.id === HOME ? {en:"Lisbon", pt:"Lisboa"} : r.city,
-    roadKm: r.road_km, split,
+    roadKm: r.road_km, split, spdc: spdStats(r.spd),
     roadM2: split.highways + split.main + split.local + split.service, parkingM2: split.parking};
 });
 const mapCache = {};
@@ -441,16 +577,30 @@ function getMap(id){
   if(!(id in mapCache)) mapCache[id] = fetch(MAPS_URL + id + ".json").then(r => r.ok ? r.json() : null).catch(() => null);
   return mapCache[id];
 }
+const speedCache = {};
+function getSpeed(id){      // road lines coloured by speed limit, loaded when the layer is switched on
+  if(INLINE_SPEED[id]) return Promise.resolve(INLINE_SPEED[id]);
+  if(!SPEED_URL) return Promise.resolve(null);
+  if(!(id in speedCache)) speedCache[id] = fetch(SPEED_URL + id + ".json").then(r => r.ok ? r.json() : null).catch(() => null);
+  return speedCache[id];
+}
+const LINKS = {
+  guide: "https://www.globalroadsafetyfacility.org/publications/guide-safe-speeds-managing-traffic-speeds-save-lives-and-improve-livability",
+  who: "https://cdn.who.int/media/docs/default-source/documents/health-topics/road-traffic-injuries/3146-wbk-speed-mgmt-2nd-edition-131023-electronic.pdf",
+  hussain: "https://www.sciencedirect.com/science/article/abs/pii/S0001457519301058",
+  stockholm: "https://urban-mobility-observatory.transport.ec.europa.eu/news-events/news/stockholm-declaration-wants-general-30-kmh-speed-limit-2020-03-12_en"
+};
 const FIELD_M2 = 105 * 68;
 const REGIONS = ["all","eu","na","sa","as","af","oc"];
 const CAT_ORDER = ["highways","main","local","service","parking"];
 const CYC_DASH = {separated: null, shared: "9 3 2 3", painted: "4 4"};   // one blue; the line style carries the type
 const CYC_W = 3;
+const CYC_VAR = {separated: "--cb1", shared: "--cb2", painted: "--cb3"};   // option D: three blues
 function cycSwatch(cls){
   const d = CYC_DASH[cls];
   return `<svg class="cyc-sw" viewBox="0 0 30 10" aria-hidden="true"><rect width="30" height="10" rx="2" fill="var(--canopy)"/>`
     + `<line x1="2" y1="5" x2="28" y2="5" stroke="var(--cyc-edge)" stroke-width="${CYC_W + 3}" stroke-linecap="round"/>`
-    + `<line x1="2" y1="5" x2="28" y2="5" stroke="var(--cyc-sep)" stroke-width="${CYC_W}"${d ? ` stroke-dasharray="${d}"` : ""}/></svg>`;
+    + `<line x1="2" y1="5" x2="28" y2="5" stroke="var(${CYC_VAR[cls]})" stroke-width="${CYC_W}"${d ? ` stroke-dasharray="${d}"` : ""}/></svg>`;
 }
 const CAT_VAR = {highways:"--hw", main:"--main", local:"--local", service:"--service", roads:"--roads", parking:"--marking"};
 const BANDS = [["b30","--s30"],["b50","--s50"],["b70","--s70"],["b90","--s90"],["b91","--s91"],["none","--snone"]];
@@ -458,15 +608,18 @@ const BAND_VAR = Object.fromEntries(BANDS);
 
 const T = {
 en:{
-  nav_map:"Portugal illegal parking map ↗", nav_parks:"Parks and cars", nav_story:"The Monsanto story", nav_method:"Methodology",
-  title:"How much of the world's great parks goes to cars?",
-  lede:"We measured roads and parking inside large urban parks with the same method, using OpenStreetMap. Lisbon's Monsanto is near the top, and there are calls to remove its new cycle ring.",
+  nav_map:"Portugal illegal parking map ↗", nav_parks:"Urban parks and cars", nav_story:"The Monsanto story", nav_method:"Methodology",
+  title:"How much of the world's great urban parks goes to cars?",
+  lede:n=>`We measured roads and parking as a share of land inside ${n} of the largest urban parks with the same method, using OpenStreetMap. Lisbon's Monsanto is near the top, and there are calls to remove parts of a new bike lane.`,
   fact_share:p=>`<strong>${p}</strong> of Monsanto is roads and parking.`,
   fact_area:a=>`That is <strong>${a}</strong> of asphalt and parking.`,
   fact_hw:"More than half of it is highways cutting through the park.",
   square_caption:"The green square is Monsanto. The grey corner is all its roads and parking, gathered together at true scale.",
   prelim:"Data from OpenStreetMap, {date}: {n} large urban parks, all measured the same way. For some parks the area differs from Wikipedia's figure, usually because Wikipedia counts lakes or the sea.",
-  fact_rank:(r,n)=>`It ranks <strong>${r}${["th","st","nd","rd"][(r%100>10&&r%100<14)?0:(r%10<4?r%10:0)]}</strong> of ${n} large parks worldwide.`,
+  fact_rank:(r,n,reg)=>`It ranks <strong>${r}${["th","st","nd","rd"][(r%100>10&&r%100<14)?0:(r%10<4?r%10:0)]}</strong> of ${n} large parks worldwide${reg ? ` and <strong>${reg.ord}</strong> of ${reg.n} ${reg.in}` : ""}.`,
+  in_reg:{eu:"in Europe",na:"in North America",sa:"in South America",as:"in Asia",af:"in Africa",oc:"in Oceania"},
+  fact_compare:(k,n,lo)=>`<strong>${k}</strong> of the ${n} parks give less than ${lo}% of their land to cars. <a href="#ranking">Compare them all ↓</a>`,
+  fact_speed:(v,k)=>`Cars may drive up to <strong>${v} km/h</strong> inside it${k <= 10 ? `: one of only ${k} parks with a road mapped at ${v} km/h or more` : ""}.`,
   d_cut:(km,n,w)=>`Highways run ${km} km through this park.${n > 1 ? ` It is split into ${n} pieces, with ${w} walking ${w === 1 ? "crossing" : "crossings"} over its highways.` : ""}`,
   show_all:n=>`Show all ${n} parks`, show_less:"Show the top 25",
   f_region:"Region", all:"All", eu:"Europe", na:"North America", sa:"South America", as:"Asia", af:"Africa", oc:"Oceania",
@@ -543,8 +696,8 @@ en:{
   k_halves:"the two halves the A5 cuts Monsanto into", k_n:"places to cross the A5 on foot",
   k_per:x=>`1 every ${x} km`, k_perl:"of the A5 inside the park",
   speed:(mapped,total,above,share)=>`Speed limits are mapped on only ${mapped} of Monsanto's ${total} km of road. On ${above} km of those (${share}%), cars may go faster than 30 km/h, the speed above which a collision becomes much more likely to kill someone walking.`,
-  hero_cap_sq:"The green square is Monsanto. The grey corner is all its roads and parking, gathered together at true scale.",
-  hero_cap_map:"Monsanto's roads at their real width, its parking, and the two halves the A5 cuts it into.",
+  hero_cap_sq:"Monsanto in green. All its roads and parking, at true scale, in grey.",
+  hero_cap_map:"Roads at real width, parking and cycle paths (blue).",
   d_hw:"Highways inside", bm:"Basemap", bm_blocked:"The basemap can't load in this preview. It will on the published site.",
   col_size:"Park size", col_density:"Road length per km²",
   list_h:n=>`The ${n} parks we measured`, list_city:"City, country",
@@ -554,7 +707,7 @@ en:{
   cyc_story:(road,ded,sep)=>`Against ${road} km of road, Monsanto has ${ded} km of dedicated cycling infrastructure, ${sep} km of it separated from traffic.`,
   cyc_btn:"Cycling", s_cycling:"Cycling per 100 km of road", col_cycling:"Cycling per 100 km of road",
   lg_cyc_sep:"Cycle path or track (separated)", lg_cyc_shared:"Shared with people walking", lg_cyc_painted:"Painted cycle lane",
-  d_cyc_h:"Cycling infrastructure", d_cyc_sep:"Separated from traffic", d_cyc_shared:"Shared with people walking",
+  d_cyc_h:"Where the cyclists go", d_cyc_sep:"Separated from traffic", d_cyc_shared:"Shared with people walking",
   d_cyc_painted:"Painted lanes", d_cyc_total:"Total",
   d_cyc_per:x=>`${x} km of cycling infrastructure per km of road.`,
   d_cyc_ecf:x=>`ECF ratio: <b>${x}%</b>`,
@@ -573,16 +726,26 @@ en:{
   d_cyc_fewroads:km=>`With only ${km} km of road, this park has too few roads to compare its cycling with.`,
   cyc_story2:(road,ded,per)=>`Against ${road} km of road, Monsanto has ${ded} km of dedicated cycling infrastructure: ${per} km for every 100 km of road.`,
   cyc_story3:(nh,nl)=>` Among the ${nh} car-heavy parks we measured, Monsanto is one of ${nl} that give little of that space back to bikes.`,
-  m_groups:(lo,hi,sh)=>`Parks are grouped by the share of their land given to roads and parking: mostly car-free (under ${lo}%), some car infrastructure (${lo} to ${hi}%) and car-heavy (${hi}% or more). Parks with car infrastructure also get a cycling tag: bikes get a share when there are at least ${sh} km of cycling infrastructure for every 100 km of road, and little for bikes below that. Mostly car-free parks get no cycling tag: with barely any road, there is little for cycling to make up for, and mountain-bike trails are often not mapped as cycling infrastructure.`,
+  m_groups:(lo,hi,sh)=>`Parks are grouped by the share of their land given to roads and parking: mostly car-free (under ${lo}%), some car infrastructure (${lo} to ${hi}%) and car-heavy (${hi}% or more). Parks with car infrastructure also get a cycling tag, and parks with enough speed limits mapped also get a speed group. For cycling: bikes get a share when there are at least ${sh} km of cycling infrastructure for every 100 km of road, and little for bikes below that. Mostly car-free parks get no cycling tag: with barely any road, there is little for cycling to make up for, and mountain-bike trails are often not mapped as cycling infrastructure.`,
   search_ph:"Search a park or city",
   fact_cyc:(ded,per)=>`Only <strong>${ded} km</strong> of cycling infrastructure: ${per} km for every 100 km of road.`,
   d_cyc_km:"Cycling infrastructure", d_cyc_100:"Per 100 km of road",
   sign_hw:"Highest speed limit mapped on its highways", sign_road:"Highest speed limit mapped on its other roads",
-  mh_parks:"Which parks, and why", mh_roads:"Roads and parking", mh_pieces:"Pieces and crossings", mh_speed:"Speed limits",
+  mh_parks:"Which parks, and why", mh_roads:"Roads and parking", mh_pieces:"Pieces and crossings", mh_speed:"How the vulnerable user risk rating works",
   mh_cyc:"Cycling", mh_groups:"Groups and labels", mh_limits:"What the data can and can't tell",
   m_pieces:"Pieces are what remains of a park after taking out its highways: the parts of the forest that highways cut off from each other. Tunnels and viaducts of 100 m or more don't cut the park, since there is open ground over or under them. Pieces smaller than 1 hectare, such as medians and the inside of ramps, are ignored.",
-  m_speed:"Speed limits come from OpenStreetMap, where many roads have none mapped, so in most parks only some roads show one. The signs next to \u201cHighways inside\u201d and \u201cRoads inside\u201d show the highest limit mapped on each; parks with none mapped show no sign. Limits in miles per hour are converted and rounded to the nearest 5 km/h.",
-  m_groups_intro:"Every park belongs to one of three groups, based on the share of its land given to roads and parking. Parks with car infrastructure also get a cycling tag.",
+  m_speed_ps:sp=>[
+    `The <b>vulnerable user risk rating</b> shows how dangerous a park's posted speed limits would be for vulnerable users, meaning people on foot or bike, who are hit by a car. It uses <b>legal speed limits</b>, from the maxspeed tag in OpenStreetMap (miles per hour are converted), not actual operational speeds. Many roads have none mapped.`,
+    `<b>Which roads.</b> Every road is included except motorways and their slip roads (OpenStreetMap's motorway and motorway_link). The <a href="${LINKS.guide}">Guide for Safe Speeds</a> (World Bank and WRI, 2024) defines a motorway as an access-controlled road with no intersections or traffic lights, where vulnerable users are prohibited, so there is no risk to them to assess there. Trunk roads and all others stay in, because they can have intersections and crossings. We infer access control from the road type, not from checking barriers on the ground. Motorways are left out of the speed bar and of the rating, and each park's panel says how many km that is.`,
+    `<b>Why "vulnerable users".</b> The <a href="${LINKS.who}">WHO speed management manual</a> says pedestrians and cyclists alike can typically survive impact speeds only up to about 30 km/h, and the Guide for Safe Speeds suggests applying the limits that protect pedestrians to cyclists and motorcyclists until more specific evidence exists. For the same reason we apply one risk curve to all vulnerable users: the published figures come from studies of people on foot, the group with the most data, and there is no separate published curve for cyclists.`,
+    `<b>The risk figure.</b> For each road with a mapped limit we take the risk of fatality for a vulnerable user hit by a car at that speed, from the 2019 meta-analysis of 20 studies by <a href="${LINKS.hussain}">Hussain and colleagues</a>, which the WHO manual (2023) cites. We assume traffic moves at each road's posted limit, read the risk from the published points below and join them with straight lines. Under 30 km/h we use 5% and above 80 km/h we use 90%, the highest value reported, so the risk of the fastest limits is understated. A park's figure is the average over its roads with a mapped limit, weighted by road length, and its rank is among the rated parks.`,
+    "RISKTABLE",
+    `<b>Speed bands and "safe speed".</b> The bands in the bar (30, 50 and 70 km/h) are the Safe System survivable speeds in Table 1 of both the WHO manual and the Guide for Safe Speeds: 30 km/h where cars and vulnerable users can meet, 50 km/h where side impacts are possible, 70 km/h for head-on crashes. A "safe speed" is 30 km/h or 20 mph or less, which the 2020 <a href="${LINKS.stockholm}">Stockholm Declaration</a> also calls for where vulnerable users mix with vehicles.`,
+    `<b>When a park is rated, and the groups.</b> A park is rated when at least ${sp.min_cover}% of its road length (motorways aside), and at least ${sp.min_km} km, has a speed limit mapped. Until then its panel says "Not rated yet" and it carries the "Few limits mapped" label. Rated parks are grouped by their risk figure: under ${sp.risk_safe_below}% is "Mostly safe speeds" (the published risk at 37 km/h), ${sp.risk_safe_below}% to ${sp.risk_unsafe_from}% is "Mixed speeds", and ${sp.risk_unsafe_from}% or more is "Heavy on unsafe speeds" (the risk of a road posted at 50 km/h, the Safe System limit where side impacts are possible).`,
+    `<b>Where limits are missing you can help.</b> The Speed limits layer on each park's map shows which roads have no limit mapped. Click one and a link opens the OpenStreetMap editor right at that road, with street-level photos and traffic signs switched on.`
+  ],
+  m_rt_speed:"Posted limit", m_rt_risk:"Risk of fatality for a vulnerable user if hit",
+  m_groups_intro:"Every park belongs to one of three groups, based on the share of its land given to roads and parking. Parks with car infrastructure also get a cycling tag, and parks with enough speed limits mapped also get a speed group.",
   m_groups_note:"Mostly car-free parks get no cycling tag: with barely any road, there is little for cycling to make up for, and mountain-bike trails are often not mapped as cycling infrastructure.",
   m_limits_zero:"Zero cycling infrastructure means none is mapped in OpenStreetMap, not necessarily none on the ground.",
   src_all:`all taken from <a href='https://en.wikipedia.org/wiki/List_of_urban_parks_by_size'>Wikipedia's list of urban parks by size</a>`,
@@ -590,6 +753,39 @@ en:{
   added:"Added",
   d_added:"Not on Wikipedia's list of urban parks: added because of the current debate about urban development inside it.",
   m_added:names=>`We also added ${names}, which is not on the list, because of the current debate about urban development inside it. Unlike most parks on the list, it includes whole towns and villages, so its roads include their streets.`,
+  fact_share_cyc:(p,km)=>`<strong>${p}</strong> of Monsanto is roads and parking, with only <strong>${km} km</strong> of cycling infrastructure for every 100 km of road.`,
+  fact_compare:(k,n,hi)=>`<strong>${k}</strong> of the ${n} urban parks give <strong>${hi}% or more</strong> of their land to cars. <a href="#ranking">Compare them all ↓</a>`,
+  more_facts:"More facts ↓", less_facts:"Fewer facts ↑",
+  spd_btn:"Speed limits",
+  spd_1:"30 km/h or less (safe)", spd_2:"31 to 50 km/h", spd_3:"51 to 70 km/h", spd_4:"Over 70 km/h", spd_x:"No limit mapped",
+  spd_cta:"Click here to improve this park's speed limits on OpenStreetMap ↗",
+  d_spd_h:"Where there are safe speed limits",
+  d_spd_top:(v,r,n)=>`Fastest limit mapped: <b>${v} km/h</b> (rank ${r} of ${n} parks).`,
+  d_spd_na:"No speed-limit data for this park yet.",
+  spd_sub:"Posted speed limits and the risk to vulnerable users", spd_notrated:"Not rated yet",
+  spd_b_risk:"Risk of pedestrian fatality if hit", spd_b_risk_sub:"Average over the park's roads with a mapped speed limit",
+  spd_b_rank:(r,n,o)=>r === 1 ? `Highest of ${n} rated parks` : `${o} highest of ${n} rated parks`,
+  spd_b_safe:"Roads at a safe speed (30 km/h or 20 mph)", spd_safe_w:"safe", spd_above_w:"above",
+  spd_b_mapped:"Roads with a speed limit mapped",
+  spd_foot:mw=>`Legal limits, not actual operational speeds.${mw ? ` Motorways (${mw} km) are not included in this analysis.` : ""}`, spd_how:"How we calculate this ↗",
+  f_speedgroup:"Speed group",
+  sg_all:"All speeds", sg_unsafe:"Heavy on unsafe speeds", sg_mixed:"Mixed speeds", sg_safe:"Mostly safe speeds", sg_few:"Few limits mapped",
+  sg_unsafe_d:(lo,hi)=>`Average risk of fatality for a vulnerable user who is hit is ${hi}% or more, the risk of a road posted at 50 km/h.`,
+  sg_mixed_d:(lo,hi)=>`Average risk of fatality between ${lo}% and ${hi}%.`,
+  sg_safe_d:(lo,hi)=>`Average risk of fatality under ${lo}%: roads posted at or near the 30 km/h Safe System speed.`,
+  sg_few_d:(c,km)=>`Speed limits are mapped on less than ${c}% of the roads, or on less than ${km} km, so the park is not rated yet.`,
+  s_unsafe:"Vulnerable user risk rating", col_unsafe:"Fatality risk if hit",
+  layer_none:"None mapped in this park",
+  bar_car:"Share of the park's car space", bar_cyc:(km,road)=>`${km} km of dedicated cycling infrastructure, against ${road} km of road`, bar_cyc_over:(km,road)=>`${km} km of dedicated cycling infrastructure, more than the park's ${road} km of road`, bar_spd:"Share of the park's roads, motorways left out",
+  cyc_none:"Roads without cycling infrastructure", spd_m:"Motorway (not in the analysis)",
+  d_cyc_zero:"No dedicated cycling infrastructure is mapped in this park.",
+  spd_cta_tip:"Opens the iD editor with Mapillary photos and traffic signs switched on",
+  reset_view:"Reset view",
+  pop_noname:"Road without a name", pop_limit:"Speed limit", pop_nolimit:"No speed limit mapped", pop_notrated:"not in the analysis", pop_oneway:"One-way", pop_ref:"Reference", pop_yes:"Yes",
+  pop_add:"Add the speed limit in OpenStreetMap ↗", pop_cyc:"Cycling infrastructure", pop_type:"Type",
+  hw:{motorway:"Motorway", motorway_link:"Motorway slip road", trunk:"Trunk road", trunk_link:"Trunk slip road", primary:"Primary road", primary_link:"Primary slip road", secondary:"Secondary road", secondary_link:"Secondary slip road", tertiary:"Tertiary road", tertiary_link:"Tertiary slip road", unclassified:"Minor road", residential:"Residential street", living_street:"Living street", service:"Service road", track:"Track", road:"Road"},
+  mn_region:"Region", mn_car:"Car infrastructure", mn_speed:"Speed limits", mn_bikes:"Bikes", mn_all:"All", bk_all:"Any",
+  f_clear:"Clear all", f_count:(n,N)=>`${n} of ${N} parks`,
   m_title:"How we measured",
   m_body:[
     "Parks come from <a href='https://en.wikipedia.org/wiki/List_of_urban_parks_by_size'>Wikipedia's list of urban parks by size</a>, which covers urban parks of about 4 km² or more around the world. We measured every park on it except {skipped} that have no Wikipedia article of their own or no single boundary in OpenStreetMap. <a href='#parklist'>The full list is below</a>. Each park's boundary is its polygon in OpenStreetMap.",
@@ -604,15 +800,18 @@ en:{
   locale:"en-GB"
 },
 pt:{
-  nav_map:"Mapa do estacionamento ilegal em Portugal ↗", nav_parks:"Parques e carros", nav_story:"A história de Monsanto", nav_method:"Metodologia",
-  title:"Quanto dos grandes parques do mundo é dos carros?",
-  lede:"Medimos as estradas e o estacionamento dentro de grandes parques urbanos com o mesmo método, a partir do OpenStreetMap. Monsanto está perto do topo, e há quem queira retirar o seu novo anel ciclável.",
+  nav_map:"Mapa do estacionamento ilegal em Portugal ↗", nav_parks:"Parques urbanos e carros", nav_story:"A história de Monsanto", nav_method:"Metodologia",
+  title:"Quanto dos grandes parques urbanos do mundo é dos carros?",
+  lede:n=>`Medimos as estradas e o estacionamento como parte do território de ${n} dos maiores parques urbanos, com o mesmo método e dados do OpenStreetMap. Monsanto, em Lisboa, está perto do topo, e há quem queira retirar partes de uma nova ciclovia.`,
   fact_share:p=>`<strong>${p}</strong> de Monsanto são estradas e estacionamento.`,
   fact_area:a=>`São <strong>${a}</strong> de asfalto e estacionamento.`,
   fact_hw:"Mais de metade são autoestradas e vias rápidas que atravessam o parque.",
   square_caption:"O quadrado verde é Monsanto. O canto cinzento são todas as suas estradas e estacionamento, juntos, à escala real.",
   prelim:"Dados do OpenStreetMap, {date}: {n} grandes parques urbanos, todos medidos da mesma forma. Nalguns parques a área difere da indicada na Wikipédia, normalmente porque a Wikipédia conta lagos ou o mar.",
-  fact_rank:(r,n)=>`É o <strong>${r}.º</strong> de ${n} grandes parques no mundo.`,
+  fact_rank:(r,n,reg)=>`É o <strong>${r}.º</strong> de ${n} grandes parques no mundo${reg ? ` e o <strong>${reg.ord}</strong> de ${reg.n} ${reg.in}` : ""}.`,
+  in_reg:{eu:"na Europa",na:"na América do Norte",sa:"na América do Sul",as:"na Ásia",af:"em África",oc:"na Oceânia"},
+  fact_compare:(k,n,lo)=>`<strong>${k}</strong> dos ${n} parques dão menos de ${lo}% do seu território aos carros. <a href="#ranking">Compare-os todos ↓</a>`,
+  fact_speed:(v,k)=>`Os carros podem circular até <strong>${v} km/h</strong> no seu interior${k <= 10 ? `: um de apenas ${k} parques com uma estrada mapeada a ${v} km/h ou mais` : ""}.`,
   d_cut:(km,n,w)=>`Autoestradas e vias rápidas percorrem ${km} km deste parque.${n > 1 ? ` Está dividido em ${n} pedaços, com ${w} ${w === 1 ? "travessia pedonal" : "travessias pedonais"} sobre as suas autoestradas.` : ""}`,
   show_all:n=>`Mostrar os ${n} parques`, show_less:"Mostrar os 25 primeiros",
   f_region:"Região", all:"Todas", eu:"Europa", na:"América do Norte", sa:"América do Sul", as:"Ásia", af:"África", oc:"Oceânia",
@@ -689,8 +888,8 @@ pt:{
   k_halves:"as duas metades em que a A5 corta Monsanto", k_n:"sítios para atravessar a A5 a pé",
   k_per:x=>`1 a cada ${x} km`, k_perl:"da A5 dentro do parque",
   speed:(mapped,total,above,share)=>`Os limites de velocidade só estão mapeados em ${mapped} dos ${total} km de estrada de Monsanto. Em ${above} km desses (${share}%), os carros podem andar a mais de 30 km/h, a velocidade acima da qual um atropelamento se torna muito mais provavelmente mortal.`,
-  hero_cap_sq:"O quadrado verde é Monsanto. O canto cinzento são todas as suas estradas e estacionamento, juntos, à escala real.",
-  hero_cap_map:"As estradas de Monsanto na sua largura real, o estacionamento e as duas metades em que a A5 o corta.",
+  hero_cap_sq:"Monsanto a verde. Todas as suas estradas e estacionamento, à escala real, a cinzento.",
+  hero_cap_map:"Estradas na largura real, estacionamento e ciclovias (a azul).",
   d_hw:"Autoestradas no interior", bm:"Mapa de fundo", bm_blocked:"O mapa de fundo não carrega nesta pré-visualização. Vai carregar no site publicado.",
   col_size:"Área do parque", col_density:"Km de estrada por km²",
   list_h:n=>`Os ${n} parques que medimos`, list_city:"Cidade, país",
@@ -700,7 +899,7 @@ pt:{
   cyc_story:(road,ded,sep)=>`Para ${road} km de estrada, Monsanto tem ${ded} km de infraestrutura ciclável dedicada, ${sep} km dos quais segregados do trânsito.`,
   cyc_btn:"Ciclovias", s_cycling:"Ciclovia por 100 km de estrada", col_cycling:"Ciclovia por 100 km de estrada",
   lg_cyc_sep:"Ciclovia segregada", lg_cyc_shared:"Partilhada com peões", lg_cyc_painted:"Faixa ciclável pintada",
-  d_cyc_h:"Infraestrutura ciclável", d_cyc_sep:"Segregada do trânsito", d_cyc_shared:"Partilhada com peões",
+  d_cyc_h:"Para onde vão os ciclistas", d_cyc_sep:"Segregada do trânsito", d_cyc_shared:"Partilhada com peões",
   d_cyc_painted:"Faixas pintadas", d_cyc_total:"Total",
   d_cyc_per:x=>`${x} km de infraestrutura ciclável por km de estrada.`,
   d_cyc_ecf:x=>`Rácio ECF: <b>${x}%</b>`,
@@ -720,15 +919,25 @@ pt:{
   cyc_story2:(road,ded,per)=>`Para ${road} km de estrada, Monsanto tem ${ded} km de infraestrutura ciclável dedicada: ${per} km por cada 100 km de estrada.`,
   cyc_story3:(nh,nl)=>` Entre os ${nh} parques dominados pelos carros que medimos, Monsanto é um dos ${nl} que devolvem pouco desse espaço às bicicletas.`,
   m_groups:(lo,hi,sh)=>`Os parques estão agrupados pela parte do seu território dada a estradas e estacionamento: quase sem carros (menos de ${lo}%), alguma infraestrutura para carros (${lo} a ${hi}%) e dominados pelos carros (${hi}% ou mais). Os parques com infraestrutura para carros recebem também uma etiqueta ciclável: com espaço para bicicletas quando há pelo menos ${sh} km de infraestrutura ciclável por cada 100 km de estrada, e pouco para bicicletas abaixo disso. Os parques quase sem carros não recebem etiqueta: com tão poucas estradas, há pouco a compensar, e os trilhos de BTT muitas vezes não estão mapeados como infraestrutura ciclável.`,
-  search_ph:"Procurar um parque ou cidade",
+  search_ph:"Procurar parque ou cidade",
   fact_cyc:(ded,per)=>`Apenas <strong>${ded} km</strong> de infraestrutura ciclável: ${per} km por cada 100 km de estrada.`,
   d_cyc_km:"Infraestrutura ciclável", d_cyc_100:"Por 100 km de estrada",
   sign_hw:"Limite de velocidade mais alto mapeado nas suas autoestradas", sign_road:"Limite de velocidade mais alto mapeado nas restantes estradas",
-  mh_parks:"Que parques, e porquê", mh_roads:"Estradas e estacionamento", mh_pieces:"Pedaços e travessias", mh_speed:"Limites de velocidade",
+  mh_parks:"Que parques, e porquê", mh_roads:"Estradas e estacionamento", mh_pieces:"Pedaços e travessias", mh_speed:"Como funciona a classificação de risco para utilizadores vulneráveis",
   mh_cyc:"Infraestrutura ciclável", mh_groups:"Grupos e etiquetas", mh_limits:"O que os dados podem e não podem dizer",
   m_pieces:"Os pedaços são o que resta de um parque depois de retiradas as suas autoestradas: as partes da floresta que as autoestradas separam umas das outras. Os túneis e os viadutos de 100 m ou mais não cortam o parque, porque há terreno livre por cima ou por baixo. Os pedaços com menos de 1 hectare, como separadores e o interior dos ramais, são ignorados.",
-  m_speed:"Os limites de velocidade vêm do OpenStreetMap, onde muitas estradas não os têm mapeados, por isso na maioria dos parques só algumas estradas mostram um. Os sinais junto a \u00abAutoestradas no interior\u00bb e \u00abEstradas no interior\u00bb mostram o limite mais alto mapeado em cada caso; os parques sem nenhum mapeado não mostram sinal. Os limites em milhas por hora são convertidos e arredondados aos 5 km/h mais próximos.",
-  m_groups_intro:"Cada parque pertence a um de três grupos, conforme a parte do seu território dada a estradas e estacionamento. Os parques com infraestrutura para carros recebem também uma etiqueta ciclável.",
+  m_speed_ps:sp=>[
+    `A <b>classificação de risco para utilizadores vulneráveis</b> mostra quão perigosos seriam os limites de velocidade afixados de um parque para utilizadores vulneráveis, ou seja, peões e ciclistas, atingidos por um carro. Usa os <b>limites legais de velocidade</b>, da etiqueta maxspeed do OpenStreetMap (as milhas por hora são convertidas), não as velocidades operacionais reais. Muitas estradas não têm nenhum mapeado.`,
+    `<b>Que estradas.</b> Todas as estradas estão incluídas, exceto as autoestradas e os seus ramos de acesso (motorway e motorway_link no OpenStreetMap). O <a href="${LINKS.guide}">Guide for Safe Speeds</a> (Banco Mundial e WRI, 2024) define autoestrada como uma via de acesso controlado, sem interseções nem semáforos, onde os utilizadores vulneráveis são proibidos, pelo que não há risco para eles a avaliar. As vias rápidas (trunk) e todas as outras ficam, porque podem ter interseções e passagens. Inferimos o acesso controlado pelo tipo de estrada, sem verificar barreiras no terreno. As autoestradas ficam fora da barra de velocidades e da classificação, e o painel de cada parque indica quantos km são.`,
+    `<b>Porquê "utilizadores vulneráveis".</b> O <a href="${LINKS.who}">manual de gestão da velocidade da OMS</a> diz que peões e ciclistas só conseguem tipicamente sobreviver a velocidades de impacto até cerca de 30 km/h, e o Guide for Safe Speeds sugere aplicar a ciclistas e motociclistas os limites que protegem os peões até haver evidência mais específica. Pelo mesmo motivo aplicamos uma só curva de risco a todos os utilizadores vulneráveis: os valores publicados vêm de estudos com peões, o grupo com mais dados, e não existe uma curva publicada separada para ciclistas.`,
+    `<b>O valor do risco.</b> Para cada estrada com limite mapeado tomamos o risco de morte de um utilizador vulnerável atingido por um carro a essa velocidade, da meta-análise de 2019 de 20 estudos de <a href="${LINKS.hussain}">Hussain e colegas</a>, que o manual da OMS (2023) cita. Assumimos que o tráfego circula ao limite afixado de cada estrada, lemos o risco nos pontos publicados abaixo e unimos os pontos com retas. Abaixo de 30 km/h usamos 5% e acima de 80 km/h usamos 90%, o valor mais alto publicado, pelo que o risco dos limites mais altos é subestimado. O valor de um parque é a média das suas estradas com limite mapeado, ponderada pela extensão, e a sua posição é entre os parques avaliados.`,
+    "RISKTABLE",
+    `<b>Faixas de velocidade e "velocidade segura".</b> As faixas da barra (30, 50 e 70 km/h) são as velocidades de impacto sobreviveis do Sistema Seguro, na Tabela 1 do manual da OMS e do Guide for Safe Speeds: 30 km/h onde carros e utilizadores vulneráveis se podem cruzar, 50 km/h onde são possíveis choques laterais, 70 km/h em choques frontais. Uma "velocidade segura" é 30 km/h ou 20 mph ou menos, o que a <a href="${LINKS.stockholm}">Declaração de Estocolmo</a> de 2020 também defende onde utilizadores vulneráveis se misturam com veículos.`,
+    `<b>Quando um parque é avaliado, e os grupos.</b> Um parque é avaliado quando pelo menos ${sp.min_cover}% da extensão das suas estradas (sem contar autoestradas), e pelo menos ${sp.min_km} km, tem limite de velocidade mapeado. Até lá o painel diz "Ainda não avaliado" e o parque tem a etiqueta "Poucos limites mapeados". Os parques avaliados são agrupados pelo seu valor de risco: abaixo de ${sp.risk_safe_below}% é "Maioria a velocidade segura" (o risco publicado a 37 km/h), de ${sp.risk_safe_below}% a ${sp.risk_unsafe_from}% é "Velocidades mistas", e ${sp.risk_unsafe_from}% ou mais é "Muitas velocidades inseguras" (o risco de uma estrada com limite de 50 km/h, o limite do Sistema Seguro onde são possíveis choques laterais).`,
+    `<b>Onde faltam limites, pode ajudar.</b> A camada de limites de velocidade no mapa de cada parque mostra as estradas sem limite mapeado. Clique numa e uma ligação abre o editor do OpenStreetMap mesmo nessa estrada, com fotografias ao nível da rua e sinais de trânsito ativados.`
+  ],
+  m_rt_speed:"Limite afixado", m_rt_risk:"Risco de morte de um utilizador vulnerável se for atingido",
+  m_groups_intro:"Cada parque pertence a um de três grupos, conforme a parte do seu território dada a estradas e estacionamento. Os parques com infraestrutura para carros recebem também uma etiqueta ciclável, e os parques com limites de velocidade suficientes mapeados recebem um grupo de velocidade.",
   m_groups_note:"Os parques quase sem carros não recebem etiqueta ciclável: com tão poucas estradas, há pouco a compensar, e os trilhos de BTT muitas vezes não estão mapeados como infraestrutura ciclável.",
   m_limits_zero:"Zero de infraestrutura ciclável significa que não há nenhuma mapeada no OpenStreetMap, não necessariamente que não exista.",
   src_all:`todos da <a href='https://en.wikipedia.org/wiki/List_of_urban_parks_by_size'>lista da Wikipédia de parques urbanos por área</a>`,
@@ -736,6 +945,39 @@ pt:{
   added:"Acrescentado",
   d_added:"Não consta da lista da Wikipédia de parques urbanos: foi acrescentado devido ao debate atual sobre a urbanização no seu interior.",
   m_added:names=>`Acrescentámos também o ${names}, que não consta da lista, devido ao debate atual sobre a urbanização no seu interior. Ao contrário da maioria dos parques da lista, inclui vilas e aldeias inteiras, por isso as suas estradas incluem as ruas dessas povoações.`,
+  fact_share_cyc:(p,km)=>`<strong>${p}</strong> de Monsanto são estradas e estacionamento, com apenas <strong>${km} km</strong> de infraestrutura ciclável por cada 100 km de estrada.`,
+  fact_compare:(k,n,hi)=>`<strong>${k}</strong> dos ${n} parques urbanos dão <strong>${hi}% ou mais</strong> do seu território aos carros. <a href="#ranking">Compare-os todos ↓</a>`,
+  more_facts:"Mais factos ↓", less_facts:"Menos factos ↑",
+  spd_btn:"Limites de velocidade",
+  spd_1:"30 km/h ou menos (seguro)", spd_2:"31 a 50 km/h", spd_3:"51 a 70 km/h", spd_4:"Mais de 70 km/h", spd_x:"Sem limite mapeado",
+  spd_cta:"Clique aqui para melhorar os limites de velocidade deste parque no OpenStreetMap ↗",
+  d_spd_h:"Onde há limites de velocidade seguros",
+  d_spd_top:(v,r,n)=>`Limite mais alto mapeado: <b>${v} km/h</b> (posição ${r} de ${n} parques).`,
+  d_spd_na:"Ainda não há dados de limites de velocidade deste parque.",
+  spd_sub:"Limites de velocidade afixados e o risco para utilizadores vulneráveis", spd_notrated:"Ainda não avaliado",
+  spd_b_risk:"Risco de morte de um peão se for atingido", spd_b_risk_sub:"Média das estradas do parque com limite de velocidade mapeado",
+  spd_b_rank:(r,n,o)=>r === 1 ? `O mais alto de ${n} parques avaliados` : `${o} mais alto de ${n} parques avaliados`,
+  spd_b_safe:"Estradas a velocidade segura (30 km/h ou 20 mph)", spd_safe_w:"segura", spd_above_w:"acima",
+  spd_b_mapped:"Estradas com limite de velocidade mapeado",
+  spd_foot:mw=>`Limites legais, não velocidades operacionais reais.${mw ? ` As autoestradas (${mw} km) não estão incluídas nesta análise.` : ""}`, spd_how:"Como calculamos isto ↗",
+  f_speedgroup:"Grupo de velocidade",
+  sg_all:"Todas as velocidades", sg_unsafe:"Muitas velocidades inseguras", sg_mixed:"Velocidades mistas", sg_safe:"Maioria a velocidade segura", sg_few:"Poucos limites mapeados",
+  sg_unsafe_d:(lo,hi)=>`O risco médio de morte de um utilizador vulnerável atingido é de ${hi}% ou mais, o de uma estrada com limite de 50 km/h.`,
+  sg_mixed_d:(lo,hi)=>`Risco médio de morte entre ${lo}% e ${hi}%.`,
+  sg_safe_d:(lo,hi)=>`Risco médio de morte abaixo de ${lo}%: estradas com limite igual ou próximo dos 30 km/h da velocidade segura.`,
+  sg_few_d:(c,km)=>`Os limites de velocidade estão mapeados em menos de ${c}% das estradas, ou em menos de ${km} km, por isso o parque ainda não está avaliado.`,
+  s_unsafe:"Classificação de risco para utilizadores vulneráveis", col_unsafe:"Risco de morte se atingido",
+  layer_none:"Nenhum mapeado neste parque",
+  bar_car:"Parte do espaço dos carros neste parque", bar_cyc:(km,road)=>`${km} km de infraestrutura ciclável dedicada, para ${road} km de estrada`, bar_cyc_over:(km,road)=>`${km} km de infraestrutura ciclável dedicada, mais do que os ${road} km de estrada do parque`, bar_spd:"Parte das estradas do parque, sem autoestradas",
+  cyc_none:"Estradas sem infraestrutura ciclável", spd_m:"Autoestrada (fora da análise)",
+  d_cyc_zero:"Não há infraestrutura ciclável dedicada mapeada neste parque.",
+  spd_cta_tip:"Abre o editor iD com fotografias do Mapillary e sinais de trânsito ativados",
+  reset_view:"Repor vista",
+  pop_noname:"Estrada sem nome", pop_limit:"Limite de velocidade", pop_nolimit:"Sem limite de velocidade mapeado", pop_notrated:"fora da análise", pop_oneway:"Sentido único", pop_ref:"Referência", pop_yes:"Sim",
+  pop_add:"Acrescentar o limite de velocidade no OpenStreetMap ↗", pop_cyc:"Infraestrutura ciclável", pop_type:"Tipo",
+  hw:{motorway:"Autoestrada", motorway_link:"Ramo de autoestrada", trunk:"Via rápida", trunk_link:"Ramo de via rápida", primary:"Estrada principal", primary_link:"Ramo de estrada principal", secondary:"Estrada secundária", secondary_link:"Ramo de estrada secundária", tertiary:"Estrada terciária", tertiary_link:"Ramo de estrada terciária", unclassified:"Estrada local", residential:"Rua residencial", living_street:"Zona de coexistência", service:"Via de serviço", track:"Caminho", road:"Estrada"},
+  mn_region:"Região", mn_car:"Infraestrutura para carros", mn_speed:"Limites de velocidade", mn_bikes:"Bicicletas", mn_all:"Todos", bk_all:"Qualquer",
+  f_clear:"Limpar tudo", f_count:(n,N)=>`${n} de ${N} parques`,
   m_title:"Como medimos",
   m_body:[
     "Os parques vêm da <a href='https://en.wikipedia.org/wiki/List_of_urban_parks_by_size'>lista da Wikipédia de parques urbanos por área</a>, que reúne parques urbanos de cerca de 4 km² ou mais em todo o mundo. Medimos todos os parques da lista exceto {skipped} que não têm artigo próprio na Wikipédia ou um limite único no OpenStreetMap. <a href='#parklist'>A lista completa está abaixo</a>. O limite de cada parque é o seu polígono no OpenStreetMap.",
@@ -750,7 +992,7 @@ pt:{
   locale:"pt-PT"
 }};
 
-const state = {lang:"en", region:"all", q:"", sort:"share", selected:HOME, detailView:"square", heroView:"square", showAll:false, group:"all", dir:-1};
+const state = {lang:"en", region:"all", q:"", sort:"share", selected:HOME, detailView:"square", heroView:"square", showAll:false, group:"all", speed:"all", bikes:"all", dir:-1};
 try{ const saved = localStorage.getItem("pc_lang"); if(saved) state.lang = saved; else if((navigator.language||"").toLowerCase().startsWith("pt")) state.lang = "pt"; }catch(e){}
 
 const $ = s => document.querySelector(s);
@@ -785,54 +1027,52 @@ function renderStatic(){
   document.querySelectorAll("[data-tp]").forEach(el => { el.placeholder = t(el.dataset.tp); });
   document.querySelectorAll("[data-th]").forEach(el => { const v = t(el.dataset.th); if(typeof v === "string") el.innerHTML = v; });
   document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === state.lang)));
-  const chips = $("#chips");
-  chips.querySelectorAll("button").forEach(b => b.remove());
-  REGIONS.forEach(r => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "chip"; b.textContent = t(r);
-    b.setAttribute("aria-pressed", String(state.region === r));
-    b.onclick = () => { state.region = r; renderStatic(); renderList(); };
-    chips.appendChild(b);
-  });
   const mb = t("m_body").map(x => x.replace("{skipped}", SITE.skipped || 0));
   const R = SITE.rules || {car_low: 1, car_heavy: 4, bikes_share: 50, min_road_km: 5};
   const lo = num(R.car_low, 0), hi = num(R.car_heavy, 0);
+  const SP = (R.speed) || {min_cover: 25, min_km: 3, risk_safe_below: 10, risk_unsafe_from: 34, risk_points: []};
   const labelList = `<ul class="labels">
       <li><span class="pill g-free">${t("g_free")}</span>${t("g_free_d")(lo)}</li>
       <li><span class="pill g-some">${t("g_some")}</span>${t("g_some_d")(lo, hi)}</li>
       <li><span class="pill g-heavy">${t("g_heavy")}</span>${t("g_heavy_d")(hi)}</li>
       <li><span class="pill b-share">${t("b_share")}</span>${t("b_share_d")(R.bikes_share)}</li>
-      <li><span class="pill b-little">${t("b_little")}</span>${t("b_little_d")(R.bikes_share)}</li></ul>`;
+      <li><span class="pill b-little">${t("b_little")}</span>${t("b_little_d")(R.bikes_share)}</li>
+      <li><span class="pill s-unsafe">${t("sg_unsafe")}</span>${t("sg_unsafe_d")(SP.risk_safe_below, SP.risk_unsafe_from)}</li>
+      <li><span class="pill s-mixed">${t("sg_mixed")}</span>${t("sg_mixed_d")(SP.risk_safe_below, SP.risk_unsafe_from)}</li>
+      <li><span class="pill s-safe">${t("sg_safe")}</span>${t("sg_safe_d")(SP.risk_safe_below, SP.risk_unsafe_from)}</li>
+      <li><span class="pill s-few">${t("sg_few")}</span>${t("sg_few_d")(SP.min_cover, SP.min_km)}</li></ul>`;
   const sections = [
     ["mh_parks", [mb[0], ...(PARKS.some(p => p.added) ? [t("m_added")(PARKS.filter(p => p.added).map(p => L(p.name)).join(", "))] : []), mb[5]]],
     ["mh_roads", [mb[1], mb[2], mb[3]]],
     ["mh_pieces", [t("m_pieces"), mb[4]]],
-    ["mh_speed", [t("m_speed")]],
+    ["mh_speed", t("m_speed_ps")(SP).map(x => x === "RISKTABLE" ? `<table class="rt"><thead><tr><th>${t("m_rt_speed")}</th><th>${t("m_rt_risk")}</th></tr></thead><tbody>${(SP.risk_points || []).map(([v, r]) => `<tr><td>${v} km/h</td><td>${r}%</td></tr>`).join("")}</tbody></table>` : x)],
     ...(PARKS.some(p => p.cyc) ? [["mh_cyc", [t("m_cyc").replace("{min}", R.min_road_km)]]] : []),
     ["mh_groups", [t("m_groups_intro"), labelList, t("m_groups_note")]],
     ["mh_limits", [mb[6], t("m_limits_zero")]],
   ];
-  const gchips = $("#groups");
-  gchips.querySelectorAll("button").forEach(b => b.remove());
-  ["all", "free", "some", "heavy"].forEach(g => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "chip"; b.textContent = t("g_" + g);
-    b.setAttribute("aria-pressed", String(state.group === g));
-    b.onclick = () => { state.group = g; renderStatic(); renderList(); };
-    gchips.appendChild(b);
-  });
+  renderMenus();
   $("#sortDir").textContent = t(state.dir < 0 ? "sort_desc" : "sort_asc");
   $("#methodBody").innerHTML = sections.map(([h, ps]) =>
-    `<h3>${t(h)}</h3>` + ps.map(x => x.startsWith("<ul") ? x : `<p>${x}</p>`).join("")).join("");
+    `<h3${h === "mh_speed" ? ' id="m-speed"' : ""}>${t(h)}</h3>` + ps.map(x => x.startsWith("<ul") || x.startsWith("<table") ? x : `<p>${x}</p>`).join("")).join("");
   renderParkList();
   const mons = PARKS.find(p => p.id === HOME);
   const car = mons.roadM2 + mons.parkingM2;
   const rank = [...PARKS].sort((a, b) => b.pct - a.pct).findIndex(p => p.id === HOME) + 1;
-  $("#facts").innerHTML = `<li>${t("fact_share")(pctFmt(mons.pct))}</li>
-    <li>${t("fact_rank")(rank, PARKS.length)}</li>
-    <li>${t("fact_area")(km2Fmt(car))}</li>
-    ${mons.split.highways > car / 2 ? `<li>${t("fact_hw")}</li>` : ""}
-    ${mons.cyc ? `<li>${t("fact_cyc")(num(mons.cyc.dedicated_km, 1), num(mons.cyc_per100 ?? 0, 1))}</li>` : ""}`;
+  const hi1 = (SITE.rules || {car_heavy: 4}).car_heavy;
+  const heavy = PARKS.filter(p => p.pct >= hi1).length;       // the same line as the "Car-heavy" label
+  const peers = PARKS.filter(p => p.region === mons.region).sort((a, b) => b.pct - a.pct);
+  const regRank = peers.findIndex(p => p.id === HOME) + 1;
+  const reg = (peers.length > 3 && regRank <= 3 && t("in_reg")[mons.region]) ? {ord: t("ord")(regRank), n: peers.length, in: t("in_reg")[mons.region]} : null;
+  const topOf = p => Math.max(p.max_hw || 0, p.max_road || 0);       // highest mapped speed limit anywhere in the park
+  const topSpeed = topOf(mons), nFast = PARKS.filter(p => topOf(p) >= topSpeed).length;
+  $("#lede").textContent = t("lede")(PARKS.length);
+  $("#facts").innerHTML = `<li>${mons.cyc && mons.cyc_per100 != null ? t("fact_share_cyc")(pctFmt(mons.pct), num(mons.cyc_per100, 1)) : t("fact_share")(pctFmt(mons.pct))}</li>
+    <li>${t("fact_rank")(rank, PARKS.length, reg)}</li>
+    ${topSpeed > 0 ? `<li>${t("fact_speed")(topSpeed, nFast)}</li>` : ""}
+    <li>${t("fact_compare")(heavy, PARKS.length, num(hi1, 0))}</li>`;
+  const factsOpen = $("#facts").classList.contains("open");
+  $("#moreFacts").textContent = t(factsOpen ? "less_facts" : "more_facts");
+  $("#moreFacts").setAttribute("aria-expanded", String(factsOpen));
   $(".prelim").textContent = t("prelim").replace("{n}", PARKS.length).replace(/, \{date\}/, dataDate() ? `, ${dataDate()}` : "");
   renderHero();
   $("#storyToggle").textContent = $("#monsanto").open ? t("story_close") : t("story_open");
@@ -881,12 +1121,12 @@ function renderHero(){
   $("#heroMap").hidden = !isMap;
   $("#heroCaption").textContent = t(isMap ? "hero_cap_map" : "hero_cap_sq");
   if(isMap){
-    $("#heroLegend").innerHTML = mapLegendHtml(true, !!PARKS.find(p => p.id === HOME).cyc);
+    $("#heroLegend").innerHTML = legendHtml(view(mons).cats);
     if(!heroMapBuilt) getMap(HOME).then(geo => {
       if(!geo || heroMapBuilt) return;
       heroMapBuilt = true;
       const box = $("#heroMap");
-      buildMap(box, geo, {pieces:true, signs:true, unmarked:false, height: box.clientWidth || 360});
+      buildMap(box, geo, {pieces:true, signs:true, unmarked:false, height: box.clientWidth || 360, id: HOME, compact: true});
     });
   } else {
     drawSquare($("#heroSq"), mons, true);
@@ -900,9 +1140,11 @@ function visibleParks(){
   const q = fold(state.q.trim());
   const list = PARKS.filter(p => (state.region === "all" || p.region === state.region)
                               && (state.group === "all" || p.group === state.group)
+                              && (state.bikes === "all" || p.bikes === state.bikes)
+                              && (state.speed === "all" || (p.spdc && p.spdc.grp === state.speed))
                               && (!q || fold(`${L(p.name)} ${L(p.city)} ${L(p.country)} ${p.name}`).includes(q)));
   const key = {share: p => p.pct, size: p => p.km2, density: p => p.roadKm / p.km2,
-               cycling: p => p.cyc_per100}[state.sort];
+               cycling: p => p.cyc_per100, unsafe: p => p.spdc ? p.spdc.risk : null}[state.sort];
   return list.sort((a, b) => {
     const x = key(a), y = key(b);
     if(x == null && y == null) return 0;
@@ -918,13 +1160,81 @@ function groupDesc(p){
   const b = p.bikes ? " " + t(p.bikes === "share" ? "b_share_d" : "b_little_d")(R.bikes_share) : "";
   return g + b;
 }
-function pillsHtml(p){
+function pillsHtml(p, full){
   return `<span class="pill g-${p.group}">${t("g_" + p.group)}</span>`
        + (p.bikes ? `<span class="pill b-${p.bikes}">${t("b_" + p.bikes)}</span>` : "")
+       + (p.spdc && (p.spdc.grp !== "few" || full) ? `<span class="pill s-${p.spdc.grp}">${t("sg_" + p.spdc.grp)}</span>` : "")
        + (p.added ? `<span class="pill p-added">${t("added")}</span>` : "");
+}
+const DEFAULTS = {region: "all", group: "all", speed: "all", bikes: "all"};
+function menuDefs(){
+  return [
+    {id: "mRegion", label: t("mn_region"), sections: [{key: "region", opts: REGIONS.map(r => [r, t(r), r === "all" ? PARKS.length : PARKS.filter(p => p.region === r).length])}]},
+    {id: "mCar", label: t("mn_car"), sections: [
+      {key: "group", opts: ["all", "free", "some", "heavy"].map(g => [g, t("g_" + g), g === "all" ? PARKS.length : PARKS.filter(p => p.group === g).length])},
+      {key: "bikes", title: t("mn_bikes"), opts: [["all", t("bk_all"), null], ["share", t("b_share"), PARKS.filter(p => p.bikes === "share").length], ["little", t("b_little"), PARKS.filter(p => p.bikes === "little").length]]}]},
+    {id: "mSpeed", label: t("mn_speed"), sections: [{key: "speed", opts: ["all", "unsafe", "mixed", "safe", "few"].map(g => [g, t("sg_" + g), g === "all" ? PARKS.length : PARKS.filter(p => p.spdc && p.spdc.grp === g).length])}]}
+  ];
+}
+function optLabel(sec, v){ return (sec.opts.find(o => o[0] === v) || [v, v])[1]; }
+function closeMenus(){
+  document.querySelectorAll(".fmenu .fpop").forEach(x => x.hidden = true);
+  document.querySelectorAll(".fbtn").forEach(x => x.setAttribute("aria-expanded", "false"));
+  $("#fback").hidden = true;
+}
+function renderMenus(){
+  menuDefs().forEach(m => {
+    const el = $("#" + m.id);
+    const sel = m.sections.map(sec => [sec, state[sec.key]]).filter(([sec, v]) => v !== DEFAULTS[sec.key]);
+    const value = sel.length ? sel.map(([sec, v]) => optLabel(sec, v)).join(", ") : t("mn_all");
+    el.innerHTML = `<button type="button" class="fbtn" aria-haspopup="true" aria-expanded="false" data-on="${sel.length ? 1 : 0}"><span class="fl">${m.label}:</span> <b>${value}</b> <i>▾</i></button>
+      <div class="fpop" role="group" aria-label="${m.label}" hidden>${m.sections.map(sec => `${sec.title ? `<h5>${sec.title}</h5>` : ""}${sec.opts.map(([v, lab, n]) =>
+        `<button type="button" class="fopt" role="menuitemradio" aria-checked="${state[sec.key] === v}" data-k="${sec.key}" data-v="${v}"><span class="mk">${state[sec.key] === v ? "✓" : ""}</span>${lab}${n != null ? `<small>${n}</small>` : ""}</button>`).join("")}`).join("")}</div>`;
+    const btn = el.querySelector(".fbtn"), pop = el.querySelector(".fpop");
+    btn.onclick = e => {
+      e.stopPropagation();
+      const open = pop.hidden;
+      closeMenus();
+      if(open){ pop.hidden = false; btn.setAttribute("aria-expanded", "true"); $("#fback").hidden = false; }
+    };
+    pop.querySelectorAll(".fopt").forEach(o => o.onclick = () => { state[o.dataset.k] = o.dataset.v; closeMenus(); writeUrl(); renderStatic(); renderList(); });
+  });
+}
+function renderActive(n){
+  const chips = [];
+  menuDefs().forEach(m => m.sections.forEach(sec => { if(state[sec.key] !== DEFAULTS[sec.key]) chips.push([sec.key, `${sec.title || m.label}: ${optLabel(sec, state[sec.key])}`]); }));
+  if(state.q.trim()) chips.push(["q", `“${state.q.trim()}”`]);
+  const box = $("#factive");
+  box.hidden = !chips.length;
+  if(!chips.length) return;
+  box.innerHTML = `<span>${t("f_count")(n, PARKS.length)}</span>` + chips.map(([k, lab]) => `<span class="achip">${lab}<button type="button" data-k="${k}" aria-label="×">×</button></span>`).join("") + `<button type="button" class="clear">${t("f_clear")}</button>`;
+  box.querySelectorAll(".achip button").forEach(b => b.onclick = () => { if(b.dataset.k === "q"){ state.q = ""; $("#q").value = ""; } else state[b.dataset.k] = DEFAULTS[b.dataset.k]; writeUrl(); renderStatic(); renderList(); });
+  box.querySelector(".clear").onclick = () => { Object.assign(state, DEFAULTS, {q: ""}); $("#q").value = ""; writeUrl(); renderStatic(); renderList(); };
+}
+const URL_KEYS = {region: "region", group: "car", speed: "speed", bikes: "bikes", q: "q", sort: "sort"};
+function writeUrl(){           // the filters live in the page link, so a view can be shared
+  try{
+    const u = new URL(location.href);
+    Object.entries(URL_KEYS).forEach(([k, name]) => { const v = state[k]; if(v && v !== DEFAULTS[k] && !(k === "sort" && v === "share")) u.searchParams.set(name, v); else u.searchParams.delete(name); });
+    if(state.dir > 0) u.searchParams.set("dir", "asc"); else u.searchParams.delete("dir");
+    history.replaceState(null, "", u);
+  }catch(e){}
+}
+function readUrl(){
+  try{
+    const q = new URLSearchParams(location.search);
+    Object.entries(URL_KEYS).forEach(([k, name]) => { if(q.has(name)) state[k] = q.get(name); });
+    if(q.get("dir") === "asc") state.dir = 1;
+    if(!REGIONS.includes(state.region)) state.region = "all";
+    if(!["all", "free", "some", "heavy"].includes(state.group)) state.group = "all";
+    if(!["all", "unsafe", "mixed", "safe", "few"].includes(state.speed)) state.speed = "all";
+    if(!["all", "share", "little"].includes(state.bikes)) state.bikes = "all";
+    if(!["share", "size", "density", "cycling", "unsafe"].includes(state.sort)) state.sort = "share";
+  }catch(e){}
 }
 function renderList(){
   const list = visibleParks();
+  renderActive(list.length);
   const rows = $("#rows");
   if(!list.length){ rows.innerHTML = `<p class="empty">${t("empty")}</p>`; renderDetail(); return; }
   const metric = {
@@ -933,13 +1243,15 @@ function renderList(){
     density: {val: p => p.roadKm / p.km2, fmt: p => `${num(p.roadKm / p.km2, 1)} km/km²`, label: t("col_density")},
     cycling: {val: p => p.cyc_per100 || 0,
               fmt: p => p.cyc_per100 != null ? `${num(p.cyc_per100, 0)} km` : "–", label: t("col_cycling")},
+    unsafe:  {val: p => (p.spdc && p.spdc.risk) || 0,
+              fmt: p => p.spdc && p.spdc.risk != null ? `${num(p.spdc.risk, 0)}%` : "–", label: t("col_unsafe")},
   }[state.sort];
   $(".colhead span:nth-child(4)").textContent = metric.label;
   const max = Math.max(...list.map(metric.val)) || 1;
   const shown = state.showAll ? list : list.slice(0, 25);
   rows.innerHTML = shown.map((p,i) => `<button type="button" class="row${p.id === HOME?" home":""}" data-id="${p.id}" aria-pressed="${p.id===state.selected}">
       <span class="rank">${i+1}</span>
-      <span><span class="pname">${L(p.name)}</span><span class="pcity">${L(p.city)}, ${L(p.country)}</span><span class="pills">${pillsHtml(p)}</span></span>
+      <span><span class="pname">${L(p.name)}</span><span class="pmeta"><span class="pcity">${L(p.city)}, ${L(p.country)}</span><span class="pills">${pillsHtml(p)}</span></span></span>
       <span class="parea">${num(p.km2, p.km2 < 100 ? 2 : 0)} km²</span>
       <span class="share"><span class="bar"><i style="width:${(metric.val(p)/max*100).toFixed(1)}%"></i></span><span class="pct">${metric.fmt(p)}</span></span>
     </button>`).join("");
@@ -967,6 +1279,109 @@ function closeSheet(fromPop){
 window.addEventListener("popstate", () => closeSheet(true));
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeSheet(); });
 mqSheet.addEventListener("change", e => { if(!e.matches) closeSheet(true); });
+function osmEditUrl(p){     // OpenStreetMap's iD editor at the first road to map, with Mapillary photos and traffic signs on
+  const e = p.edit;
+  if(!e) return null;
+  const tag = encodeURIComponent((SITE.rules && SITE.rules.hashtag) || "#urbanparksandcars");
+  return `https://www.openstreetmap.org/edit?editor=id#map=${e[2]}/${e[1]}/${e[0]}&photo_overlay=mapillary,mapillary-signs&hashtags=${tag}`;
+}
+const pc = x => `${num(x, x > 0 && x < 10 ? 1 : 0)}%`;
+function onColor(cssVar){           // dark or light text, whichever reads on a segment drawn in this CSS variable's colour
+  const v = getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim();
+  const m = /^#([0-9a-f]{6})$/i.exec(v);
+  if(!m) return "#fff";
+  const n = parseInt(m[1], 16);
+  return (0.2126 * (n >> 16) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255)) / 255 > 0.6 ? "#1D2321" : "#fff";
+}
+const segOf = cssVar => ({bg: `var(${cssVar})`, on: onColor(cssVar), sw: `<i class="sw" style="background:var(${cssVar})"></i>`});
+function barBlock(items, cap){      // one horizontal bar: white gaps, the percentage inside each segment wide enough to hold it, a legend under it
+  const shown = items.filter(i => i.share > 0);
+  const bar = shown.map(i => `<i class="${i.cls || ""}" style="width:${i.share.toFixed(2)}%;${i.bg ? "background:" + i.bg + ";" : ""}--on:${i.on || "#fff"}" title="${i.label}: ${pc(i.share)}">${i.share >= 8 ? pc(i.share) : ""}</i>`).join("");
+  const list = shown.map(i => `<li>${i.sw}<span>${i.label}</span> <b>${pc(i.share)}</b> <em>${i.sub}</em></li>`).join("");
+  return `${cap ? `<p class="barcap">${cap}</p>` : ""}<div class="bar2" role="img" aria-label="${cap || ""}">${bar}</div><ul class="blist">${list}</ul>`;
+}
+function carBarHtml(v){
+  if(!v.carM2) return "";
+  return barBlock(v.cats.map(([c, m]) => ({label: t("cat_" + c), share: 100 * m / v.carM2, sub: km2Fmt(m, 2), ...segOf(CAT_VAR[c])})), t("bar_car"));
+}
+function cycBarHtml(p){
+  if(!p.cyc) return `<p class="dnote">${t("d_cyc_na")}</p>`;
+  const c = p.cyc, tot = c.dedicated_km || 0, road = p.road_km || 0;
+  const base = Math.max(road, tot);                          // the bar is the park's road length; if cycling is longer, it is the cycling
+  if(!base) return `<p class="dnote">${t("d_cyc_zero")}</p>`;
+  const kinds = [["separated", "d_cyc_sep", c.separated_km], ["shared", "d_cyc_shared", c.shared_km], ["painted", "d_cyc_painted", c.painted_km]];
+  const items = kinds.map(([k, lab, km]) => ({label: t(lab), share: 100 * km / base, sub: `${num(km, 1)} km`, ...segOf(CYC_VAR[k]), sw: cycSwatch(k)}));
+  items.push({label: t("cyc_none"), share: 100 * Math.max(base - tot, 0) / base, sub: `${num(Math.max(road - tot, 0), 1)} km`, ...segOf("--cbx"), on: "var(--ink)"});
+  return barBlock(items, tot > road ? t("bar_cyc_over")(num(tot, 1), num(road, 0)) : t("bar_cyc")(num(tot, 1), num(road, 0)))
+    + `<p class="vs">${p.cyc_per100 != null ? t("d_cyc_per100")(num(p.cyc_per100, 0)) : t("d_cyc_fewroads")(num(p.road_km, 1))}</p>`;
+}
+function speedBlockHtml(p){
+  const s = p.spd, c = p.spdc;
+  if(!s || !c) return `<p class="dnote">${t("d_spd_na")}</p>`;
+  const bands = [["1", s.b1], ["2", s.b2], ["3", s.b3], ["4", s.b4], ["x", Math.max(s.rated - s.mapped, 0)]];       // motorways are left out of the bar
+  const items = bands.map(([b, km]) => ({label: t("spd_" + b), share: s.rated ? 100 * km / s.rated : 0, sub: `${num(km, 1)} km`, ...segOf(b === "x" ? "--spdx" : "--spd" + b)}));
+  const top = Math.max(p.max_hw || 0, p.max_road || 0);
+  const rank = top ? 1 + PARKS.filter(q => Math.max(q.max_hw || 0, q.max_road || 0) > top).length : 0;
+  const rated = PARKS.filter(q => q.spdc && q.spdc.gated);
+  const url = osmEditUrl(p);
+  const mapped = `<li><span>${t("spd_b_mapped")}</span><span class="rv"><b>${num(c.cover, 0)}%</b></span></li>`;
+  let rows;
+  if(c.gated){
+    const rk = 1 + rated.filter(q => q.spdc.risk > c.risk).length;
+    const safe = Math.round(c.safe), above = 100 - safe;
+    rows = `<p class="spdsub">${t("spd_sub")}</p><ul class="rkl">
+      <li><span>${t("spd_b_risk")}<small>${t("spd_b_risk_sub")}</small></span><span class="rv"><b>${num(c.risk, 0)}%</b><small>${t("spd_b_rank")(rk, rated.length, t("ord")(rk))}</small></span></li>
+      <li><span>${t("spd_b_safe")}</span><span class="rv"><b>${safe}% <span>${t("spd_safe_w")}</span> | ${above}% <span>${t("spd_above_w")}</span></b>
+        <span class="dual">${safe > 0 ? `<i class="k1" style="width:${safe}%"></i>` : ""}${above > 0 ? `<i class="k4" style="width:${above}%"></i>` : ""}</span></span></li>
+      ${mapped}</ul>`;
+  }else{
+    rows = `<p class="spdsub">${t("spd_notrated")}</p><ul class="rkl">${mapped}</ul>`;
+  }
+  return `${top ? `<p class="spdtop"><span class="msign">${top}</span><span>${t("d_spd_top")(num(top, 0), rank, PARKS.length)}</span></p>` : ""}
+    ${barBlock(items, t("bar_spd"))}
+    ${rows}
+    ${url ? `<p class="spdcta"><a href="${url}" target="_blank" rel="noopener" title="${t("spd_cta_tip")}">${t("spd_cta")}</a></p>` : ""}
+    <p class="dnote">${t("spd_foot")(s.mw > 0 ? num(s.mw, 1) : "")} <a href="#m-speed">${t("spd_how")}</a></p>`;
+}
+function speedKeyHtml(p){   // legend and call to action under a map with the Speed limits layer on
+  const s = p.spd;
+  if(!s) return "";
+  const items = [["1", s.b1], ["2", s.b2], ["3", s.b3], ["4", s.b4], ["x", Math.max(s.rated - s.mapped, 0)]].filter(([, km]) => km > 0);
+  const url = osmEditUrl(p);
+  return `<ul class="legend">${items.map(([b, km]) => `<li><i class="sw k${b}"></i>${t("spd_" + b)} <b>${pc(100 * km / s.rated)}</b> (${num(km, 1)} km)</li>`).join("")}${s.mw > 0 ? `<li><i class="sw hatch"></i>${t("spd_m")} (${num(s.mw, 1)} km)</li>` : ""}</ul>
+    ${url ? `<p class="spdcta"><a href="${url}" target="_blank" rel="noopener" title="${t("spd_cta_tip")}">${t("spd_cta")}</a></p>` : ""}`;
+}
+function osmPointUrl(lat, lon){   // iD at one spot, close enough to see exactly which road it is
+  const z = (SITE.rules && SITE.rules.edit_zoom) || 20;
+  const tag = encodeURIComponent((SITE.rules && SITE.rules.hashtag) || "#urbanparksandcars");
+  return `https://www.openstreetmap.org/edit?editor=id#map=${z}/${lat.toFixed(6)}/${lon.toFixed(6)}&photo_overlay=mapillary,mapillary-signs&hashtags=${tag}`;
+}
+function nearestOn(lines, lon, lat){   // the point on a road's line closest to a click, in the park's local metres
+  const k = Math.cos(lat * Math.PI / 180);
+  let best = null, bd = Infinity;
+  for(const l of lines) for(let i = 0; i < l.length - 1; i++){
+    const [ax, ay] = l[i], [bx, by] = l[i + 1];
+    const dx = (bx - ax) * k, dy = by - ay, px = (lon - ax) * k, py = lat - ay;
+    const L = dx * dx + dy * dy, u = L ? Math.max(0, Math.min(1, (px * dx + py * dy) / L)) : 0;
+    const qx = ax + (bx - ax) * u, qy = ay + dy * u, d = ((lon - qx) * k) ** 2 + (lat - qy) ** 2;
+    if(d < bd){ bd = d; best = [qx, qy]; }
+  }
+  return best || [lon, lat];
+}
+function roadPopupHtml(d, lon, lat){
+  const name = d.n || d.r || t("pop_noname");
+  const type = d.t ? (t("hw")[d.t] || d.t.replace(/_/g, " ")) : "";
+  const rows = [];
+  if(d.n && d.r) rows.push([t("pop_ref"), d.r]);
+  rows.push([t("pop_limit"), d.k ? `<i class="sw ${d.b === "m" ? "hatch" : "k" + d.b}"></i>${d.k} km/h${d.b === "m" ? ` (${t("pop_notrated")})` : ""}` : `<b>${t("pop_nolimit")}</b>`]);
+  if(d.o) rows.push([t("pop_oneway"), t("pop_yes")]);
+  return `<h4>${name}</h4>${type ? `<p class="ptype">${type}</p>` : ""}<dl>${rows.map(([a, b]) => `<dt>${a}</dt><dd>${b}</dd>`).join("")}</dl>`
+    + (!d.k ? `<a href="${osmPointUrl(lat, lon)}" target="_blank" rel="noopener">${t("pop_add")}</a>` : "");   // the editor link only for roads with no limit mapped
+}
+function cycPopupHtml(f){
+  const k = {separated: "d_cyc_sep", shared: "d_cyc_shared", painted: "d_cyc_painted"}[f.properties.c];
+  return `<h4>${f.properties.n || t("pop_cyc")}</h4><p class="ptype">${f.properties.n ? t("pop_cyc") + ": " : ""}${k ? t(k) : ""}</p>`;
+}
 function renderDetail(){
   const p = PARKS.find(x => x.id === state.selected);
   const v = view(p);
@@ -977,7 +1392,7 @@ function renderDetail(){
     <div class="dclose"><button type="button" id="dBack">${t("d_back")}</button></div>
     <h2>${L(p.name)}</h2>
     <p class="dsub">${L(p.city)}, ${L(p.country)}</p>
-    <div class="pills dpills">${pillsHtml(p)}</div>
+    <div class="pills dpills">${pillsHtml(p, true)}</div>
     <p class="gdesc">${groupDesc(p)}</p>
     ${p.added ? `<p class="dnote" style="margin:-8px 0 14px">${t("d_added")}</p>` : ""}
     <div class="seg vtog" role="group" aria-label="${t("v_label")}">
@@ -997,24 +1412,19 @@ function renderDetail(){
     </dl>
     ${p.id !== HOME ? `<p class="vs">${t("d_vs")(pctFmt(mons.pct))}</p>` : ""}
     <h2 style="font-size:20px;margin-top:18px">${t("d_breakdown")}</h2>
-    <ul class="breakdown">${v.cats.map(([c,m]) => `<li><i style="background:var(${CAT_VAR[c]})"></i><span>${t("cat_"+c)}</span><em>${km2Fmt(m, 2)}</em><b>${pctFmt(m/area*100)}</b></li>`).join("")}</ul>
+    ${carBarHtml(v)}
     ${p.hw_km > 0 ? `<p class="vs">${t("d_cut")(num(p.hw_km, 1), p.pieces, p.walk)}</p>` : ""}
+    <p class="dnote">${t("d_method2")}</p>
     <h2 style="font-size:20px;margin-top:22px">${t("d_cyc_h")}</h2>
-    ${p.cyc ? `<ul class="cycrows">
-        <li>${cycSwatch("separated")}<span>${t("d_cyc_sep")}</span><b>${num(p.cyc.separated_km, 1)} km</b></li>
-        <li>${cycSwatch("shared")}<span>${t("d_cyc_shared")}</span><b>${num(p.cyc.shared_km, 1)} km</b></li>
-        <li>${cycSwatch("painted")}<span>${t("d_cyc_painted")}</span><b>${num(p.cyc.painted_km, 1)} km</b></li>
-        <li><i></i><span>${t("d_cyc_total")}</span><b>${num(p.cyc.dedicated_km, 1)} km</b></li>
-      </ul>
-      <p class="vs">${p.cyc_per100 != null ? t("d_cyc_per100")(num(p.cyc_per100, 0)) : t("d_cyc_fewroads")(num(p.road_km, 1))}</p>`
-      : `<p class="dnote">${t("d_cyc_na")}</p>`}
-    <p class="dnote" style="margin-top:14px">${t("d_method2")}</p>
+    ${cycBarHtml(p)}
+    <h2 style="font-size:20px;margin-top:22px">${t("d_spd_h")}</h2>
+    ${speedBlockHtml(p)}
     ${p.id === HOME ? `<a class="story-link" href="#monsanto" id="openStory">${t("d_story")}</a>` : ""}`;
   document.querySelectorAll("#detail .vtog button").forEach(b => b.onclick = () => { state.detailView = b.dataset.v; renderDetail(); });
   if(isMap && p.has_map) getMap(p.id).then(geo => {
     const box = $("#detailMap");
     if(!box || state.selected !== p.id || state.detailView !== "map") return;
-    if(geo) buildMap(box, geo, {pieces:false, signs:true, unmarked:false, height:440});
+    if(geo) buildMap(box, geo, {pieces:false, signs:true, unmarked:false, height:540, id: p.id});
     else box.innerHTML = `<p class="empty">${t("map_na")}</p>`;
   });
   if(!isMap) drawSquare($("#detailSq"), p, false);
@@ -1082,6 +1492,7 @@ const SIGN_GAP_PX = 34, MAX_SIGNS = 24;     // screen-space spacing of speed sig
 const SCALE_STEPS = [10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000];
 let basemapOn = false;                     // OpenFreeMap basemap, shared by every map
 let cyclingOn = true;                      // cycling layer, shared by every map
+let speedOn = false;                       // speed-limit layer, shared by every map
 const liveMaps = new Set();
 let mapUid = 0;                           // unique ids for each map's clip path
 const ROAD_WORDS = {
@@ -1112,7 +1523,10 @@ function buildMap(box, geo, opts){
   const tip = box.querySelector(".tip");
   if(typeof d3 === "undefined"){ box.insertAdjacentHTML("beforeend", `<p class="empty">${t("map_noload")}</p>`); return null; }
   const o = {...opts};
+  const park = PARKS.find(x => x.id === o.id);
   const w = box.clientWidth || 600, h = Math.round(o.height || Math.min(760, Math.max(340, w * 0.62)));
+  const compact = o.compact != null ? o.compact : w < 320;            // teaser maps: no speed signs, crossing dots, buttons or zoom
+  if(compact) o.signs = false;
   const svg = d3.select(box).append("svg").attr("viewBox", `0 0 ${w} ${h}`).attr("role","img").attr("aria-label", t("map_aria"));
   const proj = d3.geoMercator().fitExtent([[14,14],[w-14,h-14]], geo.park);
   const path = d3.geoPath(proj);
@@ -1144,6 +1558,33 @@ function buildMap(box, geo, opts){
       .attr("stroke", "var(--hw)").attr("stroke-width", 2).attr("vector-effect", "non-scaling-stroke");   // keeps narrow ramps visible when zoomed out
   }
   if(geo.parking) surf.append("path").datum(geo.parking).attr("d", path).attr("fill","var(--marking)");
+  // speed limits: every road coloured by its mapped limit, roads with none in grey (loaded when first switched on)
+  const spdG = g.append("g").attr("fill", "none").attr("stroke-linecap", "round").attr("stroke-linejoin", "round").style("display", "none");
+  const SPD_W = {h: 3.2, m: 2.4, l: 1.8, s: 1.2};          // line thickness follows road type, in screen pixels
+  let roadsP = null;
+  function loadRoads(){                      // every road of the park, loaded once with the map, so any road can be selected on any layer
+    if(roadsP || !o.id || compact) return roadsP || Promise.resolve(null);
+    roadsP = getSpeed(o.id).then(sp => {
+      if(!sp) return null;
+      const order = ["m", "x", "1", "2", "3", "4"];
+      const feats = [...sp.l].sort((a, b) => order.indexOf(a.b) - order.indexOf(b.b));      // motorways and unmapped first, so limits draw on top
+      hitSpd.selectAll("path").data(feats).join("path").attr("class", "hit").attr("d", d => path({type: "MultiLineString", coordinates: d.g}))
+        .attr("stroke-width", HIT_W).attr("vector-effect", "non-scaling-stroke").style("pointer-events", "stroke");
+      return feats;
+    });
+    return roadsP;
+  }
+  let spdDrawn = false;
+  function loadSpeedLayer(){                 // colours the roads by their limit, when the Speed limits layer is switched on
+    if(spdDrawn || !o.id) return;
+    spdDrawn = true;
+    loadRoads().then(feats => {
+      if(!feats) return;
+      spdG.selectAll("path").data(feats).join("path").attr("d", d => path({type: "MultiLineString", coordinates: d.g}))
+        .attr("class", d => `sp k${d.b}`).attr("stroke-width", d => SPD_W[d.c] * (d.b === "x" ? 0.8 : 1))
+        .attr("vector-effect", "non-scaling-stroke");
+    });
+  }
   // cycling, option C: one blue, line style by type, a thin edge so lines read on green and grey
   const cycFeats = geo.cycling ? geo.cycling.features : [];
   const cycG = g.append("g").attr("fill", "none").attr("stroke-linejoin", "round");
@@ -1151,14 +1592,72 @@ function buildMap(box, geo, opts){
     .attr("stroke", "var(--cyc-edge)").attr("stroke-width", CYC_W + 3).attr("stroke-linecap", "round")
     .attr("vector-effect", "non-scaling-stroke");
   cycG.selectAll("path.cy-line").data(cycFeats).join("path").attr("class", "cy-line").attr("d", path)
-    .attr("stroke", "var(--cyc-sep)").attr("stroke-width", CYC_W)
+    .attr("stroke", d => `var(${CYC_VAR[d.properties.c] || "--cb1"})`).attr("stroke-width", CYC_W)
     .attr("stroke-linecap", d => CYC_DASH[d.properties.c] ? "butt" : "round")
     .attr("stroke-dasharray", d => CYC_DASH[d.properties.c] || null)
     .attr("vector-effect", "non-scaling-stroke");
+  // click a road (speed layer on) or a cycling line to see what we know about it
+  const pop = document.createElement("div");
+  pop.className = "mpop"; pop.hidden = true;
+  if(!compact) box.appendChild(pop);
+  let selAnchor = null;                      // the point on the selected road that the popup's arrow points to
+  const HIT_W = window.matchMedia && matchMedia("(pointer: coarse)").matches ? 22 : 14;   // wider to tap on a phone
+  function placePop(){                       // the popup stays on its road as the map is dragged or zoomed
+    if(pop.hidden || !selAnchor) return;
+    const [px, py] = proj(selAnchor), x = tr.applyX(px), y = tr.applyY(py), W = box.clientWidth, H = box.clientHeight;
+    pop.style.visibility = x >= 0 && x <= W && y >= 0 && y <= H ? "visible" : "hidden";
+    const pw = pop.offsetWidth, ph = pop.offsetHeight, gap = 13;
+    const above = y - ph - gap >= 6 || y + gap + ph > H - 6;
+    const left = Math.max(6, Math.min(x - pw / 2, W - pw - 6));
+    pop.style.left = left + "px";
+    pop.style.top = (above ? y - ph - gap : y + gap) + "px";
+    pop.classList.toggle("below", !above);
+    pop.style.setProperty("--ax", Math.max(16, Math.min(x - left, pw - 16)) + "px");
+  }
+  const selG = g.append("g").style("pointer-events", "none");
+  function drawSel(items){                   // the selected road(s) in a different colour, on top of every layer
+    selG.selectAll("*").remove();
+    const shapes = items.map(it => path(it.road ? {type: "MultiLineString", coordinates: it.road.g} : it.cyc.geometry));
+    shapes.forEach(d => selG.append("path").attr("class", "pick-halo").attr("d", d));
+    shapes.forEach(d => selG.append("path").attr("class", "pick-line").attr("d", d));
+  }
+  function hidePop(){ pop.hidden = true; selAnchor = null; selG.selectAll("*").remove(); }
+  function showPop(html, anchor, items){
+    pop.innerHTML = `<button type="button" class="x" aria-label="×">×</button>${html}`;
+    pop.querySelector(".x").onclick = hidePop;
+    pop.hidden = false;
+    selAnchor = anchor;
+    drawSel(items);
+    placePop();
+  }
+  const hitG = g.append("g").attr("fill", "none").attr("stroke", "rgba(0,0,0,0)").attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+  const hitSpd = hitG.append("g"), hitCyc = hitG.append("g");
+  if(!compact) hitCyc.selectAll("path").data(cycFeats).join("path").attr("class", "hit").attr("d", path).attr("stroke-width", HIT_W)
+    .attr("vector-effect", "non-scaling-stroke").style("pointer-events", "stroke");
+  hitG.on("click", ev => {          // everything under the click: the road first, then any cycling line along it
+    const els = document.elementsFromPoint(ev.clientX, ev.clientY).filter(e => e.classList && e.classList.contains("hit") && box.contains(e));
+    if(!els.length) return;
+    const [mx, my] = d3.pointer(ev, g.node()), [lon, lat] = proj.invert([mx, my]);
+    const roads = [], cycs = [], seen = new Set(), htmls = new Set();
+    for(const e of els){
+      const d = e.__data__;
+      if(!d || seen.has(d)) continue;
+      seen.add(d);
+      if(d.g){
+        const at = nearestOn(d.g, lon, lat), html = roadPopupHtml(d, at[0], at[1]);
+        if(!htmls.has(html)){ htmls.add(html); roads.push({html, road: d, at}); }
+      }else if(d.properties){
+        const lines = d.geometry.type === "LineString" ? [d.geometry.coordinates] : d.geometry.coordinates, html = cycPopupHtml(d);
+        if(!htmls.has(html)){ htmls.add(html); cycs.push({html, cyc: d, at: nearestOn(lines, lon, lat)}); }
+      }
+    }
+    const items = [...roads.slice(0, 2), ...cycs.slice(0, 1)];
+    if(items.length) showPop(items.map(i => i.html).join("<hr>"), items[0].at, items);
+  });
   const labelG = g.append("g");
   const labels = labelG.selectAll("g").data(pieces.filter(f => f.properties.id <= 2 && pieces.length > 1)).join("g").attr("class","plabel");
   labels.append("text").text(d => `${num(d.properties.km2, 2)} km²`);
-  const signs = g.append("g").selectAll("g").data(geo.signs || []).join("g").attr("class","sign");
+  const signs = g.append("g").selectAll("g").data(geo.signs || []).join("g").attr("class","sign").style("pointer-events", "none");   // clicks go through to the road under the sign
   signs.append("circle").attr("r", 8.5);
   signs.append("text").attr("dy","0.35em").text(d => d.v);
   signs.append("title").text(d => `${d.v} km/h`);
@@ -1183,12 +1682,20 @@ function buildMap(box, geo, opts){
   // basemap button, attribution and note
   const btns = document.createElement("div");
   btns.className = "map-btns";
+  if(compact) btns.style.display = "none";
   box.appendChild(btns);
-  let cycBtn = null;
-  if(geo.cycling && geo.cycling.features.length){
-    cycBtn = document.createElement("button");
-    cycBtn.type = "button"; cycBtn.className = "bm-btn"; cycBtn.textContent = t("cyc_btn");
-    btns.appendChild(cycBtn);
+  const hasCyc = !!(geo.cycling && geo.cycling.features.length), hasSpd = !!(park && park.has_spd);
+  const mkBtn = (label, enabled) => {         // speed limits, cycling and basemap on every map; a layer with no data is greyed out
+    const x = document.createElement("button");
+    x.type = "button"; x.className = "bm-btn"; x.textContent = label;
+    if(!enabled){ x.disabled = true; x.title = t("layer_none"); }
+    btns.appendChild(x); return x;
+  };
+  const spdBtn = mkBtn(t("spd_btn"), hasSpd), cycBtn = mkBtn(t("cyc_btn"), hasCyc);
+  let keyEl = null;
+  if(hasSpd && !compact){
+    keyEl = box.nextElementSibling && box.nextElementSibling.classList.contains("spdmapkey") ? box.nextElementSibling : null;
+    if(!keyEl){ keyEl = document.createElement("div"); keyEl.className = "spdmapkey"; keyEl.hidden = true; box.insertAdjacentElement("afterend", keyEl); }
   }
   const btn = document.createElement("button");
   btn.type = "button"; btn.className = "bm-btn"; btn.textContent = t("bm");
@@ -1236,7 +1743,7 @@ function buildMap(box, geo, opts){
         return null;
       });
     cross.attr("transform", d => at(...proj([d.lon, d.lat])))
-      .style("display", d => (d.t === "unmarked" && !o.unmarked) ? "none" : null);
+      .style("display", d => (compact || (d.t === "unmarked" && !o.unmarked)) ? "none" : null);
     labels.attr("transform", d => at(...path.centroid(d)));
     pieceG.style("display", o.pieces ? null : "none");
     labelG.style("display", o.pieces ? null : "none");
@@ -1245,19 +1752,43 @@ function buildMap(box, geo, opts){
     scaleLine.attr("x2", step / mpp);
     scaleText.text(step >= 1000 ? `${step / 1000} km` : `${step} m`);
     cycG.style("display", cyclingOn ? null : "none");
-    if(cycBtn) cycBtn.setAttribute("aria-pressed", String(cyclingOn));
+    cycBtn.setAttribute("aria-pressed", String(cyclingOn && hasCyc)); cycBtn.textContent = t("cyc_btn");
+    const spd = speedOn && hasSpd;
+    surf.style("opacity", spd ? 0.3 : null);
+    spdG.style("display", spd ? null : "none");
+    hitCyc.style("display", cyclingOn && hasCyc ? null : "none");
+    spdBtn.setAttribute("aria-pressed", String(spd)); spdBtn.textContent = t("spd_btn");
+    if(spd) loadSpeedLayer();
+    if(keyEl){
+      keyEl.hidden = !spd;
+      if(spd && keyEl.dataset.lang !== state.lang){ keyEl.innerHTML = speedKeyHtml(park); keyEl.dataset.lang = state.lang; }
+    }
+    if(!compact){
+      resetBtn.hidden = Math.abs(tr.k - 1) < 0.001 && Math.abs(tr.x) < 1 && Math.abs(tr.y) < 1;
+    }
+    placePop();
     svg.classed("bm-on", basemapOn);
     btn.setAttribute("aria-pressed", String(basemapOn));
     attr.style.display = basemapOn ? "block" : "none";
     syncBasemap();
   }
   btn.onclick = () => { basemapOn = !basemapOn; liveMaps.forEach(m => m.refresh()); };
-  if(cycBtn) cycBtn.onclick = () => { cyclingOn = !cyclingOn; liveMaps.forEach(m => m.refresh()); };
+  if(hasCyc) cycBtn.onclick = () => { cyclingOn = !cyclingOn; liveMaps.forEach(m => m.refresh()); };
+  if(hasSpd) spdBtn.onclick = () => { speedOn = !speedOn; liveMaps.forEach(m => m.refresh()); };
   const kMax = Math.max(16, mPerPx * 90 / 20);        // deep enough for a ~20 m scale bar
-  svg.call(d3.zoom().scaleExtent([1, kMax]).translateExtent([[0,0],[w,h]]).on("zoom", ev => {
+  const kMin = compact ? 1 : 1 / 32;                   // five levels out, so the park can be seen within its region
+  const room = compact ? 0 : Math.max(w, h) * 40;
+  const zoomer = d3.zoom().scaleExtent([kMin, kMax]).translateExtent([[-room, -room], [w + room, h + room]]).on("zoom", ev => {
     tr = ev.transform; g.attr("transform", tr); refresh();
-  }));
-  const handle = { refresh, set(u){ Object.assign(o, u); refresh(); },
+  });
+  svg.call(zoomer);
+  svg.on("click.pop", ev => { if(!ev.target.closest(".hit")) hidePop(); });
+  const resetBtn = document.createElement("button");
+  resetBtn.type = "button"; resetBtn.className = "m-reset"; resetBtn.textContent = t("reset_view"); resetBtn.hidden = true;
+  resetBtn.onclick = () => svg.transition().duration(350).call(zoomer.transform, d3.zoomIdentity);
+  if(!compact) box.appendChild(resetBtn);
+  loadRoads();
+  const handle = { refresh, hidePop, set(u){ Object.assign(o, u); refresh(); },
                    destroy(){ if(gl){ gl.remove(); gl = null; } } };
   liveMaps.forEach(m => { if(!document.body.contains(m.box)){ m.destroy(); liveMaps.delete(m); } });
   handle.box = box;
@@ -1271,7 +1802,7 @@ function initStoryMap(){
   storyStarted = true;
   getMap(HOME).then(geo => {
     if(!geo) return;
-    storyMap = buildMap($("#map"), geo, {pieces: $("#optPieces").checked, signs: $("#optSpeed").checked, unmarked: $("#showUnmarked").checked});
+    storyMap = buildMap($("#map"), geo, {pieces: $("#optPieces").checked, signs: $("#optSpeed").checked, unmarked: $("#showUnmarked").checked, id: HOME});
     $("#mapLegend").innerHTML = mapLegendHtml(true, !!PARKS.find(p => p.id === HOME).cyc);
   });
 }
@@ -1289,11 +1820,17 @@ document.querySelectorAll(".lang button").forEach(b => b.onclick = () => {
   renderStatic(); renderList();
   if(storyGeo) renderStoryNumbers(storyGeo);
   if(storyMap) $("#mapLegend").innerHTML = mapLegendHtml(true, !!PARKS.find(p => p.id === HOME).cyc);
+  liveMaps.forEach(m => m.refresh());
 });
-$("#q").oninput = e => { state.q = e.target.value; renderList(); };
-$("#sortDir").onclick = () => { state.dir = -state.dir; $("#sortDir").textContent = t(state.dir < 0 ? "sort_desc" : "sort_asc"); renderList(); };
-$("#sort").onchange = e => { state.sort = e.target.value; renderList(); };
+$("#moreFacts").onclick = e => { const open = $("#facts").classList.toggle("open"); document.body.classList.toggle("facts-open", open); e.target.textContent = t(open ? "less_facts" : "more_facts"); e.target.setAttribute("aria-expanded", String(open)); };
+document.addEventListener("keydown", e => { if(e.key === "Escape"){ closeMenus(); liveMaps.forEach(m => m.hidePop && m.hidePop()); } });
+document.addEventListener("click", e => { if(!e.target.closest(".fmenu")) closeMenus(); });
+$("#q").oninput = e => { state.q = e.target.value; writeUrl(); renderList(); };
+$("#sortDir").onclick = () => { state.dir = -state.dir; writeUrl(); $("#sortDir").textContent = t(state.dir < 0 ? "sort_desc" : "sort_asc"); renderList(); };
+$("#sort").onchange = e => { state.sort = e.target.value; writeUrl(); renderList(); };
 
+readUrl();
+$("#q").value = state.q || ""; $("#sort").value = state.sort;
 renderStatic(); renderList();
 getMap(HOME).then(g => { if(g) renderStoryNumbers(g); });
 if(location.hash === "#monsanto") $("#monsanto").open = true;
