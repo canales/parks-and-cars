@@ -82,11 +82,14 @@ a{color:inherit}
 .lang{display:flex;border:1px solid var(--rule);border-radius:999px;overflow:hidden}
 .lang button{font:500 14px var(--text);background:none;border:0;color:var(--muted);padding:5px 12px;cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.hero{--hero-fig:400px;display:grid;grid-template-columns:minmax(0,1fr) var(--hero-fig);gap:36px;align-items:start;padding:18px 0 10px}   /* --hero-fig sets the map size */
-.hero h1{font:700 clamp(30px,3.1vw,46px)/1.02 var(--display);letter-spacing:-.01em;margin:0 0 8px;max-width:26ch}
+.hero{--hero-fig:clamp(340px,38vw,520px);display:grid;grid-template-columns:minmax(0,1fr) var(--hero-fig);gap:36px;align-items:stretch;padding:18px 0 10px}   /* --hero-fig sets the map size */
+.hero h1{font:700 clamp(30px,3.75vw,54px)/1.02 var(--display);letter-spacing:-.01em;margin:0 0 8px;max-width:26ch}
 .lede{font-size:17px;line-height:1.45;color:var(--muted);max-width:84ch;margin:0 0 12px}
-.facts{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr;gap:7px}
-.facts li{font-size:16px;line-height:1.35;padding-left:16px;position:relative}
+.hero-text{display:flex;flex-direction:column}
+.hero-text .facts{flex:1;justify-content:center}      /* the bullet group sits centred in the space beside the map */
+@media (min-width:901px){.hero-text .facts{gap:26px}}      /* 26px: halfway between the old 7px and the stretched 46px */
+.facts{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.facts li{font-size:17px;line-height:1.35;padding-left:16px;position:relative}
 .facts li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;background:var(--hw)}
 .facts li:nth-child(1)::before{background:var(--forest)}
 .facts strong{font:600 1.15em/1 var(--display);letter-spacing:.01em}
@@ -403,7 +406,7 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:14px;color
   </header>
 
   <section class="hero">
-    <div>
+    <div class="hero-text">
       <h1 data-t="title"></h1>
       <p class="lede" id="lede"></p>
       <ul class="facts" id="facts"></ul>
@@ -697,7 +700,7 @@ en:{
   k_per:x=>`1 every ${x} km`, k_perl:"of the A5 inside the park",
   speed:(mapped,total,above,share)=>`Speed limits are mapped on only ${mapped} of Monsanto's ${total} km of road. On ${above} km of those (${share}%), cars may go faster than 30 km/h, the speed above which a collision becomes much more likely to kill someone walking.`,
   hero_cap_sq:"Monsanto in green. All its roads and parking, at true scale, in grey.",
-  hero_cap_map:"Roads at real width, parking and cycle paths (blue).",
+  hero_cap_map:"Roads at real width, speed limits, parking and cycle paths. Hold Ctrl or ⌘ and scroll to zoom.",
   d_hw:"Highways inside", bm:"Basemap", bm_blocked:"The basemap can't load in this preview. It will on the published site.",
   col_size:"Park size", col_density:"Road length per km²",
   list_h:n=>`The ${n} parks we measured`, list_city:"City, country",
@@ -889,7 +892,7 @@ pt:{
   k_per:x=>`1 a cada ${x} km`, k_perl:"da A5 dentro do parque",
   speed:(mapped,total,above,share)=>`Os limites de velocidade só estão mapeados em ${mapped} dos ${total} km de estrada de Monsanto. Em ${above} km desses (${share}%), os carros podem andar a mais de 30 km/h, a velocidade acima da qual um atropelamento se torna muito mais provavelmente mortal.`,
   hero_cap_sq:"Monsanto a verde. Todas as suas estradas e estacionamento, à escala real, a cinzento.",
-  hero_cap_map:"Estradas na largura real, estacionamento e ciclovias (a azul).",
+  hero_cap_map:"Estradas na largura real, limites de velocidade, estacionamento e ciclovias. Mantenha Ctrl ou ⌘ e use a roda para ampliar.",
   d_hw:"Autoestradas no interior", bm:"Mapa de fundo", bm_blocked:"O mapa de fundo não carrega nesta pré-visualização. Vai carregar no site publicado.",
   col_size:"Área do parque", col_density:"Km de estrada por km²",
   list_h:n=>`Os ${n} parques que medimos`, list_city:"Cidade, país",
@@ -1126,7 +1129,7 @@ function renderHero(){
       if(!geo || heroMapBuilt) return;
       heroMapBuilt = true;
       const box = $("#heroMap");
-      buildMap(box, geo, {pieces:true, signs:true, unmarked:false, height: box.clientWidth || 360, id: HOME, compact: true});
+      buildMap(box, geo, {pieces:true, signs:true, unmarked:false, height: box.clientWidth || 360, id: HOME, wheelKey: true});   // the story map's defaults; the wheel needs Ctrl or ⌘ here, so scrolling the page never gets stuck on the map
     });
   } else {
     drawSquare($("#heroSq"), mons, true);
@@ -1781,6 +1784,10 @@ function buildMap(box, geo, opts){
   const zoomer = d3.zoom().scaleExtent([kMin, kMax]).translateExtent([[-room, -room], [w + room, h + room]]).on("zoom", ev => {
     tr = ev.transform; g.attr("transform", tr); refresh();
   });
+  if(o.wheelKey){                                      // hero map: the wheel zooms only with Ctrl or ⌘, and gently (a mouse notch is ~20%; a trackpad pinch keeps its own speed)
+    zoomer.filter(ev => (ev.type !== "wheel" || ev.ctrlKey || ev.metaKey) && !ev.button);
+    zoomer.wheelDelta(ev => -ev.deltaY * (ev.deltaMode === 1 ? 0.05 : ev.deltaMode ? 1 : 0.002) * (ev.ctrlKey && Math.abs(ev.deltaY) < 50 ? 10 : 1));
+  }
   svg.call(zoomer);
   svg.on("click.pop", ev => { if(!ev.target.closest(".hit")) hidePop(); });
   const resetBtn = document.createElement("button");
